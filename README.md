@@ -3,6 +3,7 @@
 ## Membres du groupe:
 - BRION Adèle
 - DUBOIS Tom
+- CHIDLOVSKY Léopold
 
 
 ## Nos interfaces :
@@ -15,3 +16,4 @@
 ### Potentielles :
 
 - Favoris
+
