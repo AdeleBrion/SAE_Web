@@ -11,9 +11,8 @@
 - Recherche
 - Détails artiste
 - Détails album
-- Compte
-
-### Potentielles :
-
-- Favoris
+- Utilisateur : 
+  - Compte
+  - Favoris
+  - Playlists
 
