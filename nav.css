@@ -1,0 +1,21 @@
+nav{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.logo{
+    margin-right: 60vw;
+    max-height: 10vh;
+}
+
+.user{
+    max-height: 7vh;
+    margin-top: 3vh;
+    margin-left: 3vw;
+}
+
+input[type="text"]{
+    margin-top: 5vh;
+    justify-content: center;
+    max-height: 4vh;
+}
