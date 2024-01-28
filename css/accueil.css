@@ -1,0 +1,19 @@
+.albums{
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.titre{
+    flex-basis: 100%;
+}
+
+.album{
+    flex-basis: 10%;
+    flex-grow: 1;
+    margin: 0vh 3vh 0vh 3vh;
+}
+
+.album img{
+    height: 20vh;
+}

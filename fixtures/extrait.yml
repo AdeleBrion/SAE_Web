@@ -1,3 +1,45 @@
+- by: Stray Kids
+  entryId: 1
+  genre: [K-pop, rock]
+  img: 5star.jpg
+  parent: Stray Kids
+  releaseYear: 2023
+  title: 5-Star
+- by: Stray Kids
+  entryId: 2
+  genre: [K-pop, rock]
+  img: NOEASy.jpg
+  parent: Stray Kids
+  releaseYear: 2021
+  title: NOEASY
+- by: Stray Kids
+  entryId: 3
+  genre: [K-pop, rock]
+  img: Maxident.jpg
+  parent: Stray Kids
+  releaseYear: 2022
+  title: Maxident
+- by: Stray Kids
+  entryId: 4
+  genre: [K-pop, rock]
+  img: RockStar.jpg
+  parent: Stray Kids
+  releaseYear: 2023
+  title: Rock-Star
+- by: Stray Kids
+  entryId: 5
+  genre: [K-pop, rock]
+  img: Replay.jpg
+  parent: Stray Kids
+  releaseYear: 2022
+  title: Replay
+- by: Stray Kids
+  entryId: 6
+  genre: [K-pop, rock]
+  img: Oddinary.jpeg
+  parent: Stray Kids
+  releaseYear: 2022
+  title: Oddinary
 - by: Superdrag
   entryId: 67913
   genre: [Rock, Punk]
@@ -138,3 +180,4 @@
   parent: Dave Alvin
   releaseYear: 2011
   title: Eleven Eleven
+
