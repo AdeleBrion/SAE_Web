@@ -4,7 +4,8 @@
     use Symfony\Component\Yaml\Yaml;
     
     // Lecture du fichier YAML
-    $data = Yaml::parseFile('fixtures/extrait.yml');
+    $dataArtiste = Yaml::parseFile('fixtures/artiste.yml');
+    $dataAlbum = Yaml::parseFile('fixtures/albums.yml');
 
     try{
         $file_db = new PDO("sqlite:musinear.sqlite3");
@@ -65,14 +66,13 @@
         $stmt->bindParam(':biographie', $biographie);
         $stmt->bindParam(':cheminPhoto', $cheminPhoto);
         
-        $idArtiste=1;
-        $nomArtiste="Stray Kids";
-        $biographie="Stray Kids, formé en 2017 par JYP Entertainment, est un groupe de K-pop composé de huit membres.
-        Connus pour leurs paroles significatives et leurs performances énergiques, ils abordent des thèmes comme l'adolescence et l'identité.
-        Avec des albums à succès comme 'GO生' et 'NOEASY', le groupe est salué pour son authenticité artistique et sa base de fans mondiale.
-        Stray Kids est devenu un acteur majeur de la scène K-pop contemporaine.";
-        $cheminPhoto="fixtures/images/skz.webp";
-        $stmt->execute();
+        foreach($dataArtiste as $artiste){
+            $idArtiste = $artiste["entryId"];
+            $nomArtiste = $artiste["nom"];
+            $biographie = $artiste["biographie"];
+            $cheminPhoto = $artiste["cheminPhoto"];
+            $stmt->execute();
+        }
 
         ######################################################################
         ############## TABLE UTILISATEUR #####################################
@@ -134,8 +134,8 @@
         $stmt->bindParam(':annee', $annee);
         $stmt->bindParam(':cheminPochette', $cheminPochette);
 
-        foreach($data as $album){
-            $idArtise = 1;
+        foreach($dataAlbum as $album){
+            $idArtiste = $album["by"];
             $idAlbum = $album["entryId"];
             $nomAlbum = $album["title"];
             $annee = $album["releaseYear"];

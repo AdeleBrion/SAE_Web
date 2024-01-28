@@ -1,17 +1,21 @@
-.albums{
-    text-align: center;
-    display: flex;
-    flex-wrap: wrap;
+.container{
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .titre{
-    flex-basis: 100%;
+    text-align: center;
+}
+
+.albums{
+    padding: 1vw;
 }
 
 .album{
-    flex-basis: 10%;
-    flex-grow: 1;
-    margin: 0vh 3vh 0vh 3vh;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: 4vw;
 }
 
 .album img{

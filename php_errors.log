@@ -222,3 +222,98 @@ Stack trace:
 #0 C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\SAE_Web\accueil.php(22): baseDeDonnée->getAlbum()
 #1 {main}
   thrown in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\SAE_Web\requeteBase.php on line 24
+[28-Jan-2024 08:32:58 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:58 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:58 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 08:32:58 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:58 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:58 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 08:32:58 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:58 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:58 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 08:32:58 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:58 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:58 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 08:32:58 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:58 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:58 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 08:32:58 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "nom" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 71
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "biographie" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 72
+[28-Jan-2024 08:32:59 UTC] PHP Warning:  Undefined array key "cheminPhoto" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 73
+[28-Jan-2024 16:02:27 UTC] PHP Fatal error:  Uncaught Symfony\Component\Yaml\Exception\ParseException: File "fixtures/artis.yml" does not exist. in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\vendor\symfony\yaml\Parser.php:53
+Stack trace:
+#0 C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\vendor\symfony\yaml\Yaml.php(56): Symfony\Component\Yaml\Parser->parseFile('fixtures/artis....', 0)
+#1 C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php(7): Symfony\Component\Yaml\Yaml::parseFile('fixtures/artis....')
+#2 {main}
+  thrown in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\vendor\symfony\yaml\Parser.php on line 53
+[28-Jan-2024 16:17:32 UTC] PHP Fatal error:  Uncaught Symfony\Component\Yaml\Exception\ParseException: Unexpected characters near "Skillet" Gilmore et Mike Daly. Ils se sont dissous en 2000 et Adams est parti pour poursuivre sa carrière solo."" at line 29 (near "comprenait les membres Caitlin Cary, Phil Wandscher, Eric "Skillet" Gilmore et Mike Daly. Ils se sont dissous en 2000 et Adams est parti pour poursuivre sa carrière solo.""). in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\vendor\symfony\yaml\Parser.php:752
+Stack trace:
+#0 C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\vendor\symfony\yaml\Parser.php(336): Symfony\Component\Yaml\Parser->parseValue('"Whiskeytown \xC3\xA9...', 0, 'mapping')
+#1 C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\vendor\symfony\yaml\Parser.php(519): Symfony\Component\Yaml\Parser->doParse('Whiskeytown', 0)
+#2 C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\vendor\symfony\yaml\Parser.php(190): Symfony\Component\Yaml\Parser->parseBlock(25, 'entryId: 5\nnom:...', 0)
+#3 C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\vendor\symfony\yaml\Parser.php(86): Symfony\Component\Yaml\Parser->doParse('- entryId: 1\n  ...', 0)
+#4 C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\vendor\symfony\yaml\Parser.php(63): Symfony\Component\Yaml\Parser->parse('- entryId: 1\r\n ...', 0)
+#5 C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\vendor\symfony\yaml\Yaml.php(56): Symfony\Component\Yaml\Parser->parseFile('fixtures/artist...', 0)
+#6 C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php(7): Symfony\Component\Yaml\Yaml::parseFile('fixtures/artist...')
+#7 {main}
+  thrown in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\vendor\symfony\yaml\Parser.php on line 752

@@ -43,7 +43,7 @@ require_once "Classes/albumNomImage.php";
                 <?php
                     require_once 'requeteBase.php';
                     $database = new baseDeDonnée();
-                    $database->getAlbum();
+                    $database->getAlbumByArtist(1);
                 ?>
             </div>
         </section>
