@@ -6,6 +6,7 @@
     // Lecture du fichier YAML
     $dataArtiste = Yaml::parseFile('fixtures/artiste.yml');
     $dataAlbum = Yaml::parseFile('fixtures/albums.yml');
+    $dataTitre = Yaml::parseFile('fixtures/titres.yml');
 
     try{
         $file_db = new PDO("sqlite:musinear.sqlite3");
@@ -163,6 +164,13 @@
         $stmt->bindParam(':idTitre', $idTitre);
         $stmt->bindParam(':idAlbum', $idAlbum);
         $stmt->bindParam(':nomTitre', $nomTitre);
+
+        foreach($dataTitre as $titre){
+            $idTitre = $titre['numero'];
+            $idAlbum = $titre['albumId'];
+            $nomTitre = $titre['titre'];
+            $stmt->execute();
+        }
 
 
         ######################################################################
