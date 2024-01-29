@@ -1,53 +1,95 @@
-- by: Superdrag
+- by: 1
+  entryId: 1
+  genre: [K-pop, rock]
+  img: 5star.jpg
+  parent: Stray Kids
+  releaseYear: 2023
+  title: 5-Star
+- by: 1
+  entryId: 2
+  genre: [K-pop, rock]
+  img: NOEASy.jpg
+  parent: Stray Kids
+  releaseYear: 2021
+  title: NOEASY
+- by: 1
+  entryId: 3
+  genre: [K-pop, rock]
+  img: Maxident.jpg
+  parent: Stray Kids
+  releaseYear: 2022
+  title: Maxident
+- by: 1
+  entryId: 4
+  genre: [K-pop, rock]
+  img: RockStar.jpg
+  parent: Stray Kids
+  releaseYear: 2023
+  title: Rock-Star
+- by: 1
+  entryId: 5
+  genre: [K-pop, rock]
+  img: Replay.jpg
+  parent: Stray Kids
+  releaseYear: 2022
+  title: Replay
+- by: 1
+  entryId: 6
+  genre: [K-pop, rock]
+  img: Oddinary.jpeg
+  parent: Stray Kids
+  releaseYear: 2022
+  title: Oddinary
+- by: 2
   entryId: 67913
   genre: [Rock, Punk]
   img: Superdrag-Stereo_360_Sound.jpg
   parent: Superdrag
   releaseYear: 1998
   title: Stereo 360 Sound
-- by: 16 Horsepower
+- by: 3
   entryId: 10575
   genre: [Alternative country, neofolk]
   img: 220px-Folklore_hp.jpg
   parent: 16 Horsepower
   releaseYear: 2002
   title: Folklore
-- by: Ryan Adams
+- by: 4
   entryId: 10637
   genre: [Alternative country, country]
   img: 220px-RyanAdamsHeartbreaker.jpg
   parent: Ryan Adams
   releaseYear: 2000
   title: Heartbreaker
-- by: Ryan Adams
+- by: 4
   entryId: 10644
   genre: [Rock, alternative country, pop rock]
   img: 220px-Ryanadamsselftitled.jpg
   parent: Ryan Adams
   releaseYear: 2014
   title: Ryan Adams
-- by: Whiskeytown
+- by: 5
   entryId: 10660
   genre: [Alternative country]
   img: 220px-WhiskeytownPneumonia.jpg
   parent: Ryan Adams
   releaseYear: 2001
   title: Pneumonia
-- by: Jesse Malin
+- by: 6
   entryId: 10668
   genre: []
   img: The_Fine_Art_of_Self_Destruction.jpg
   parent: Ryan Adams
   releaseYear: 2002
   title: The Fine Art of Self Destruction
-- by: The Finger
+- by: 7
   entryId: 10669
   genre: []
   img: null
   parent: Ryan Adams
   releaseYear: 2003
   title: We Are Fuck You
-- by: Ryan Adams
+- by: 4
   entryId: 10675
   genre: [Alternative country]
   img: 220px-Love_Is_Hell.jpg
@@ -75,14 +117,14 @@
   parent: Ryan Adams
   releaseYear: 2007
   title: Trinity Revisited
-- by: Ryan Adams
+- by: 4
   entryId: 10714
   genre: [Heavy metal, hard rock]
   img: 220px-Ryan-adams-orion.jpg
   parent: Ryan Adams
   releaseYear: 2010
   title: Orion
-- by: Whiskeytown
+- by: 5
   entryId: 10770
   genre: [Alternative country]
   img: null
@@ -96,28 +138,28 @@
   parent: Alabama Shakes
   releaseYear: 2015
   title: Sound & Color
-- by: Terry Allen
+- by: 8
   entryId: 10890
   genre: [Country]
   img: Terry_Allen_Lubbock%28on_everything%29.jpg
   parent: Terry Allen (country singer)
   releaseYear: 1979
   title: Lubbock
-- by: Terry Allen
+- by: 8
   entryId: 10893
   genre: [Country]
   img: TerryAllen_Juarez.jpg
   parent: Terry Allen (country singer)
   releaseYear: 1975
   title: Juarez
-- by: Terry Allen
+- by: 8
   entryId: 10895
   genre: [Country]
   img: Terry_Allen_Pedal_Steal.jpg
   parent: Terry Allen (country singer)
   releaseYear: 1985
   title: Pedal Steal
-- by: Terry Allen
+- by: 8
   entryId: 10899
   genre: [Country]
   img: Terry_Allen_Human_Remains.jpg
@@ -138,3 +180,4 @@
   parent: Dave Alvin
   releaseYear: 2011
   title: Eleven Eleven
+
