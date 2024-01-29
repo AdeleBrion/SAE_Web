@@ -37,3 +37,40 @@
   biographie: "Terry Allen (né le 7 mai 1943) est un musicien et artiste américain originaire de Lubbock, au Texas. La carrière musicale d'Allen en tant qu'auteur-compositeur-interprète s'est étendue sur de nombreux albums de country texan et de country hors-la-loi, 
   et son travail en tant qu'artiste visuel a inclus la peinture, l'art conceptuel, la performance et la sculpture, avec un certain nombre de sculptures en bronze remarquables installées publiquement dans diverses villes du monde. les États Unis. Il vit actuellement à Santa Fe, au Nouveau-Mexique."
   cheminPhoto: terryAllen.jpg
+- entryId: 9
+  nom: Joan Baez
+  biographie: "Joan Baez est l'une des voix des années 1960 et 1970. Cette soprano, 
+  souvent surnommée « la reine du folk » ou encore « la madone des pauvres gens », 
+  impose Bob Dylan et ses chansons au public américain ainsi qu'au monde entier."
+  cheminPhoto: Joan_Baez.jpg
+- entryId: 10
+  nom: Willie_Nelson
+  biographie: "Willie Nelson, né le 29 avril 1933 à Abbott, au Texas, est un acteur, 
+  producteur, chanteur et guitariste de musique country américain. Son nom est plus 
+  spécialement attaché au style « outlaw country »."
+  cheminPhoto: Willie_Nelson.jpg
+- entryId: 11
+  nom: Cowboy Junkies
+  biographie: "Cowboy Junkies est un groupe canadien de country alternatif, 
+  blues rock et folk rock composé par trois membres de la famille Timmins, 
+  Michael à la guitare, Peter à la batterie et Margo au chant, le quatrième 
+  musicien est Alan Anton qui joue la basse tous nés à Montréal au Québec.."
+  cheminPhoto: Cowboy_Junkies.jpg
+- entryId: 12
+  nom: Alabama Shakes
+  biographie: "Alabama Shakes est un groupe de rock américain, originaire d'Athens, 
+  en Alabama. Il est formé en 2009, et composé de Brittany Howard (voix et guitare), 
+  Heath Fogg (guitare), Zac Cockrell (basse) et Steve Johnson (batterie)."
+  cheminPhoto: Alabama_Shakes.jpg
+- entryId: 13
+  nom: X
+  biographie: "X est un groupe de punk rock américain, originaire de Los Angeles, 
+  en Californie. Il se compose d'Exene Cervenka au chant, de John Doe à la basse et au chant, 
+  de Billy Zoom à la guitare et de Mick Basher à la batterie, rapidement remplacé par D.J. Bonebrake."
+  cheminPhoto: X.jpg
+- entryId: 14
+  nom: Dave Alvin
+  biographie: "David Albert Alvin, né le 11 novembre 1955, est un auteur-compositeur-interprète, 
+  guitariste, producteur de musique et poète américain. Il est un ancien membre fondateur du groupe 
+  de rock roots The Blasters."
+  cheminPhoto: Dave_Alvin.jpg

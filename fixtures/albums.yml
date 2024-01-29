@@ -1,41 +1,41 @@
 - by: 1
   entryId: 1
-  genre: [K-pop, rock]
+  genre: [K-pop, Rock]
   img: 5star.jpg
   parent: Stray Kids
   releaseYear: 2023
   title: 5-Star
 - by: 1
   entryId: 2
-  genre: [K-pop, rock]
+  genre: [K-pop, Rock]
   img: NOEASy.jpg
   parent: Stray Kids
   releaseYear: 2021
   title: NOEASY
 - by: 1
   entryId: 3
-  genre: [K-pop, rock]
+  genre: [K-pop, Rock]
   img: Maxident.jpg
   parent: Stray Kids
   releaseYear: 2022
   title: Maxident
 - by: 1
   entryId: 4
-  genre: [K-pop, rock]
+  genre: [K-pop, Rock]
   img: RockStar.jpg
   parent: Stray Kids
   releaseYear: 2023
   title: Rock-Star
 - by: 1
   entryId: 5
-  genre: [K-pop, rock]
+  genre: [K-pop, Rock]
   img: Replay.jpg
   parent: Stray Kids
   releaseYear: 2022
   title: Replay
 - by: 1
   entryId: 6
-  genre: [K-pop, rock]
+  genre: [K-pop, Rock]
   img: Oddinary.jpeg
   parent: Stray Kids
   releaseYear: 2022
@@ -49,21 +49,21 @@
   title: Stereo 360 Sound
 - by: 3
   entryId: 10575
-  genre: [Alternative country, neofolk]
+  genre: [Alternative country, Neofolk]
   img: 220px-Folklore_hp.jpg
   parent: 16 Horsepower
   releaseYear: 2002
   title: Folklore
 - by: 4
   entryId: 10637
-  genre: [Alternative country, country]
+  genre: [Alternative country, Country]
   img: 220px-RyanAdamsHeartbreaker.jpg
   parent: Ryan Adams
   releaseYear: 2000
   title: Heartbreaker
 - by: 4
   entryId: 10644
-  genre: [Rock, alternative country, pop rock]
+  genre: [Rock, Alternative country, Pop rock]
   img: 220px-Ryanadamsselftitled.jpg
   parent: Ryan Adams
   releaseYear: 2014
@@ -85,7 +85,7 @@
 - by: 7
   entryId: 10669
   genre: []
-  img: null
+  img: WeAreFuckYouAlbum.jpg
   parent: Ryan Adams
   releaseYear: 2003
   title: We Are Fuck You
@@ -96,21 +96,21 @@
   parent: Ryan Adams
   releaseYear: 2004
   title: Love Is Hell
-- by: Joan Baez
+- by: 9
   entryId: 10679
   genre: [Folk]
   img: 220px-DarkChords.jpg
   parent: Ryan Adams
   releaseYear: 2003
   title: Dark Chords on a Big Guitar
-- by: Willie Nelson
+- by: 10
   entryId: 10697
   genre: [Alternative country]
   img: 220px-Songbird_Willie_Nelson.jpg
   parent: Ryan Adams
   releaseYear: 2006
   title: Songbird
-- by: Cowboy Junkies
+- by: 11
   entryId: 10707
   genre: [Country rock, Alternative country]
   img: 220px-Trinityrevisited.jpg
@@ -119,7 +119,7 @@
   title: Trinity Revisited
 - by: 4
   entryId: 10714
-  genre: [Heavy metal, hard rock]
+  genre: [Heavy metal, Hard rock]
   img: 220px-Ryan-adams-orion.jpg
   parent: Ryan Adams
   releaseYear: 2010
@@ -127,21 +127,21 @@
 - by: 5
   entryId: 10770
   genre: [Alternative country]
-  img: null
+  img: RyanAdamsForeverValentine.jpg
   parent: Ryan Adams
   releaseYear: 0
   title: Forever Valentine
-- by: Alabama Shakes
+- by: 12
   entryId: 10809
-  genre: [Blues rock, roots rock, soul, Southern rock, garage rock, Americana]
-  img: 220px-Alabama_Shakes_-_Sound_%26_Color_album_cover.jpg
+  genre: [Blues rock, Roots rock, Soul, Southern rock, Garage rock, Americana]
+  img: AlabamaShakesAlbum.jpg
   parent: Alabama Shakes
   releaseYear: 2015
   title: Sound & Color
 - by: 8
   entryId: 10890
   genre: [Country]
-  img: Terry_Allen_Lubbock%28on_everything%29.jpg
+  img: Terry_Allen_Lubbock.jpg
   parent: Terry Allen (country singer)
   releaseYear: 1979
   title: Lubbock
@@ -166,18 +166,17 @@
   parent: Terry Allen (country singer)
   releaseYear: 1996
   title: Human Remains
-- by: X
+- by: 13
   entryId: 10913
-  genre: [Alternative rock, alternative country]
+  genre: [Alternative rock, Alternative country]
   img: XSeeHowWeAre.jpg
   parent: Dave Alvin
   releaseYear: 1987
   title: See How We Are
-- by: Dave Alvin
+- by: 14
   entryId: 10919
-  genre: [Folk rock, country rock]
-  img: null
+  genre: [Folk rock, Country rock]
+  img: ElevenElevenDaveAlvin.jpg
   parent: Dave Alvin
   releaseYear: 2011
   title: Eleven Eleven
-
