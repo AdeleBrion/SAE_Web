@@ -61,5 +61,20 @@
                 echo $e->getMessage();
             }
         }
+
+        public function getTitreByAlbum($album){
+            try{
+                $query = "SELECT * FROM TITRE NATURAL JOIN ALBUM WHERE idAlbum = $album";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $track = new track($row['idTitre'], $row['nomTitre']);
+                    echo $track;
+                }
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
     }
 ?>

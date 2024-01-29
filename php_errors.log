@@ -317,3 +317,16 @@ Stack trace:
 #6 C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php(7): Symfony\Component\Yaml\Yaml::parseFile('fixtures/artist...')
 #7 {main}
   thrown in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\vendor\symfony\yaml\Parser.php on line 752
+[29-Jan-2024 09:38:14 UTC] PHP Fatal error:  Uncaught Error: Class "track" not found in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\requeteBase.php:71
+Stack trace:
+#0 C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\albumDetail.php(36): baseDeDonnée->getTitreByAlbum(1)
+#1 {main}
+  thrown in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\requeteBase.php on line 71
+[29-Jan-2024 09:40:47 UTC] PHP Warning:  Undefined array key "idTitre" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\requeteBase.php on line 71
+[29-Jan-2024 09:40:47 UTC] PHP Warning:  Undefined array key "nomTitre" in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\requeteBase.php on line 71
+[29-Jan-2024 09:40:47 UTC] PHP Fatal error:  Uncaught TypeError: Cannot assign null to property track::$num of type int in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\Classes\track.php:8
+Stack trace:
+#0 C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\requeteBase.php(71): track->__construct(NULL, NULL)
+#1 C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\albumDetail.php(36): baseDeDonnée->getTitreByAlbum(1)
+#2 {main}
+  thrown in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\Classes\track.php on line 8

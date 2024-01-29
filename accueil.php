@@ -2,6 +2,7 @@
 
 require_once "nav.php";
 require_once "Classes/albumNomImage.php";
+require_once "creationBD.php";
 
 require_once 'requeteBase.php';
 $database = new baseDeDonnée();
