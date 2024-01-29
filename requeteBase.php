@@ -15,13 +15,27 @@
 
         public function getAlbum(){
             try{
-                $query = "SELECT nomAlbum, cheminPochette
+                $query = "SELECT *
                 FROM ALBUM NATURAL JOIN ARTISTE";
                 $stmt=$this->pdo->prepare($query);
                 $stmt->execute();
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $album = new albumNomImage($row["nomAlbum"], "fixtures/images/" . $row["cheminPochette"]);
                     echo "<a href="."albumDetail.php"." class="."album".">" . $album . "</a>";
+                }
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
+        public function getAlbumImage($album){
+            try{
+                $query = "SELECT * FROM ALBUM WHERE idAlbum = $album";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    echo "<img class='couverture' src='fixtures/images/".$row['cheminPochette']."'>";
                 }
             }
             catch (PDOException $e) {

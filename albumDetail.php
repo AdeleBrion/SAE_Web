@@ -19,7 +19,7 @@ $database = new baseDeDonnée();
     <body>
         <main>
             <section class="description">
-                <img class="couverture" src="fixtures/images/5star.jpg">
+                <?php $database->getAlbumImage(1); ?>
                 <div class="detail">
                     <img class="coeur" src="fixtures/images/coeur.png">
                     <section class="noms">
