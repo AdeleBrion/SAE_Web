@@ -4,7 +4,10 @@
     use Symfony\Component\Yaml\Yaml;
     
     // Lecture du fichier YAML
+    $dataCompte = Yaml::parseFile('fixtures/comptes.yml');
     $dataArtiste = Yaml::parseFile('fixtures/artiste.yml');
+    $dataUtilisateur = Yaml::parseFile('fixtures/utilisateurs.yml');
+    $dataGenre = Yaml::parseFile('fixtures/genres.yml');
     $dataAlbum = Yaml::parseFile('fixtures/albums.yml');
     $dataTitre = Yaml::parseFile('fixtures/titres.yml');
 
@@ -13,11 +16,15 @@
         $file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 
         $file_db->exec("DROP TABLE IF EXISTS PLAYLIST");
+        $file_db->exec("DROP TABLE IF EXISTS FAVORIS");
         $file_db->exec("DROP TABLE IF EXISTS NOTER");
-        $file_db->exec("DROP TABLE IF EXISTS UTILISATEUR");
+        $file_db->exec("DROP TABLE IF EXISTS GENRER");
+        $file_db->exec("DROP TABLE IF EXISTS STYLE_MUSICAL");
+        $file_db->exec("DROP TABLE IF EXISTS SUIVRE");
         $file_db->exec("DROP TABLE IF EXISTS TITRE");
         $file_db->exec("DROP TABLE IF EXISTS ALBUM");
         $file_db->exec("DROP TABLE IF EXISTS GENRE");
+        $file_db->exec("DROP TABLE IF EXISTS UTILISATEUR");
         $file_db->exec("DROP TABLE IF EXISTS ARTISTE");
         $file_db->exec("DROP TABLE IF EXISTS COMPTE");
 
@@ -30,8 +37,8 @@
 
         $file_db->exec("CREATE TABLE COMPTE(
             idCompte INTEGER PRIMARY KEY,
-            pseudo VARCHAR(20),
-            mdp VARCHAR(20))");
+            pseudo VARCHAR(50),
+            mdp VARCHAR(64))");
 
         #Insertion
 
@@ -41,10 +48,12 @@
         $stmt->bindParam(':pseudo', $pseudo);
         $stmt->bindParam(':mdp', $mdp);
 
-        $idCompte=1;
-        $pseudo="Stary Kids";
-        $mdp="123240";
-        $stmt->execute();
+        foreach($dataCompte as $compte){
+            $idCompte = $compte["entryId"];
+            $pseudo = $compte["pseudo"];
+            $mdp = $compte["mdp"];
+            $stmt->execute();
+        }
 
         ######################################################################
         ############## TABLE ARTISTE #########################################
@@ -92,6 +101,11 @@
         $stmt->bindParam(':idUtilisateur', $idUtilisateur);
         $stmt->bindParam(':nomUtilisateur', $nomUtilisateur);
 
+        foreach($dataUtilisateur as $utilisateur){
+            $idUtilisateur = $utilisateur["entryId"];
+            $nomUtilisateur = $utilisateur["nomUtilisateur"];
+            $stmt->execute();
+        }
 
         ######################################################################
         ############## TABLE GENRE ###########################################
@@ -110,6 +124,11 @@
         $stmt->bindParam(':idGenre', $idGenre);
         $stmt->bindParam(':nomGenre', $nomGenre);
 
+        foreach($dataGenre as $genre){
+            $idGenre = $genre["entryId"];
+            $nomGenre = $genre["nomGenre"];
+            $stmt->execute();
+        }
 
         ######################################################################
         ############## TABLE ALBUM ###########################################
@@ -120,7 +139,7 @@
         $file_db->exec("CREATE TABLE ALBUM(
             idArtiste INTEGER REFERENCES ARTISTE (idArtiste),
             idAlbum INTEGER,
-            nomAlbum VARCHAR(50),
+            nomAlbum VARCHAR(80),
             annee INTEGER,
             cheminPochette TEXT,
             PRIMARY KEY(idArtiste, idAlbum))");
@@ -153,7 +172,7 @@
         
         $file_db->exec("CREATE TABLE TITRE(
             idTitre INTEGER,
-            idAlbum INTEGER,
+            idAlbum INTEGER REFERENCES ALBUM (idAlbum),
             nomTitre VARCHAR(50),
             PRIMARY KEY (idTitre, idAlbum))");
 
@@ -165,12 +184,102 @@
         $stmt->bindParam(':idAlbum', $idAlbum);
         $stmt->bindParam(':nomTitre', $nomTitre);
 
-        foreach($dataTitre as $titre){
-            $idTitre = $titre['numero'];
-            $idAlbum = $titre['albumId'];
-            $nomTitre = $titre['titre'];
-            $stmt->execute();
-        }
+
+        ######################################################################
+        ############## TABLE SUIVRE #########################################
+        ######################################################################
+
+        # Création 
+        
+        $file_db->exec("CREATE TABLE SUIVRE(
+            idUtilisateur INTEGER REFERENCES UTILISATEUR (idUtilisateur),
+            idArtiste INTEGER REFERENCES ARTISTE (idArtiste),
+            PRIMARY KEY (idUtilisateur, idArtiste))");
+
+        #Insertion
+
+        $insert="INSERT INTO SUIVRE (idUtilisateur, idArtiste) VALUES (:idUtilisateur, :idArtiste)";
+        $stmt=$file_db->prepare($insert);
+        $stmt->bindParam(':idUtilisateur',$idUtilisateur);
+        $stmt->bindParam(':idArtiste', $idArtiste);
+
+
+        ######################################################################
+        ############## TABLE STYLE_MUSICAL ###################################
+        ######################################################################
+
+        # Création 
+        
+        $file_db->exec("CREATE TABLE STYLE_MUSICAL(
+            idArtiste INTEGER REFERENCES ARTISTE (idArtiste),
+            idGenre INTEGER REFERENCES GENRE (idGenre),
+            PRIMARY KEY (idArtiste, idGenre))");
+
+        #Insertion
+
+        $insert="INSERT INTO STYLE_MUSICAL (idArtiste, idGenre) VALUES (:idArtiste, idGenre)";
+        $stmt=$file_db->prepare($insert);
+        $stmt->bindParam(':idArtiste', $idArtiste);
+        $stmt->bindParam(':idGenre', $idGenre);
+
+
+        ######################################################################
+        ############## TABLE GENRER ##########################################
+        ######################################################################
+
+        # Création 
+        
+        $file_db->exec("CREATE TABLE GENRER(
+            idAlbum INTEGER REFERENCES ALBUM (idAlbum),
+            idGenre INTEGER REFERENCES GENRE (idGenre),
+            PRIMARY KEY (idAlbum, idGenre))");
+
+        #Insertion
+
+        $insert="INSERT INTO GENRER (idAlbum, idGenre) VALUES (:idAlbum, idGenre)";
+        $stmt=$file_db->prepare($insert);
+        $stmt->bindParam(':idAlbum', $idAlbum);
+        $stmt->bindParam(':idGenre', $idGenre);
+
+
+        ######################################################################
+        ############## TABLE NOTER ###########################################
+        ######################################################################
+
+        # Création 
+        
+        $file_db->exec("CREATE TABLE NOTER(
+            idUtilisateur INTEGER,
+            idAlbum INTEGER,
+            note INTEGER,
+            PRIMARY KEY (idUtilisateur, idAlbum))");
+
+        #Insertion
+
+        $insert="INSERT INTO TITRE (idUtilisateur, idAlbum, note) VALUES (:idUtilisateur, :idAlbum, :note)";
+        $stmt=$file_db->prepare($insert);
+        $stmt->bindParam(':idUtilisateur', $idUtilisateur);
+        $stmt->bindParam(':idAlbum', $idAlbum);
+        $stmt->bindParam(':note', $note);
+
+
+        ######################################################################
+        ############## TABLE FAVORIS #########################################
+        ######################################################################
+
+        # Création 
+        
+        $file_db->exec("CREATE TABLE FAVORIS(
+            idUtilisateur INTEGER REFERENCES UTILISATEUR (idUtilisateur),
+            idAlbum INTEGER REFERENCES ALBUM (idAlbum),
+            PRIMARY KEY (idUtilisateur, idAlbum))");
+
+        #Insertion
+
+        $insert="INSERT INTO FAVORIS (idUtilisateur, idAlbum) VALUES (:idUtilisateur, :idAlbum)";
+        $stmt=$file_db->prepare($insert);
+        $stmt->bindParam(':idUtilisateur',$idUtilisateur);
+        $stmt->bindParam(':idAlbum', $idAlbum);
 
 
         ######################################################################
@@ -182,17 +291,14 @@
         $file_db->exec("CREATE TABLE PLAYLIST(
             idUtilisateur INTEGER REFERENCES UTILISATEUR (idUtilisateur),
             idTitre INTEGER REFERENCES TITRE (idTitre),
-            nomPlaylist VARCHAR(20),
             PRIMARY KEY (idUtilisateur, idTitre))");
 
         #Insertion
 
-        $insert="INSERT INTO PLAYLIST (idUtilisateur, idTitre, nomPlaylist) VALUES (:idUtilisateur, :idTitre, :nomPlaylist)";
+        $insert="INSERT INTO PLAYLIST (idUtilisateur, idTitre) VALUES (:idUtilisateur, :idTitre)";
         $stmt=$file_db->prepare($insert);
         $stmt->bindParam(':idUtilisateur',$idUtilisateur);
         $stmt->bindParam(':idTitre', $idTitre);
-        $stmt->bindParam(':nomPlaylist', $nomPlaylist);
-
 
     }
     catch(PDOException $e){

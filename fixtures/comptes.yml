@@ -14,21 +14,39 @@
   pseudo: A_whiskeytown
   mdp: f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9
 - entryId: 6
-  pseudo: A_Jesse_Malin
+  pseudo: A_jesse_malin
   mdp: f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9
 - entryId: 7
-  pseudo: A_The_Finger
+  pseudo: A_the_finger
   mdp: f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9
 - entryId: 8
-  pseudo: A_Terry_Allen
+  pseudo: A_terry_allen
   mdp: f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9
-
+- entryId: 9
+  pseudo: A_joan_baez
+  mdp: f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9
 - entryId: 10
-  pseudo: tom.dubois
+  pseudo: A_willie_nelson
   mdp: f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9
 - entryId: 11
-  pseudo: adele.brion
+  pseudo: A_cowboy_junkies
   mdp: f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9
 - entryId: 12
+  pseudo: A_alabama_shakes
+  mdp: f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9
+- entryId: 13
+  pseudo: X
+  mdp: f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9
+- entryId: 14
+  pseudo: A_dave_alvin
+  mdp: f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9
+
+- entryId: 15
+  pseudo: tom.dubois
+  mdp: f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9
+- entryId: 16
+  pseudo: adele.brion
+  mdp: f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9
+- entryId: 17
   pseudo: leopold.ch
   mdp: f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9
