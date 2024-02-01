@@ -184,6 +184,12 @@
         $stmt->bindParam(':idAlbum', $idAlbum);
         $stmt->bindParam(':nomTitre', $nomTitre);
 
+        foreach($dataTitre as $titre){
+            $idTitre = $titre["numero"];
+            $idAlbum = $titre["albumId"];
+            $nomTitre = $titre["titre"];
+            $stmt->execute();
+        }
 
         ######################################################################
         ############## TABLE SUIVRE #########################################
@@ -217,7 +223,7 @@
 
         #Insertion
 
-        $insert="INSERT INTO STYLE_MUSICAL (idArtiste, idGenre) VALUES (:idArtiste, idGenre)";
+        $insert="INSERT INTO STYLE_MUSICAL (idArtiste, idGenre) VALUES (:idArtiste, :idGenre)";
         $stmt=$file_db->prepare($insert);
         $stmt->bindParam(':idArtiste', $idArtiste);
         $stmt->bindParam(':idGenre', $idGenre);
@@ -236,7 +242,7 @@
 
         #Insertion
 
-        $insert="INSERT INTO GENRER (idAlbum, idGenre) VALUES (:idAlbum, idGenre)";
+        $insert="INSERT INTO GENRER (idAlbum, idGenre) VALUES (:idAlbum, :idGenre)";
         $stmt=$file_db->prepare($insert);
         $stmt->bindParam(':idAlbum', $idAlbum);
         $stmt->bindParam(':idGenre', $idGenre);
@@ -256,7 +262,7 @@
 
         #Insertion
 
-        $insert="INSERT INTO TITRE (idUtilisateur, idAlbum, note) VALUES (:idUtilisateur, :idAlbum, :note)";
+        $insert="INSERT INTO NOTER (idUtilisateur, idAlbum, note) VALUES (:idUtilisateur, :idAlbum, :note)";
         $stmt=$file_db->prepare($insert);
         $stmt->bindParam(':idUtilisateur', $idUtilisateur);
         $stmt->bindParam(':idAlbum', $idAlbum);
