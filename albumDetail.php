@@ -19,7 +19,7 @@ $database = new baseDeDonnée();
     <body>
         <main>
             <section class="description">
-                <?php $database->getAlbumImage(1); ?>
+                <?php $database->getAlbumImage(3); ?>
                 <div class="detail">
                     <img class="coeur" src="fixtures/images/coeur.png">
                     <section class="noms">
@@ -33,7 +33,7 @@ $database = new baseDeDonnée();
             <section class="track">
                 <h2>TITRES</h2>
                 <?php
-                    $database->getTitreByAlbum(1);
+                    $database->getTitreByAlbum(3);
                 ?>
             </section>
         </main>
