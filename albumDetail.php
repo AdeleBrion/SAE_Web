@@ -4,7 +4,7 @@ require_once "retourNav.php";
 require_once "Classes/track.php";
 
 require_once 'requeteBase.php';
-$database = new baseDeDonnée();
+$database = new baseDeDonnee();
 
 ?>
 
