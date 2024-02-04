@@ -3,7 +3,7 @@ require_once "retourNav.php";
 require_once "Classes/albumDetails.php";
 $id = $_GET['id'];
 $album = new albumDetails($id);
-$titre = "<title>". $album->getNomAlbum() ."- Mus'inEar</title>";
+$titre = "<title>". $album->getNomAlbum() ." - Mus'inEar</title>";
 
 ?>
 

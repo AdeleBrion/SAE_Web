@@ -26,14 +26,21 @@ class albumDetails{
     {return $this->nomAlbum;}
 
     public function __toString(){
-        $res = "<main>
+        $output = "<main>
                 <section class='description'>"
                 .$this->database->getAlbumImage($this->idAlbum).
-                "<div class='detail'>
+                "<section class='genres'>";
+
+        foreach($this->database->getGenresAlbum($this->idAlbum) as $genre){
+            $output .= "<h3>$genre</h3>";
+        }
+
+        $output .= "</section>
+                <div class='detail'>
                     <img class='coeur' src='fixtures/images/coeur.png'>
                     <section class='noms'>
                         <h1>$this->nomAlbum</h1>
-                        <a href='artisteDetail.php'><h2>$this->nomArtiste</h2></a>
+                        <a href='artisteDetail.php?id=$this->idArtiste'><h2>$this->nomArtiste</h2></a>
                         <p>$this->annee</p>
                     </section>
                 </div>
@@ -41,12 +48,12 @@ class albumDetails{
                 </section>
                 <section class='track'>
                     <h2>TITRES</h2>";
-        foreach($this->database->getTitreByAlbum($this->idAlbum) as $titre){
-            $res .= $titre;
+        foreach($this->database->getTitresByAlbum($this->idAlbum) as $titre){
+            $output .= $titre;
         }
-        $res .= "</section>
+        $output .= "</section>
             </main>";
-        return $res;
+        return $output;
     }
 }
 

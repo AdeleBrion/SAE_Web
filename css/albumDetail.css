@@ -18,6 +18,16 @@ main > section{
     height: 55vh;
 }
 
+.genres{
+    display: flex;
+    justify-content: center;
+}
+
+.genres > *{
+    margin-left: 2vh;
+    margin-bottom: 0;
+}
+
 .detail{
     display: flex;
     flex-wrap: nowrap;

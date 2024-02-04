@@ -31,7 +31,8 @@
             }
         }
 
-        public function getAlbumById(int $id){
+        public function getAlbumById(int $id): array
+        {
             try{
                 $query = "SELECT nomAlbum, idArtiste, nomArtiste, annee, cheminPochette
                 from ALBUM natural join ARTISTE
@@ -51,9 +52,10 @@
             }
         }
 
-        public function getAlbumImage($album){
+        public function getAlbumImage(int $idalbum): string
+        {
             try{
-                $query = "SELECT * FROM ALBUM WHERE idAlbum = $album";
+                $query = "SELECT * FROM ALBUM WHERE idAlbum = $idalbum";
                 $stmt=$this->pdo->prepare($query);
                 $stmt->execute();
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -65,17 +67,40 @@
             }
         }
 
-        public function getAlbumByArtist($artiste){
+        public function getAlbumsByArtist(int $id): array
+        {
             try{
                 $query = "SELECT nomAlbum, cheminPochette
                 FROM ALBUM NATURAL JOIN ARTISTE
-                WHERE idArtiste = $artiste";
+                WHERE idArtiste = $id";
                 $stmt=$this->pdo->prepare($query);
                 $stmt->execute();
+                $albums = array();
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $album = new albumNomImage($row["nomAlbum"], $this->cheminImages . $row["cheminPochette"]);
-                    echo "<a class="."album".">" . $album . "</a>";
+                    array_push($albums, new albumNomImage($row["nomAlbum"], $this->cheminImages.$row["cheminPochette"]));
                 }
+
+                return $albums;
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
+        public function getGenresAlbum($id): array
+        {
+            try{
+                $query = "SELECT nomGenre
+                FROM ALBUM NATURAL JOIN GENRER NATURAL JOIN GENRE
+                WHERE idAlbum = $id;";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+                $genres = array();
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    array_push($genres, $row['nomGenre']);
+                }
+
+                return $genres;
             }
             catch (PDOException $e) {
                 echo $e->getMessage();
@@ -98,7 +123,8 @@
             }
         }
 
-        public function getArtisteById(int $id){
+        public function getArtisteById(int $id): array
+        {
             try{
                 $query = "SELECT nomArtiste, biographie, cheminPhoto
                 FROM ARTISTE
@@ -107,7 +133,7 @@
                 $stmt->execute();
                 $artiste = array();
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $artiste = array("nom"=>$row["nomArtiste"], "biographie"=>$row["biographie"], "cheminPhoto"=>$row["cheminPhoto"]);
+                    $artiste = array("nom"=>$row["nomArtiste"], "biographie"=>$row["biographie"], "cheminPhoto"=>$this->cheminImages.$row["cheminPhoto"]);
                 }
 
                 return $artiste;
@@ -134,7 +160,28 @@
             }
         }
 
-        public function getTitreByAlbum($album){
+        public function getStylesArtiste($id): array
+        {
+            try{
+                $query = "SELECT nomGenre
+                FROM ARTISTE NATURAL JOIN STYLE_MUSICAL NATURAL JOIN GENRE
+                WHERE idArtiste= $id;";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+                $styles = array();
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    array_push($styles, $row['nomGenre']);
+                }
+
+                return $styles;
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
+        public function getTitresByAlbum($album): array
+        {
             try{
                 $query = "SELECT * FROM TITRE NATURAL JOIN ALBUM WHERE idAlbum = $album";
                 $stmt=$this->pdo->prepare($query);
