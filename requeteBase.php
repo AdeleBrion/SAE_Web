@@ -109,13 +109,13 @@
 
         public function getArtiste(){
             try{
-                $query = "SELECT nomArtiste, cheminPhoto
+                $query = "SELECT idArtiste, nomArtiste, cheminPhoto
                 FROM ARTISTE";
                 $stmt=$this->pdo->prepare($query);
                 $stmt->execute();
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $album = new albumNomImage($row["nomArtiste"], $this->cheminImages . $row["cheminPhoto"]);
-                    echo "<a class="."album".">" . $album . "</a>";
+                    echo "<a href='artisteDetail.php?id=".$row["idArtiste"]."' class="."album".">" . $album . "</a>";
                 }
             }
             catch (PDOException $e) {
