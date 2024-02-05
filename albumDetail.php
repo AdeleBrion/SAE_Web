@@ -1,8 +1,8 @@
 <?php
 require_once "retourNav.php";
-require_once "Classes/albumDetails.php";
+require_once "Classes/AlbumDetails.php";
 $id = $_GET['id'];
-$album = new albumDetails($id);
+$album = new AlbumDetails($id);
 $titre = "<title>". $album->getNomAlbum() ." - Mus'inEar</title>";
 
 ?>

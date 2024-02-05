@@ -1,6 +1,6 @@
 <?php
 
-class track{
+class Track{
     protected int $num;
     protected string $titre;
 

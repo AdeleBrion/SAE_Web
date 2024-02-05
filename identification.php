@@ -1,6 +1,6 @@
 <?php
 require_once 'requeteBase.php';
-$database = new baseDeDonnee();
+$database = new BaseDeDonnee();
 
 $connecte = false;
 $idCompte = $_GET['me'];

@@ -1,10 +1,10 @@
 <?php
 
 require_once "nav.php";
-require_once "Classes/albumNomImage.php";
+require_once "Classes/AlbumNomImage.php";
 
 require_once 'requeteBase.php';
-$database = new baseDeDonnee();
+$database = new BaseDeDonnee();
 
 ?>
 
