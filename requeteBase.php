@@ -14,20 +14,36 @@
             }
         }
 
-        public function compteDansBD(int $idCompte) : bool
+        public function getIdCompte(string $pseudo): int
         {
             try{
-                $query = "SELECT *
+                $query = "SELECT idCompte, pseudo
+                FROM COMPTE
+                WHERE pseudo = '$pseudo'";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    return intval($row["idCompte"]);
+                }
+
+                return 0;
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage().gettype($pseudo);
+            }   
+        }
+
+        public function getMdpCompte(int $idCompte): string
+        {
+            try{
+                $query = "SELECT mdp
                 FROM COMPTE
                 WHERE idCompte = $idCompte";
                 $stmt=$this->pdo->prepare($query);
                 $stmt->execute();
-                $present = false;
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $present = true;
+                    return $row["mdp"];
                 }
-
-                return $present;
             }
             catch (PDOException $e) {
                 echo $e->getMessage();
