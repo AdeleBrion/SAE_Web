@@ -50,6 +50,31 @@
             }   
         }
 
+        public function getNomCompte(int $idCompte): string
+        {
+            try{
+                $query = "SELECT nomArtiste
+                FROM ARTISTE
+                WHERE idArtiste = $idCompte";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    return $row["nomArtiste"];
+                }
+                $query = "SELECT nomUtilisateur
+                FROM UTILISATEUR
+                WHERE idUtilisateur = $idCompte";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    return $row["nomUtilisateur"];
+                }
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
         public function getAlbum(){
             try{
                 $query = "SELECT *
