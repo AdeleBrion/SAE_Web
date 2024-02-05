@@ -1,3 +1,14 @@
+main a{
+    list-style-type: none;
+    text-decoration:none;
+    color: black;
+    text-align: center;
+}
+
+main > h2 {
+    font-size: 50px;
+}
+
 .container{
     width: 100%;
     overflow-x: auto;
