@@ -1,5 +1,5 @@
 <?php
-
+require_once "identification.php";
 require_once "retourNav.php";
 require_once "Classes/InputText.php";
 require_once "Classes/InputPassword.php";

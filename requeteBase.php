@@ -14,6 +14,26 @@
             }
         }
 
+        public function compteDansBD(int $idCompte) : bool
+        {
+            try{
+                $query = "SELECT *
+                FROM COMPTE
+                WHERE idCompte = $idCompte";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+                $present = false;
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    $present = true;
+                }
+
+                return $present;
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+            }   
+        }
+
         public function getAlbum(){
             try{
                 $query = "SELECT *
