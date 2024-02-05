@@ -10,6 +10,8 @@
     $dataGenre = Yaml::parseFile('fixtures/genres.yml');
     $dataAlbum = Yaml::parseFile('fixtures/albums.yml');
     $dataTitre = Yaml::parseFile('fixtures/titres.yml');
+    $dataGenresAlbums = Yaml::parseFile('fixtures/genresAlbums.yml');
+    $dataStyleMusicaux = Yaml::parseFile('fixtures/stylesMusicaux.yml');
 
     try{
         $file_db = new PDO("sqlite:musinear.sqlite3");
@@ -228,6 +230,12 @@
         $stmt->bindParam(':idArtiste', $idArtiste);
         $stmt->bindParam(':idGenre', $idGenre);
 
+        foreach($dataStyleMusicaux as $style){
+            $idArtiste = $style['artiste'];
+            $idGenre = $style['genre'];
+            $stmt->execute();
+        }
+
 
         ######################################################################
         ############## TABLE GENRER ##########################################
@@ -246,6 +254,12 @@
         $stmt=$file_db->prepare($insert);
         $stmt->bindParam(':idAlbum', $idAlbum);
         $stmt->bindParam(':idGenre', $idGenre);
+
+        foreach($dataGenresAlbums as $data){
+            $idAlbum = $data['album'];
+            $idGenre = $data['genre'];
+            $stmt->execute();
+        }
 
 
         ######################################################################
