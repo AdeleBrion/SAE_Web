@@ -350,3 +350,21 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationBD.php on line 261
+[05-Feb-2024 15:36:06 UTC] PHP Fatal error:  Uncaught TypeError: Cannot assign int to property Form\Type\Input::$value of type string in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\Classes\Input.php:22
+Stack trace:
+#0 C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\Classes\InputNumber.php(11): Form\Type\Input->__construct('number', 'annee', 'anneeSortie', 0, 'anneeSortie', true, 'Veuillez indiqu...')
+#1 C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\connexion.php(23): Form\Type\InputNumber->__construct('annee', 'anneeSortie', 0, 'anneeSortie', true, 'Veuillez indiqu...')
+#2 {main}
+  thrown in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\Classes\Input.php on line 22
+[05-Feb-2024 15:39:59 UTC] PHP Fatal error:  Uncaught Error: Object of class Form\Type\InputNumber could not be converted to string in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\connexion.php:23
+Stack trace:
+#0 {main}
+  thrown in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\connexion.php on line 23
+[05-Feb-2024 15:40:40 UTC] PHP Fatal error:  Uncaught Error: Object of class Form\Type\InputNumber could not be converted to string in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\connexion.php:23
+Stack trace:
+#0 {main}
+  thrown in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\connexion.php on line 23
+[05-Feb-2024 15:49:27 UTC] PHP Fatal error:  Uncaught Error: Class "Form\Type\InputText" not found in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\connexion.php:23
+Stack trace:
+#0 {main}
+  thrown in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\connexion.php on line 23
