@@ -1,10 +1,8 @@
 <?php
 require_once "retourNav.php";
 require_once "Classes/AlbumDetails.php";
-$id = $_GET['id'];
-$album = new AlbumDetails($id);
-$titre = "<title>". $album->getNomAlbum() ." - Mus'inEar</title>";
 
+$album = new AlbumDetails();
 ?>
 
 <!DOCTYPE html>
@@ -13,7 +11,7 @@ $titre = "<title>". $album->getNomAlbum() ." - Mus'inEar</title>";
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/albumDetail.css">
-        <?php echo $titre; ?>
+        <?php echo "<title>". $album->getNomAlbum() ." - Mus'inEar</title>"; ?>
     </head>
     <body>
         <?php echo $album; ?>

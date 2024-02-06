@@ -1,19 +1,17 @@
 <?php
-
 require_once "Classes/AlbumNomImage.php";
-require_once 'requeteBase.php';
+require_once "Classes/Details.php";
 
-class ArtisteDetails{
+class ArtisteDetails extends Details{
     protected int $idArtiste;
     protected string $nomArtiste;
     protected string $biographie;
     protected string $lienImg;
-    protected BaseDeDonnee $database;
 
-    public function __construct(int $idArtiste){
-        $this->database = new BaseDeDonnee();
-        $artiste = $this->database->getArtisteById($idArtiste);
-        $this->idArtiste = $idArtiste;
+    public function __construct(){
+        parent::__construct();
+        $this->idArtiste = $_GET['id'];
+        $artiste = $this->database->getArtisteById($this->idArtiste);
         $this->nomArtiste = $artiste["nom"];
         $this->biographie = $artiste["biographie"];
         $this->lienImg = $artiste["cheminPhoto"];

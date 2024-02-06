@@ -2,7 +2,7 @@
 
 namespace Form\Type;
 
-require_once 'Input.php';  // Assurez-vous que le fichier Input.php est dans le bon emplacement
+require_once 'Input.php';
 
 use Form\Type\Input;
 

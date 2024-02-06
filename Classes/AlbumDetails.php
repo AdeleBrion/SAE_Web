@@ -1,20 +1,20 @@
 <?php
 require_once "Classes/Track.php";
-require_once 'requeteBase.php';
+require_once "Classes/Details.php";
 
-class AlbumDetails{
+class AlbumDetails extends Details{
+
     protected int $idAlbum;
     protected int $idArtiste;
     protected string $nomArtiste;
     protected string $nomAlbum;
     protected int $annee;
     protected string $lienImg;
-    protected BaseDeDonnee $database;
 
-    public function __construct(int $idAlbum){
-        $this->database = new BaseDeDonnee();
-        $album = $this->database->getAlbumById($idAlbum);
-        $this->idAlbum = $idAlbum;
+    public function __construct(){
+        parent::__construct();
+        $this->idAlbum = $_GET['id'];
+        $album = $this->database->getAlbumById($this->idAlbum);
         $this->nomAlbum = $album["nomAlbum"];
         $this->nomArtiste = $album["nomArtiste"];
         $this->idArtiste = $album["idArtiste"];
@@ -35,10 +35,19 @@ class AlbumDetails{
             $output .= "<h3>$genre</h3>";
         }
 
-        $output .= "</section>
-                <div class='detail'>
-                    <img class='coeur' src='fixtures/images/coeur.png'>
-                    <section class='noms'>
+        $output .= "</section><div class='detail'>";
+
+        if ($this->me == 0){
+            $coeur = "<img class='coeur' src='fixtures/images/coeur.png'>";}
+        else{
+            $coeur = "<form action='albumDetail.php' method='get'>
+                        <input type='hidden' name='id' value='".$this->idAlbum."'/>
+                        <input type='hidden' name='like' value='true'/>
+                        <input type='image' class='coeur' src='fixtures/images/coeur_plein.png'>
+                    </form>";}
+            //if ($this->database->albumEnFavoris($this->me, $this->idAlbum))}
+
+        $output .= $coeur."<section class='noms'>
                         <h1>$this->nomAlbum</h1>
                         <a href='artisteDetail.php?id=$this->idArtiste'><h2>$this->nomArtiste</h2></a>
                         <p>$this->annee</p>
