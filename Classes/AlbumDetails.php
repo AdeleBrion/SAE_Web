@@ -1,18 +1,18 @@
 <?php
-require_once "Classes/track.php";
+require_once "Classes/Track.php";
 require_once 'requeteBase.php';
 
-class albumDetails{
+class AlbumDetails{
     protected int $idAlbum;
     protected int $idArtiste;
     protected string $nomArtiste;
     protected string $nomAlbum;
     protected int $annee;
     protected string $lienImg;
-    protected baseDeDonnee $database;
+    protected BaseDeDonnee $database;
 
     public function __construct(int $idAlbum){
-        $this->database = new baseDeDonnee();
+        $this->database = new BaseDeDonnee();
         $album = $this->database->getAlbumById($idAlbum);
         $this->idAlbum = $idAlbum;
         $this->nomAlbum = $album["nomAlbum"];

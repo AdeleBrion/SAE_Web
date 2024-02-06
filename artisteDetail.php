@@ -1,8 +1,8 @@
 <?php
 require_once "retourNav.php";
-require_once "Classes/artisteDetails.php";
+require_once "Classes/ArtisteDetails.php";
 $id = $_GET['id'];
-$artiste = new artisteDetails($id);
+$artiste = new ArtisteDetails($id);
 $titre = "<title>". $artiste->getNomArtiste() ." - Mus'inEar</title>";
 
 ?>

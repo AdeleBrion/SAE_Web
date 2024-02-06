@@ -1,17 +1,17 @@
 <?php
 
-require_once "Classes/albumNomImage.php";
+require_once "Classes/AlbumNomImage.php";
 require_once 'requeteBase.php';
 
-class artisteDetails{
+class ArtisteDetails{
     protected int $idArtiste;
     protected string $nomArtiste;
     protected string $biographie;
     protected string $lienImg;
-    protected baseDeDonnee $database;
+    protected BaseDeDonnee $database;
 
     public function __construct(int $idArtiste){
-        $this->database = new baseDeDonnee();
+        $this->database = new BaseDeDonnee();
         $artiste = $this->database->getArtisteById($idArtiste);
         $this->idArtiste = $idArtiste;
         $this->nomArtiste = $artiste["nom"];
@@ -41,7 +41,7 @@ class artisteDetails{
                     <div class='content'>";
 
         foreach($this->database->getAlbumsByArtist($this->idArtiste) as $album){
-            $output .= "<a class='album'>" . $album . "</a>";
+            $output .= "<a href='albumDetail.php?id=".$album->getId()."'class='album'>" . $album . "</a>";
         }
         $output .= "</div></section></main>";
 

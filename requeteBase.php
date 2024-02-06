@@ -1,6 +1,6 @@
 <?php
 
-    class baseDeDonnee {
+    class BaseDeDonnee {
 
         protected string $cheminImages = "fixtures/images/";
         protected $pdo;
@@ -14,6 +14,67 @@
             }
         }
 
+        public function getIdCompte(string $pseudo): int
+        {
+            try{
+                $query = "SELECT idCompte, pseudo
+                FROM COMPTE
+                WHERE pseudo = '$pseudo'";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    return intval($row["idCompte"]);
+                }
+
+                return 0;
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage().gettype($pseudo);
+            }   
+        }
+
+        public function getMdpCompte(int $idCompte): string
+        {
+            try{
+                $query = "SELECT mdp
+                FROM COMPTE
+                WHERE idCompte = $idCompte";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    return $row["mdp"];
+                }
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+            }   
+        }
+
+        public function getNomCompte(int $idCompte): string
+        {
+            try{
+                $query = "SELECT nomArtiste
+                FROM ARTISTE
+                WHERE idArtiste = $idCompte";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    return $row["nomArtiste"];
+                }
+                $query = "SELECT nomUtilisateur
+                FROM UTILISATEUR
+                WHERE idUtilisateur = $idCompte";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    return $row["nomUtilisateur"];
+                }
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
         public function getAlbum(){
             try{
                 $query = "SELECT *
@@ -21,9 +82,9 @@
                 $stmt=$this->pdo->prepare($query);
                 $stmt->execute();
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $album = new albumNomImage($row["nomAlbum"], $this->cheminImages . $row["cheminPochette"]);
+                    $album = new AlbumNomImage((int) $row["idAlbum"], $row["nomAlbum"], $this->cheminImages . $row["cheminPochette"]);
                     $id = $row["idAlbum"];
-                    echo "<a href="."albumDetail.php?id=$id"." class="."album".">" . $album . "</a>";
+                    echo "<a href='albumDetail.php?id=".$id."' class="."album".">" . $album . "</a>";
                 }
             }
             catch (PDOException $e) {
@@ -70,14 +131,14 @@
         public function getAlbumsByArtist(int $id): array
         {
             try{
-                $query = "SELECT nomAlbum, cheminPochette
+                $query = "SELECT idAlbum, nomAlbum, cheminPochette
                 FROM ALBUM NATURAL JOIN ARTISTE
                 WHERE idArtiste = $id";
                 $stmt=$this->pdo->prepare($query);
                 $stmt->execute();
                 $albums = array();
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    array_push($albums, new albumNomImage($row["nomAlbum"], $this->cheminImages.$row["cheminPochette"]));
+                    array_push($albums, new AlbumNomImage((int) $row["idAlbum"], $row["nomAlbum"], $this->cheminImages.$row["cheminPochette"]));
                 }
 
                 return $albums;
@@ -114,7 +175,7 @@
                 $stmt=$this->pdo->prepare($query);
                 $stmt->execute();
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $album = new albumNomImage($row["nomArtiste"], $this->cheminImages . $row["cheminPhoto"]);
+                    $album = new AlbumNomImage((int) $row["idArtiste"], $row["nomArtiste"], $this->cheminImages . $row["cheminPhoto"]);
                     echo "<a href='artisteDetail.php?id=".$row["idArtiste"]."' class="."album".">" . $album . "</a>";
                 }
             }
@@ -137,23 +198,6 @@
                 }
 
                 return $artiste;
-            }
-            catch (PDOException $e) {
-                echo $e->getMessage();
-            }
-        }
-
-        public function getArtisteImage(int $idArtiste){
-            try{
-                //à faire !
-                $query = "SELECT nomArtiste, cheminPhoto
-                FROM ARTISTE";
-                $stmt=$this->pdo->prepare($query);
-                $stmt->execute();
-                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    $album = new albumNomImage($row["nomArtiste"], $this->cheminImages . $row["cheminPhoto"]);
-                    echo "<a class="."album".">" . $album . "</a>";
-                }
             }
             catch (PDOException $e) {
                 echo $e->getMessage();
@@ -188,7 +232,7 @@
                 $stmt->execute();
                 $titres = array();
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    array_push($titres, new track($row['idTitre'], $row['nomTitre']));
+                    array_push($titres, new Track($row['idTitre'], $row['nomTitre']));
                 }
 
                 return $titres;
