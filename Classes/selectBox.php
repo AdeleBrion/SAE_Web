@@ -6,19 +6,20 @@ class SelectBox{
     protected string $id;
     protected array $options;
 
-    public function __construct(string $label, string $name, string $value, string $id){
+    public function __construct(string $label, string $name, string $value, string $id, array $options){
         $this->label = $label;
         $this->name = $name;
         $this->value = $value;
         $this->id = $id;
+        $this->options = $options;
     }
 
     public function __toString(){
         $res = "<label for=\"$this->id\">$this->label</label><select name=\"$this->name\" id=\"$this->id\">";
         foreach($this->options as $option){
-            $res = $res . "<option value=\"$option[0]\">$option[1]</option>";
+            $res = $res . "<option value=\"$option\">$option</option>";
         }
-        return $res . "<\select>";
+        return $res . "</select>";
     }
 }
 

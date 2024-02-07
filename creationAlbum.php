@@ -3,6 +3,10 @@
 use Form\Type\InputText;
 
 require_once "nav.php";
+require_once "Classes/selectBox.php";
+require_once "Classes/InputText.php";
+require_once 'requeteBase.php';
+$database = new baseDeDonnée();
 ?>
 
 <!DOCTYPE html>
@@ -69,11 +73,44 @@ require_once "nav.php";
 
             <h3><img src="fixtures/images/line.png"> Nom de l'album <img src="fixtures/images/line.png"></h3>
             <?php
-            require_once "Classes/InputText.php";
             $nomAlbum = new InputText("saisir", "nomAlbum", "Nom album ici...", "nomAlbum", true, "");
             $nomAlbum->render();
 
             ?>
+
+            <h3><img src="fixtures/images/line.png"> Année de parution <img src="fixtures/images/line.png"></h3>
+            <?php
+            $parution = new InputText("saisir", "parution", "Date de parution...", "parution", true, "");
+            $parution->render();
+            ?>
+
+            <h3><img src="fixtures/images/line.png"> Genre de l'album <img src="fixtures/images/line.png"></h3>
+            <?php
+            $options = $database->getAllGenre();
+            $selectGenre = new SelectBox("Choisir un genre", "Genre", "", "select", $options);
+            echo $selectGenre;
+            ?>
+            <button id="ajouterGenre">Ajouter un titre</button>
+            <button id="supprimerGenre">Supprimer un titre</button>
+
+            <script>
+                let buttonAjoutGenre = document.getElementById("ajouterGenre");
+                buttonAjoutGenre.addEventListener("click", function(e) {
+                    titre = document.createElement("input");
+                    titre.type = "text";
+                    titre.placeholder = "Nom album ici...";
+                    titre.required = true;
+                    titre.id = "nomAlbum";
+                    document.querySelector(".tracks").appendChild(titre);
+                });
+
+                let buttonSupprimerGenre = document.getElementById("supprimerGenre");
+                buttonSupprimerGenre.addEventListener("click", function(e) {
+                    if(document.querySelector(".tracks").childNodes.length > 3) {
+                        document.querySelector(".tracks").removeChild(document.querySelector(".tracks").lastChild)
+                }});
+            </script>
+
 
             <h3><img src="fixtures/images/line.png"> Titres<img src="fixtures/images/line.png"></h3>
             <ul class="tracks">
