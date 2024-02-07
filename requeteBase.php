@@ -284,5 +284,45 @@
             }
         }
 
+        public function artisteSuivi(int $idUser, int $idArtiste): bool
+        {
+            try{
+                $query = "SELECT * 
+                FROM SUIVRE 
+                WHERE idUtilisateur = $idUser AND idArtiste = $idArtiste";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    return true;
+                }
+                return false;
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
+        public function suivreArtiste(int $idUser, int $idArtiste){
+            try{
+                $query = "INSERT INTO SUIVRE VALUES ($idUser, $idArtiste)";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
+        public function abandonnerArtiste(int $idUser, int $idArtiste){
+            try{
+                $query = "DELETE FROM SUIVRE where idUtilisateur = $idUser and idAlbum = $idArtiste";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
     }
 ?>

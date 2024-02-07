@@ -27,7 +27,6 @@ class AlbumDetails extends Details{
     private function gererFavoris(){
         if ($this->me != 0) //si l'utilisateur est connecté
         {
-            echo "<h1>Connecté !</h1>";
             $enFavoris = $this->database->albumEnFavoris($this->me, $this->idAlbum);
             if ($enFavoris){
                 $this->database->retirerAlbumFavoris($this->me, $this->idAlbum);}
@@ -53,7 +52,7 @@ class AlbumDetails extends Details{
 
         $output .= "</section><div class='detail'>";
 
-        if ($this->me == 0){
+        if ($this->me == 0){    //si l'utilisateur n'est pas connecté
             $coeur = "<a href='connexion.php'><img class='coeur' src='fixtures/images/coeur.png'></a>";}
         else{
             $src = 'fixtures/images/coeur.png';
@@ -66,7 +65,7 @@ class AlbumDetails extends Details{
                         <input type='hidden' name='like' value='true'/>
                         <input type='image' class='coeur' src=$src>
                     </form>";
-            }
+        }
 
         $output .= $coeur."<section class='noms'>
                         <h1>$this->nomAlbum</h1>
