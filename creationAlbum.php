@@ -6,7 +6,7 @@ require_once "nav.php";
 require_once "Classes/selectBox.php";
 require_once "Classes/InputText.php";
 require_once 'requeteBase.php';
-$database = new baseDeDonnée();
+$database = new BaseDeDonnee();
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +63,7 @@ $database = new baseDeDonnée();
                     <h2><img src="fixtures/images/line.png"> Nom de l'album <img src="fixtures/images/line.png"></h2>
                     <?php
                     $nomAlbum = new InputText("saisir", "nomAlbum", "Nom album ici...", "nomAlbum", true, "");
-                    $nomAlbum->render();
+                    echo $nomAlbum->render();
 
                     ?>
                 </section>
@@ -72,7 +72,7 @@ $database = new baseDeDonnée();
                     <h2><img src="fixtures/images/line.png"> Année de parution <img src="fixtures/images/line.png"></h2>
                     <?php
                     $parution = new InputText("saisir", "parution", "Date de parution...", "parution", false, "");
-                    $parution->render();
+                    echo $parution->render();
                     ?>
                 </section>
             </section>
