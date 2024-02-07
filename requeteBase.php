@@ -224,10 +224,10 @@
             }
         }
 
-        public function getTitresByAlbum($album): array
+        public function getTitresByAlbum(int $idAlbum): array
         {
             try{
-                $query = "SELECT * FROM TITRE NATURAL JOIN ALBUM WHERE idAlbum = $album";
+                $query = "SELECT * FROM TITRE NATURAL JOIN ALBUM WHERE idAlbum = $idAlbum";
                 $stmt=$this->pdo->prepare($query);
                 $stmt->execute();
                 $titres = array();
@@ -236,6 +236,89 @@
                 }
 
                 return $titres;
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
+
+        public function albumEnFavoris(int $idUser, int $idAlbum): bool
+        {
+            try{
+                $query = "SELECT * 
+                FROM FAVORIS 
+                WHERE idUtilisateur = $idUser AND idAlbum = $idAlbum";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    return true;
+                }
+
+                return false;
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
+        public function mettreAlbumFavoris(int $idUser, int $idAlbum){
+            try{
+                $query = "INSERT INTO FAVORIS VALUES ($idUser, $idAlbum)";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+                
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
+        public function retirerAlbumFavoris(int $idUser, int $idAlbum){
+            try{
+                $query = "DELETE FROM FAVORIS where idUtilisateur = $idUser and idAlbum = $idAlbum";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
+        public function artisteSuivi(int $idUser, int $idArtiste): bool
+        {
+            try{
+                $query = "SELECT * 
+                FROM SUIVRE 
+                WHERE idUtilisateur = $idUser AND idArtiste = $idArtiste";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    return true;
+                }
+                return false;
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
+        public function suivreArtiste(int $idUser, int $idArtiste){
+            try{
+                $query = "INSERT INTO SUIVRE VALUES ($idUser, $idArtiste)";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
+        public function abandonnerArtiste(int $idUser, int $idArtiste){
+            try{
+                $query = "DELETE FROM SUIVRE where idUtilisateur = $idUser and idAlbum = $idArtiste";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
             }
             catch (PDOException $e) {
                 echo $e->getMessage();
@@ -257,5 +340,6 @@
             echo $e->getMessage();
         }
     }
+
     }
 ?>
