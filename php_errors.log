@@ -368,3 +368,16 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\connexion.php on line 23
+[06-Feb-2024 15:15:38 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function Form\Type\InputText::__construct(), 0 passed in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationAlbum.php on line 70 and exactly 6 expected in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\Classes\InputText.php:11
+Stack trace:
+#0 C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationAlbum.php(70): Form\Type\InputText->__construct()
+#1 {main}
+  thrown in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\Classes\InputText.php on line 11
+[06-Feb-2024 15:29:46 UTC] PHP Fatal error:  Uncaught Error: Class "Form\Type\InputText" not found in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationAlbum.php:72
+Stack trace:
+#0 {main}
+  thrown in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationAlbum.php on line 72
+[06-Feb-2024 15:29:47 UTC] PHP Fatal error:  Uncaught Error: Class "Form\Type\InputText" not found in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationAlbum.php:72
+Stack trace:
+#0 {main}
+  thrown in C:\Users\brion\Documents\IUT\2A\SEMESTRE2\SAE\WEB\creationAlbum.php on line 72
