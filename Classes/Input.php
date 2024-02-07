@@ -13,16 +13,16 @@ abstract class Input implements Irender {
     protected string $value = " ";
     protected string $label;
     protected bool $required;
-    protected string $question;
+    protected string $intitule;
 
-    public function __construct($type, $id, $name, $value, $label, $required, $question) {
+    public function __construct($type, $id, $name, $value, $label, $required, $intitule) {
         $this->type = $type;
         $this->id = $id;
         $this->name = $name;
         $this->value = $value;
         $this->label = $label;
         $this->required = $required;
-        $this->question = $question;
+        $this->intitule = $intitule;
     }
 
     public function getType() {
@@ -49,10 +49,11 @@ abstract class Input implements Irender {
         return $this->required ? "required" : " "; // ? reponse si true : reponse si false
     }
 
-    public function render() {
-        $label = "<label for='" . $this->getLabel() . "'>". $this->question ."</label>" . PHP_EOL;
+    public function render(): string
+    {
+        $label = "<label for='" . $this->getLabel() . "'>". $this->intitule ."</label>" . PHP_EOL;
         $input = "<input type='" . $this->getType() . "' id='". $this->getId() . "' name='". $this->getName() . "' placeholder='" . $this->getValue() . "' </input>" . PHP_EOL; 
-        print( $label . $input);
+        return $label . $input;
     }
 }
 

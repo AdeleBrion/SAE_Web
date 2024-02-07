@@ -18,10 +18,21 @@ main > section{
     height: 55vh;
 }
 
+.genres{
+    display: flex;
+    justify-content: center;
+}
+
+.genres > *{
+    margin-left: 2vh;
+    margin-bottom: 0;
+}
+
 .detail{
     display: flex;
     flex-wrap: nowrap;
     justify-content: center;
+    margin-right: 7vw;
 }
 
 .coeur{
@@ -83,6 +94,6 @@ a{
 }
 
 .titre > img{
-    flex-basis: 10%;
-    max-height: 4vh;
+    flex-basis: 25%;
+    max-height: 5vh;
 }

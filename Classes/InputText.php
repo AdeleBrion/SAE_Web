@@ -12,8 +12,9 @@ class InputText extends Input {
         parent::__construct("text",$id,$name,$value,$label,$required, $question);
     }
 
-    public function render() {
-        parent::render();
+    public function render(): string
+    {
+        return parent::render();
     }
 }
 

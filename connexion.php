@@ -1,11 +1,9 @@
 <?php
-
+session_start();
 require_once "retourNav.php";
-require_once "Classes/InputText.php";
-require_once "Classes/InputPassword.php";
+require_once "Classes/VerifConnexion.php";
 
-use Form\Type\InputText;
-use Form\Type\InputPassword;
+$verifConnexion= new VerifConnexion();
 ?>
 
 <!DOCTYPE html>
@@ -17,17 +15,6 @@ use Form\Type\InputPassword;
     <title>Connexion - Mus'inEar</title>
 </head>
 <body>
-    <main>
-        <h1><img src="fixtures/images/line.png"> Connexion <img src="fixtures/images/line.png"></h1>
-        <form>
-            <?php
-                $pseudo = new InputText("connect","pseudo","Insérez votre pseudo","pseudoCompte",true, "Pseudo :");
-                $mdp = new InputPassword("connect","mdp","Saississez votre mot de passe","mdpCompte",true, "Mot de passe :");
-                $pseudo->render();
-                $mdp->render();
-            ?>
-            <button type="submit" name="connexion">Se connecter</button>
-        </form>
-    </main>
+    <?php echo $verifConnexion; ?>
 </body>
 </html>

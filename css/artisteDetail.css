@@ -30,6 +30,12 @@ main{
     margin-left: 10vh;
 }
 
+.style > li {
+    list-style-type: none;
+    justify-content: center;
+    margin-right: 10vh;
+}
+
 /* Côté description et albums */
 
 .infos{
@@ -41,6 +47,7 @@ main{
 .description{
     margin-left: 4vh;
     justify-content: space-evenly;
+    font-size: 27px;
 }
 
 .infos > h2{

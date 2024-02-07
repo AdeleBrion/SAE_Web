@@ -11,8 +11,9 @@ class InputNumber extends Input {
         parent::__construct("number",$id,$name,$value,$label,$required, $question);
     }
 
-    public function render(){
-        parent::render();
+    public function render(): string
+    {
+        return parent::render();
     }
 }
 
