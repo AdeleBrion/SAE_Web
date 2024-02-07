@@ -242,6 +242,7 @@
             }
         }
 
+
         public function albumEnFavoris(int $idUser, int $idAlbum): bool
         {
             try{
@@ -323,6 +324,22 @@
                 echo $e->getMessage();
             }
         }
+      
+      public function getAllGenre()
+    {
+        try {
+            $query = "SELECT * FROM GENRE";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->execute();
+            $genres = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                array_push($genres, $row['nomGenre']);
+            }
+            return $genres;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 
     }
 ?>
