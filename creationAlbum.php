@@ -23,20 +23,8 @@ $database = new baseDeDonnée();
     <main>
         <h1><img src="fixtures/images/line.png"> Créez votre album <img src="fixtures/images/line.png"></h1>
 
-        <h3><img src="fixtures/images/line.png"> Couverture de votre album <img src="fixtures/images/line.png"></h3>
+        <h2><img src="fixtures/images/line.png"> Couverture de votre album <img src="fixtures/images/line.png"></h2>
         <form>
-            <style>
-                #dropZone {
-                    width: 300px;
-                    height: 300px;
-                    border: 2px dashed black;
-                }
-
-                img {
-                    max-width: 100%;
-                    max-height: 100%;
-                }
-            </style>
             <div id="dropZone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
                 Drop image here
             </div>
@@ -70,73 +58,80 @@ $database = new baseDeDonnée();
                     reader.readAsDataURL(file);
                 }
             </script>
+            <section class="textArea">
+                <section class="nomAlbum">
+                    <h2><img src="fixtures/images/line.png"> Nom de l'album <img src="fixtures/images/line.png"></h2>
+                    <?php
+                    $nomAlbum = new InputText("saisir", "nomAlbum", "Nom album ici...", "nomAlbum", true, "");
+                    $nomAlbum->render();
 
-            <h3><img src="fixtures/images/line.png"> Nom de l'album <img src="fixtures/images/line.png"></h3>
-            <?php
-            $nomAlbum = new InputText("saisir", "nomAlbum", "Nom album ici...", "nomAlbum", true, "");
-            $nomAlbum->render();
+                    ?>
+                </section>
 
-            ?>
+                <section class="anneeParution">
+                    <h2><img src="fixtures/images/line.png"> Année de parution <img src="fixtures/images/line.png"></h2>
+                    <?php
+                    $parution = new InputText("saisir", "parution", "Date de parution...", "parution", false, "");
+                    $parution->render();
+                    ?>
+                </section>
+            </section>
 
-            <h3><img src="fixtures/images/line.png"> Année de parution <img src="fixtures/images/line.png"></h3>
-            <?php
-            $parution = new InputText("saisir", "parution", "Date de parution...", "parution", true, "");
-            $parution->render();
-            ?>
+            <section class="genreAlbum">
+                <h2><img src="fixtures/images/line.png"> Genre de l'album <img src="fixtures/images/line.png"></h2>
+                <div class="selectbox">
+                    <?php
+                    $options = $database->getAllGenre();
+                    $selectGenre = new SelectBox("Choisir un genre", "Genre", "", "select", $options);
+                    echo $selectGenre;
+                    ?>
+                </div>
+                <button id="ajouterGenre"><img src="fixtures/images/plus.png"> Ajouter un genre</button>
+                <button id="supprimerGenre"><img src="fixtures/images/moins.png"> Supprimer un genre</button>
 
-            <h3><img src="fixtures/images/line.png"> Genre de l'album <img src="fixtures/images/line.png"></h3>
-            <?php
-            $options = $database->getAllGenre();
-            $selectGenre = new SelectBox("Choisir un genre", "Genre", "", "select", $options);
-            echo $selectGenre;
-            ?>
-            <button id="ajouterGenre">Ajouter un titre</button>
-            <button id="supprimerGenre">Supprimer un titre</button>
+                <script>
+                    let buttonAjoutGenre = document.getElementById("ajouterGenre");
+                    buttonAjoutGenre.addEventListener("click", function(e) {
+                        $new = document.querySelector("#select").cloneNode(true);
+                        document.querySelector(".selectbox").appendChild($new);
+                    });
 
-            <script>
-                let buttonAjoutGenre = document.getElementById("ajouterGenre");
-                buttonAjoutGenre.addEventListener("click", function(e) {
-                    titre = document.createElement("input");
-                    titre.type = "text";
-                    titre.placeholder = "Nom album ici...";
-                    titre.required = true;
-                    titre.id = "nomAlbum";
-                    document.querySelector(".tracks").appendChild(titre);
-                });
+                    let buttonSupprimerGenre = document.getElementById("supprimerGenre");
+                    buttonSupprimerGenre.addEventListener("click", function(e) {
+                        if (document.querySelector(".selectbox").childNodes.length > 3) {
+                            document.querySelector(".selectbox").removeChild(document.querySelector(".selectbox").lastChild)
+                        }
+                    });
+                </script>
+            </section>
 
-                let buttonSupprimerGenre = document.getElementById("supprimerGenre");
-                buttonSupprimerGenre.addEventListener("click", function(e) {
-                    if(document.querySelector(".tracks").childNodes.length > 3) {
-                        document.querySelector(".tracks").removeChild(document.querySelector(".tracks").lastChild)
-                }});
-            </script>
+            <section class="titres">
+                <h2><img src="fixtures/images/line.png"> Titres<img src="fixtures/images/line.png"></h2>
+                <div class="tracks">
+                    <input type="text" class="saisir" id="titre" placeholder="Nom album ici..." required=false>
+                </div>
+                <button id="ajouter"><img src="fixtures/images/plus.png"> Ajouter un titre</button>
+                <button id="supprimer"><img src="fixtures/images/moins.png"> Supprimer un titre</button>
+            </section>
+            
+            <button class="validation" value="submit"> Créer l'album </button>
+        </form>
 
+        <script>
+            let buttonAjout = document.getElementById("ajouter");
+            buttonAjout.addEventListener("click", function(e) {
+                titre = document.querySelector("#titre").cloneNode(true);
+                titre.value = "";
+                document.querySelector(".tracks").appendChild(titre);
+            });
 
-            <h3><img src="fixtures/images/line.png"> Titres<img src="fixtures/images/line.png"></h3>
-            <ul class="tracks">
-            <input type="text" class="saisir" id="nomAlbum" placeholder="Nom album ici..." required=false>
-            </ul>
-            </form>
-            <button id="ajouter">Ajouter un titre</button>
-            <button id="supprimer">Supprimer un titre</button>
-
-            <script>
-                let buttonAjout = document.getElementById("ajouter");
-                buttonAjout.addEventListener("click", function(e) {
-                    titre = document.createElement("input");
-                    titre.type = "text";
-                    titre.placeholder = "Nom album ici...";
-                    titre.required = true;
-                    titre.id = "nomAlbum";
-                    document.querySelector(".tracks").appendChild(titre);
-                });
-
-                let buttonSupprimer = document.getElementById("supprimer");
-                buttonSupprimer.addEventListener("click", function(e) {
-                    if(document.querySelector(".tracks").childNodes.length > 3) {
-                        document.querySelector(".tracks").removeChild(document.querySelector(".tracks").lastChild)
-                }});
-            </script>
+            let buttonSupprimer = document.getElementById("supprimer");
+            buttonSupprimer.addEventListener("click", function(e) {
+                if (document.querySelector(".tracks").childNodes.length > 3) {
+                    document.querySelector(".tracks").removeChild(document.querySelector(".tracks").lastChild)
+                }
+            });
+        </script>
     </main>
 </body>
 
