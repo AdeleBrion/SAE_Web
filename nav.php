@@ -6,9 +6,10 @@
     <img class="logo" src="fixtures/images/logo.png">
     <input type="text" placeholder="Search..">
     <a href="#" id="userBtn"><img class="user" src="fixtures/images/user.png"></a>
-    <div id="menu" class="menu">
-        <a href="#">Option 1</a>
-        <a href="#">Option 2</a>
-        <a href="#">Option 3</a>
-    </div>
 </nav>
+<div id="menu" class="menu">
+    <a href="#">Mes infos</a>
+    <a href="#">Mes favoris</a>
+    <a href="#">Ma playlist</a>
+    <a href="decoProvisoire.php">Se deconnecter</a>
+</div>
