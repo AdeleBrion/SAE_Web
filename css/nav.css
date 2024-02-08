@@ -1,21 +1,42 @@
-nav{
+nav {
     display: flex;
     flex-wrap: wrap;
 }
 
-.logo{
+.logo {
     margin-right: 62vw;
     max-height: 10vh;
 }
 
-.user{
+.user {
     max-height: 7vh;
     margin-top: 3vh;
-    margin-left: 3vw;
+    margin-left: 1vw;
 }
 
-input[type="text"]{
+input[type="text"] {
     margin-top: 5vh;
     justify-content: center;
     max-height: 4vh;
+}
+
+.menu {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.menu a {
+    padding: 12px 16px;
+    text-decoration: none;
+    color: black;
+    margin-top: 5em;
+}
+
+.menu a:hover {
+    background-color: #f1f1f1;
 }
