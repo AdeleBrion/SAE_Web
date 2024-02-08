@@ -1,4 +1,7 @@
 <?php
+var_dump($_GET['genre']);
+echo("<br>");
+var_dump($_GET['titre']);
 
 use Form\Type\InputText;
 
@@ -16,6 +19,7 @@ $database = new BaseDeDonnee();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/creationAlbum.css">
+    <script src="JS/creationAlbum.js" defer></script>
     <title>Création album - Mus'inEar</title>
 </head>
 
@@ -24,40 +28,10 @@ $database = new BaseDeDonnee();
         <h1><img src="fixtures/images/line.png"> Créez votre album <img src="fixtures/images/line.png"></h1>
 
         <h2><img src="fixtures/images/line.png"> Couverture de votre album <img src="fixtures/images/line.png"></h2>
-        <form>
+        <form method='get'>
             <div id="dropZone" ondragover="allowDrop(event)" ondrop="drop(event)" ondragenter="dragEnter(event)" ondragleave="dragLeave(event)">
-                Drop image here
+                Déposez l'image de la pochette ici
             </div>
-            <script>
-                function allowDrop(event) {
-                    event.preventDefault();
-                }
-
-                function dragEnter(event) {
-                    event.target.style.backgroundColor = "lightgray";
-                }
-
-                function dragLeave(event) {
-                    event.target.style.backgroundColor = "";
-                }
-
-                function drop(event) {
-                    event.preventDefault();
-                    event.target.style.backgroundColor = "";
-
-                    var file = event.dataTransfer.files[0];
-                    var reader = new FileReader();
-
-                    reader.onload = function(e) {
-                        var image = new Image();
-                        image.src = e.target.result;
-                        event.target.innerHTML = '';
-                        event.target.appendChild(image);
-                    }
-
-                    reader.readAsDataURL(file);
-                }
-            </script>
             <section class="textArea">
                 <section class="nomAlbum">
                     <h2><img src="fixtures/images/line.png"> Nom de l'album <img src="fixtures/images/line.png"></h2>
@@ -71,7 +45,7 @@ $database = new BaseDeDonnee();
                 <section class="anneeParution">
                     <h2><img src="fixtures/images/line.png"> Année de parution <img src="fixtures/images/line.png"></h2>
                     <?php
-                    $parution = new InputText("saisir", "parution", "Date de parution...", "parution", false, "");
+                    $parution = new InputText("saisir", "parution", "Date de parution...", "parution", true, "");
                     echo $parution->render();
                     ?>
                 </section>
@@ -82,33 +56,20 @@ $database = new BaseDeDonnee();
                 <div class="selectbox">
                     <?php
                     $options = $database->getAllGenre();
-                    $selectGenre = new SelectBox("Choisir un genre", "Genre", "", "select", $options);
+                    $selectGenre = new SelectBox("Choisir un genre", "genre[]", "", "select", $options);
                     echo $selectGenre;
                     ?>
                 </div>
                 <button id="ajouterGenre"><img src="fixtures/images/plus.png"> Ajouter un genre</button>
                 <button id="supprimerGenre"><img src="fixtures/images/moins.png"> Supprimer un genre</button>
 
-                <script>
-                    let buttonAjoutGenre = document.getElementById("ajouterGenre");
-                    buttonAjoutGenre.addEventListener("click", function(e) {
-                        $new = document.querySelector("#select").cloneNode(true);
-                        document.querySelector(".selectbox").appendChild($new);
-                    });
-
-                    let buttonSupprimerGenre = document.getElementById("supprimerGenre");
-                    buttonSupprimerGenre.addEventListener("click", function(e) {
-                        if (document.querySelector(".selectbox").childNodes.length > 3) {
-                            document.querySelector(".selectbox").removeChild(document.querySelector(".selectbox").lastChild)
-                        }
-                    });
-                </script>
+                
             </section>
 
             <section class="titres">
                 <h2><img src="fixtures/images/line.png"> Titres<img src="fixtures/images/line.png"></h2>
                 <div class="tracks">
-                    <input type="text" class="saisir" id="titre" placeholder="Nom album ici..." required=false>
+                    <input type="text" class="saisir" id="titre" name='titre[]' placeholder="Nom titre ici..." required=true>
                 </div>
                 <button id="ajouter"><img src="fixtures/images/plus.png"> Ajouter un titre</button>
                 <button id="supprimer"><img src="fixtures/images/moins.png"> Supprimer un titre</button>
@@ -117,21 +78,6 @@ $database = new BaseDeDonnee();
             <button class="validation" value="submit"> Créer l'album </button>
         </form>
 
-        <script>
-            let buttonAjout = document.getElementById("ajouter");
-            buttonAjout.addEventListener("click", function(e) {
-                titre = document.querySelector("#titre").cloneNode(true);
-                titre.value = "";
-                document.querySelector(".tracks").appendChild(titre);
-            });
-
-            let buttonSupprimer = document.getElementById("supprimer");
-            buttonSupprimer.addEventListener("click", function(e) {
-                if (document.querySelector(".tracks").childNodes.length > 3) {
-                    document.querySelector(".tracks").removeChild(document.querySelector(".tracks").lastChild)
-                }
-            });
-        </script>
     </main>
 </body>
 

@@ -45,14 +45,15 @@ abstract class Input implements Irender {
         return $this->label;
     }
 
-    public function isRequired() {
-        return $this->required ? "required" : " "; // ? reponse si true : reponse si false
+    private function isRequired(): string
+    {
+        return $this->required ? "true" : "false";
     }
 
     public function render(): string
     {
         $label = "<label for='" . $this->getLabel() . "'>". $this->intitule ."</label>" . PHP_EOL;
-        $input = "<input type='" . $this->getType() . "' id='". $this->getId() . "' name='". $this->getName() . "' placeholder='" . $this->getValue() . "' </input>" . PHP_EOL; 
+        $input = "<input type='" . $this->getType() . "' id='". $this->getId() . "' name='". $this->getName() . "' placeholder='" . $this->getValue() . "' required='" . $this->isRequired() . "' >" . PHP_EOL; 
         return $label . $input;
     }
 }

@@ -17,7 +17,7 @@ class SelectBox{
     public function __toString(){
         $res = "<label for=\"$this->id\">$this->label</label><select name=\"$this->name\" id=\"$this->id\">";
         foreach($this->options as $option){
-            $res = $res . "<option value=\"$option\">$option</option>";
+            $res = $res . "<option value='".$option['id']."' >". $option['nom'] ."</option>";
         }
         return $res . "</select>";
     }
