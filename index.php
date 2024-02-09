@@ -5,8 +5,8 @@ require_once "Classes/AlbumNomImage.php";
 require_once 'requeteBase.php';
 $database = new BaseDeDonnee();
 
-if (intval($_SESSION['me'])){echo "Actuellement connecté avec ".$database->getNomCompte(intval($_SESSION['me']))."<br><a href='decoProvisoire.php'>Se déconnecter</a>";}
-?>
+// if (intval($_SESSION['me'])){echo "Actuellement connecté avec ".$database->getNomCompte(intval($_SESSION['me']))."<br><a href='decoProvisoire.php'>Se déconnecter</a>";}
+// ?>
 
 <!DOCTYPE html>
 <html lang="fr">
