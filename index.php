@@ -6,7 +6,7 @@ require_once 'requeteBase.php';
 $database = new BaseDeDonnee();
 
 // if (intval($_SESSION['me'])){echo "Actuellement connecté avec ".$database->getNomCompte(intval($_SESSION['me']))."<br><a href='decoProvisoire.php'>Se déconnecter</a>";}
-// ?>
+?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -24,7 +24,9 @@ $database = new BaseDeDonnee();
         <section class="container">
             <section class="albums">
                 <?php
-                $database->getAlbum();
+                foreach ($database->getEveryAlbums() as $album) {
+                    echo $album;
+                }
                 ?>
             </section>
         </section>

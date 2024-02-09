@@ -14,6 +14,43 @@
             }
         }
 
+        public function getIdMax(string $nomTable): int
+        {
+            try{
+                switch (strtoupper($nomTable)) {
+                    case "COMPTE":
+                        $nomColonne = "idCompte";
+                        $nomTable = "COMPTE";
+                        break;
+                    case "ARTISTE":
+                        $nomColonne = "idArtiste";
+                        $nomTable = "ARTISTE";
+                        break;
+                    case "UTILISATEUR":
+                        $nomColonne = "idUtilisateur";
+                        $nomTable = "UTILISATEUR";
+                        break;
+                    case "ALBUM":
+                            $nomColonne = "idAlbum";
+                            $nomTable = "ALBUM";
+                            break;
+                }
+
+                $query = "SELECT max($nomColonne)
+                FROM $nomTable";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    return intval($row["max($nomColonne)"]);
+                }
+
+                return 0;
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
         public function getIdCompte(string $pseudo): int
         {
             try{
@@ -75,17 +112,39 @@
             }
         }
 
-        public function getAlbum(){
+        public function isArtiste(int $idCompte): bool
+        {
+            try{
+                $query = "SELECT *
+                FROM ARTISTE
+                WHERE idArtiste = $idCompte";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    return true;
+                }
+                return false;
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
+        public function getEveryAlbums(): array
+        {
             try{
                 $query = "SELECT *
                 FROM ALBUM NATURAL JOIN ARTISTE";
                 $stmt=$this->pdo->prepare($query);
                 $stmt->execute();
+                $albums = array();
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $album = new AlbumNomImage((int) $row["idAlbum"], $row["nomAlbum"], $this->cheminImages . $row["cheminPochette"]);
                     $id = $row["idAlbum"];
-                    echo "<a href='albumDetail.php?id=".$id."' class="."album".">" . $album . "</a>";
+                    array_push($albums, "<a href='albumDetail.php?id=".$id."' class="."album".">" . $album . "</a>");
                 }
+
+                return $albums;
             }
             catch (PDOException $e) {
                 echo $e->getMessage();
@@ -276,7 +335,7 @@
 
         public function retirerAlbumFavoris(int $idUser, int $idAlbum){
             try{
-                $query = "DELETE FROM FAVORIS where idUtilisateur = $idUser and idAlbum = $idAlbum";
+                $query = "DELETE FROM FAVORIS WHERE idUtilisateur = $idUser AND idAlbum = $idAlbum";
                 $stmt=$this->pdo->prepare($query);
                 $stmt->execute();
             }
@@ -316,7 +375,7 @@
 
         public function abandonnerArtiste(int $idUser, int $idArtiste){
             try{
-                $query = "DELETE FROM SUIVRE where idUtilisateur = $idUser and idAlbum = $idArtiste";
+                $query = "DELETE FROM SUIVRE WHERE idUtilisateur = $idUser AND idArtiste = $idArtiste";
                 $stmt=$this->pdo->prepare($query);
                 $stmt->execute();
             }
