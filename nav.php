@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <link rel="stylesheet" href="css/nav.css">
 <link rel="icon" href="fixtures/images/logoBarre.png" type="image/png">
 <nav class="navbar navbar-default navbar">

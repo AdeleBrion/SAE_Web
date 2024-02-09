@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once "nav.php";
 require_once "Classes/AlbumNomImage.php";
 

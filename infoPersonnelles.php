@@ -1,5 +1,4 @@
 <?php
-session_start();
 require_once "retourNav.php";
 require_once "Classes/InfoPerso.php";
 $infoPerso = new InfoPerso();
