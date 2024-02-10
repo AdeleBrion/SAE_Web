@@ -10,8 +10,8 @@
     <a href="#" id="userBtn"><img class="user" src="fixtures/images/user.png"></a>
 </nav>
 <div id="menu" class="menu">
-    <a href="#">Mes infos</a>
+    <a href="compte.php">Mes informations</a>
     <a href="#">Mes favoris</a>
     <a href="#">Ma playlist</a>
-    <a href="decoProvisoire.php">Se deconnecter</a>
+    <a href="deconnexion.php">Se deconnecter</a>
 </div>

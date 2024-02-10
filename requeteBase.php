@@ -112,6 +112,39 @@
             }
         }
 
+        public function fermerCompte(int $id){
+            try{
+                //si l'artiste est un simple utilisateur
+                if (!$this->isArtiste($id)){
+                    $query = "DELETE FROM SUIVRE WHERE idUtilisateur = $id";
+                    $stmt=$this->pdo->prepare($query);
+                    $stmt->execute();
+                    $query = "DELETE FROM FAVORIS WHERE idUtilisateur = $id";
+                    $stmt=$this->pdo->prepare($query);
+                    $stmt->execute();
+                    $query = "DELETE FROM NOTER WHERE idUtilisateur = $id";
+                    $stmt=$this->pdo->prepare($query);
+                    $stmt->execute();
+                    $query = "DELETE FROM PLAYLIST WHERE idUtilisateur = $id";
+                    $stmt=$this->pdo->prepare($query);
+                    $stmt->execute();
+                    $stmt->execute();
+                    $query = "DELETE FROM UTILISATEUR WHERE idUtilisateur = $id";
+                    $stmt=$this->pdo->prepare($query);
+                    $stmt->execute();
+                }
+                //else {}
+
+                $stmt->execute();
+                $query = "DELETE FROM COMPTE WHERE idCompte = $id";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
         public function isArtiste(int $idCompte): bool
         {
             try{
