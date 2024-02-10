@@ -13,7 +13,9 @@ class InputNumber extends Input {
 
     public function render(): string
     {
-        return parent::render();
+        $label = "<label for='" . $this->getLabel() . "'>". $this->intitule ."</label>" . PHP_EOL;
+        $input = "<input type='" . $this->getType() . "' id='". $this->getId() . "' name='". $this->getName() . "' value='" . $this->getValue() . "' min='0' required='" . $this->isRequired() . "' >" . PHP_EOL; 
+        return $label . $input;
     }
 }
 

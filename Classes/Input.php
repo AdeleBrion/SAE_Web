@@ -45,7 +45,7 @@ abstract class Input implements Irender {
         return $this->label;
     }
 
-    private function isRequired(): string
+    protected function isRequired(): string
     {
         return $this->required ? "true" : "false";
     }

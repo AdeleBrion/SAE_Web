@@ -1,10 +1,12 @@
 <?php
 
 use Form\Type\InputText;
+use Form\Type\InputNumber;
 
 require_once 'requeteBase.php';
 require_once "Classes/SelectBox.php";
 require_once "Classes/InputText.php";
+require_once "Classes/InputNumber.php";
 
 
 class InsertionAlbum{
@@ -14,7 +16,7 @@ class InsertionAlbum{
     protected BaseDeDonnee $database;
 
     public function __construct(){
-        $this->cheminEnregistrement = "./fixtures/images/";
+        $this->cheminEnregistrement = "fixtures/images/";
         $this->database = new BaseDeDonnee();
         $this->me = (int) $_SESSION['me'];
 
@@ -28,7 +30,7 @@ class InsertionAlbum{
     }
 
     private function uploadBD(){
-        $cheminPochette = "./fixtures/images/defaultCover.png";
+        $pochette = "defaultCover.png";
 
         if(!empty($_FILES['pochette']['tmp_name']) && !empty($_FILES['pochette']['name']))
         {
@@ -51,20 +53,19 @@ class InsertionAlbum{
             if(!move_uploaded_file($tmp_file, $this->cheminEnregistrement.$file_name))
                 exit("Impossible de déplacer le fichier. Upload annulé.");
             else
-                $cheminPochette = $this->cheminEnregistrement.$file_name;
+                $pochette = $file_name;
         }
         
-        echo var_dump($_SESSION['me']);
-        echo("<br>");
-        var_dump($_POST['nomAlbum']);
-        echo("<br>");
-        echo "pochette : ".$cheminPochette;
-        echo("<br>");
-        var_dump($_POST['parution']);
-        echo("<br>");
-        var_dump($_POST['genre']);
-        echo("<br>");
-        var_dump($_POST['titre']);
+        $annee = intval($_POST['annee']);
+
+        $genres = array();
+        foreach($_POST['genre'] as $genre){
+            array_push($genres, intval($genre));
+        }
+
+        $this->database->insertionAlbum($this->me, $_POST['nomAlbum'], $annee, $pochette, $_POST['titre'], $genres);
+
+        header('Location: index.php');
 
     }
 
@@ -91,7 +92,7 @@ class InsertionAlbum{
                     <section class='anneeParution'>
                         <h2><img src='fixtures/images/line.png'> Année de parution <img src='fixtures/images/line.png'></h2>";
 
-        $parution = new InputText('saisir', 'parution', 'Date de parution...', 'parution', true, '');
+        $parution = new InputNumber('saisir', 'annee', date('Y'), 'annee', true, '');
         $output .= $parution->render();
                         
         $output .= "</section>
@@ -100,7 +101,7 @@ class InsertionAlbum{
                     <h2><img src='fixtures/images/line.png'> Genre de l'album <img src='fixtures/images/line.png'></h2>
                     <div class='selectbox'>";
 
-        $options = $this->database->getAllGenre();
+        $options = $this->database->getEveryGenres();
         $selectGenre = new SelectBox('Choisir un genre', 'genre[]', '', 'select', $options);
         $output .= $selectGenre."</div>
                     <button id='ajouterGenre'><img src='fixtures/images/plus.png'> Ajouter un genre</button>

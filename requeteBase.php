@@ -207,7 +207,7 @@
             }
         }
 
-        public function getGenresAlbum($id): array
+        public function getGenresAlbum(int $id): array
         {
             try{
                 $query = "SELECT nomGenre
@@ -326,7 +326,6 @@
                 $query = "INSERT INTO FAVORIS VALUES ($idUser, $idAlbum)";
                 $stmt=$this->pdo->prepare($query);
                 $stmt->execute();
-                
             }
             catch (PDOException $e) {
                 echo $e->getMessage();
@@ -343,6 +342,35 @@
                 echo $e->getMessage();
             }
         }
+
+        public function insertionAlbum(int $idArtiste, string $nomAlbum, int $annee, string $lienPochette, array $titres, array $genres)
+        {
+            try{
+                //insertion de l'album
+                $idAlbum = $this->getIdMax('album') + 1;
+                $query = "INSERT INTO ALBUM VALUES (" . $idArtiste . ", " . $idAlbum . ", '" . $nomAlbum . "', " . $annee . ", '" . $lienPochette . "')";
+                $stmt = $this->pdo->prepare($query);
+                $stmt->execute();
+
+                //insertion des genres de l'album
+                foreach ($genres as $idGenre) {
+                    $query = "INSERT INTO GENRER VALUES ($idAlbum, $idGenre)";
+                    $stmt = $this->pdo->prepare($query);
+                    $stmt->execute();
+                }
+
+                //insertion des titres de l'album
+                foreach ($titres as $num => $titre) {
+                    $query = "INSERT INTO TITRE VALUES ($num+1, $idAlbum, '" . $titre . "')";
+                    $stmt = $this->pdo->prepare($query);
+                    $stmt->execute();
+                }
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
 
         public function artisteSuivi(int $idUser, int $idArtiste): bool
         {
@@ -384,7 +412,7 @@
             }
         }
       
-        public function getAllGenre()
+        public function getEveryGenres(): array
         {
             try {
                 $query = "SELECT idGenre, nomGenre
