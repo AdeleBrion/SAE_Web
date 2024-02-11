@@ -42,15 +42,22 @@ class VerifConnexion{
                     <h1><img src='fixtures/images/line.png'> Connexion <img src='fixtures/images/line.png'></h1>
                     <form action='connexion.php' method='post' >
                     <input type='hidden' name='tentative' value='true' />";
-                            
+                    
+        $output .="<section class = 'sectionIdentifiant'>";         
         $output .= $identifiant->render();
+        $output .="</section>";
+
+        $output .="<section class = 'sectionMDP'>";         
         $output .= $mdp->render();
+        $output .="</section>";
 
         if ($this->tentative){
             $output .= "<p>Identifiants incorrects !</p>";
         }
 
+        $output .="<section class = 'sectionButton'>";         
         $output .= "<button type='submit' name='connexion'>Se connecter</button>
+                    </section>            
                     </form>
                 </main>";
 
