@@ -14,6 +14,43 @@
             }
         }
 
+        public function getIdMax(string $nomTable): int
+        {
+            try{
+                switch (strtoupper($nomTable)) {
+                    case "COMPTE":
+                        $nomColonne = "idCompte";
+                        $nomTable = "COMPTE";
+                        break;
+                    case "ARTISTE":
+                        $nomColonne = "idArtiste";
+                        $nomTable = "ARTISTE";
+                        break;
+                    case "UTILISATEUR":
+                        $nomColonne = "idUtilisateur";
+                        $nomTable = "UTILISATEUR";
+                        break;
+                    case "ALBUM":
+                            $nomColonne = "idAlbum";
+                            $nomTable = "ALBUM";
+                            break;
+                }
+
+                $query = "SELECT max($nomColonne)
+                FROM $nomTable";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    return intval($row["max($nomColonne)"]);
+                }
+
+                return 0;
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
         public function getIdCompte(string $pseudo): int
         {
             try{
@@ -75,17 +112,72 @@
             }
         }
 
-        public function getAlbum(){
+        public function fermerCompte(int $id){
+            try{
+                //si l'artiste est un simple utilisateur
+                if (!$this->isArtiste($id)){
+                    $query = "DELETE FROM SUIVRE WHERE idUtilisateur = $id";
+                    $stmt=$this->pdo->prepare($query);
+                    $stmt->execute();
+                    $query = "DELETE FROM FAVORIS WHERE idUtilisateur = $id";
+                    $stmt=$this->pdo->prepare($query);
+                    $stmt->execute();
+                    $query = "DELETE FROM NOTER WHERE idUtilisateur = $id";
+                    $stmt=$this->pdo->prepare($query);
+                    $stmt->execute();
+                    $query = "DELETE FROM PLAYLIST WHERE idUtilisateur = $id";
+                    $stmt=$this->pdo->prepare($query);
+                    $stmt->execute();
+                    $stmt->execute();
+                    $query = "DELETE FROM UTILISATEUR WHERE idUtilisateur = $id";
+                    $stmt=$this->pdo->prepare($query);
+                    $stmt->execute();
+                }
+                //else {}
+
+                $stmt->execute();
+                $query = "DELETE FROM COMPTE WHERE idCompte = $id";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
+        public function isArtiste(int $idCompte): bool
+        {
+            try{
+                $query = "SELECT *
+                FROM ARTISTE
+                WHERE idArtiste = $idCompte";
+                $stmt=$this->pdo->prepare($query);
+                $stmt->execute();
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                    return true;
+                }
+                return false;
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
+        public function getEveryAlbums(): array
+        {
             try{
                 $query = "SELECT *
                 FROM ALBUM NATURAL JOIN ARTISTE";
                 $stmt=$this->pdo->prepare($query);
                 $stmt->execute();
+                $albums = array();
                 while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $album = new AlbumNomImage((int) $row["idAlbum"], $row["nomAlbum"], $this->cheminImages . $row["cheminPochette"]);
                     $id = $row["idAlbum"];
-                    echo "<a href='albumDetail.php?id=".$id."' class="."album".">" . $album . "</a>";
+                    array_push($albums, "<a href='albumDetail.php?id=".$id."' class="."album".">" . $album . "</a>");
                 }
+
+                return $albums;
             }
             catch (PDOException $e) {
                 echo $e->getMessage();
@@ -148,7 +240,7 @@
             }
         }
 
-        public function getGenresAlbum($id): array
+        public function getGenresAlbum(int $id): array
         {
             try{
                 $query = "SELECT nomGenre
@@ -267,7 +359,6 @@
                 $query = "INSERT INTO FAVORIS VALUES ($idUser, $idAlbum)";
                 $stmt=$this->pdo->prepare($query);
                 $stmt->execute();
-                
             }
             catch (PDOException $e) {
                 echo $e->getMessage();
@@ -276,7 +367,7 @@
 
         public function retirerAlbumFavoris(int $idUser, int $idAlbum){
             try{
-                $query = "DELETE FROM FAVORIS where idUtilisateur = $idUser and idAlbum = $idAlbum";
+                $query = "DELETE FROM FAVORIS WHERE idUtilisateur = $idUser AND idAlbum = $idAlbum";
                 $stmt=$this->pdo->prepare($query);
                 $stmt->execute();
             }
@@ -284,6 +375,35 @@
                 echo $e->getMessage();
             }
         }
+
+        public function insertionAlbum(int $idArtiste, string $nomAlbum, int $annee, string $lienPochette, array $titres, array $genres)
+        {
+            try{
+                //insertion de l'album
+                $idAlbum = $this->getIdMax('album') + 1;
+                $query = "INSERT INTO ALBUM VALUES (" . $idArtiste . ", " . $idAlbum . ", '" . $nomAlbum . "', " . $annee . ", '" . $lienPochette . "')";
+                $stmt = $this->pdo->prepare($query);
+                $stmt->execute();
+
+                //insertion des genres de l'album
+                foreach ($genres as $idGenre) {
+                    $query = "INSERT INTO GENRER VALUES ($idAlbum, $idGenre)";
+                    $stmt = $this->pdo->prepare($query);
+                    $stmt->execute();
+                }
+
+                //insertion des titres de l'album
+                foreach ($titres as $num => $titre) {
+                    $query = "INSERT INTO TITRE VALUES ($num+1, $idAlbum, '" . $titre . "')";
+                    $stmt = $this->pdo->prepare($query);
+                    $stmt->execute();
+                }
+            }
+            catch (PDOException $e) {
+                echo $e->getMessage();
+            }
+        }
+
 
         public function artisteSuivi(int $idUser, int $idArtiste): bool
         {
@@ -316,7 +436,7 @@
 
         public function abandonnerArtiste(int $idUser, int $idArtiste){
             try{
-                $query = "DELETE FROM SUIVRE where idUtilisateur = $idUser and idAlbum = $idArtiste";
+                $query = "DELETE FROM SUIVRE WHERE idUtilisateur = $idUser AND idArtiste = $idArtiste";
                 $stmt=$this->pdo->prepare($query);
                 $stmt->execute();
             }
@@ -325,21 +445,23 @@
             }
         }
       
-      public function getAllGenre()
-    {
-        try {
-            $query = "SELECT * FROM GENRE";
-            $stmt = $this->pdo->prepare($query);
-            $stmt->execute();
-            $genres = array();
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-                array_push($genres, $row['nomGenre']);
+        public function getEveryGenres(): array
+        {
+            try {
+                $query = "SELECT idGenre, nomGenre
+                FROM GENRE";
+                $stmt = $this->pdo->prepare($query);
+                $stmt->execute();
+                $genres = array();
+                while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                    $genre = array('id'=> $row['idGenre'], 'nom'=> $row['nomGenre']);
+                    array_push($genres, $genre);
+                }
+                return $genres;
+            } catch (PDOException $e) {
+                echo $e->getMessage();
             }
-            return $genres;
-        } catch (PDOException $e) {
-            echo $e->getMessage();
         }
-    }
 
     }
 ?>

@@ -7,9 +7,11 @@ session_unset();
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Déconnecté</title>
+    <title>Déconnexion</title>
+    <meta http-equiv="refresh" content="3;index.php">
 </head>
 <body>
     <h1>Vous êtes désormais déconnecté.</h1>
+    <p>Redirection vers la page d'acueil dans 3, 2, 1...</p>
 </body>
 </html>

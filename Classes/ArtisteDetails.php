@@ -22,13 +22,14 @@ class ArtisteDetails extends Details{
     private function gererSuivi(){
         if ($this->me != 0) //si l'utilisateur est connecté
         {
-            $enFavoris = $this->database->artisteSuivi($this->me, $this->idArtiste);
-            if ($enFavoris){
+            $suivi = $this->database->artisteSuivi($this->me, $this->idArtiste);
+            echo("<h1>".$suivi."</h1>");
+            if ($suivi){
                 $this->database->abandonnerArtiste($this->me, $this->idArtiste);}
             else{
                 $this->database->suivreArtiste($this->me, $this->idArtiste);}
 
-            header('Location: artisteDetail.php?id='.$_GET['id']);
+            header('Location: artisteDetail.php?id='.$this->idArtiste);
         }
     }
 

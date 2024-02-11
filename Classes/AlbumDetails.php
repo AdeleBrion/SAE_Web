@@ -33,7 +33,7 @@ class AlbumDetails extends Details{
             else{
                 $this->database->mettreAlbumFavoris($this->me, $this->idAlbum);}
 
-            header('Location: albumDetail.php?id='.$_GET['id']);
+            header('Location: albumDetail.php?id='.$this->idAlbum);
         }
     }
 
