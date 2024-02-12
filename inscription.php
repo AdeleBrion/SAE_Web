@@ -1,8 +1,8 @@
 <?php
 require_once "retourNav.php";
-require_once "Classes/VerifConnexion.php";
+require_once "Classes/VerifInscription.php";
 
-$verifConnexion= new VerifConnexion();
+$verifInscription = new VerifInscription();
 ?>
 
 <!DOCTYPE html>
@@ -11,9 +11,10 @@ $verifConnexion= new VerifConnexion();
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/connexion.css">
-        <title>Connexion - Mus'inEar</title>
+        <script src="js/inscription.js" defer></script>
+        <title>Inscription - Mus'inEar</title>
     </head>
     <body>
-        <?php echo $verifConnexion; ?>
+        <?php echo $verifInscription; ?>
     </body>
 </html>

@@ -11,12 +11,11 @@ require_once "Classes/InputNumber.php";
 
 class InsertionAlbum{
 
-    protected string $cheminEnregistrement;
+    protected string $cheminEnregistrement = "fixtures/images/";
     protected int $me;
     protected BaseDeDonnee $database;
 
     public function __construct(){
-        $this->cheminEnregistrement = "fixtures/images/";
         $this->database = new BaseDeDonnee();
         $this->me = (int) $_SESSION['me'];
 
@@ -77,7 +76,7 @@ class InsertionAlbum{
 
             <h2><img src='fixtures/images/line.png'> Couverture de votre album <img src='fixtures/images/line.png'></h2>
             
-            <form method='post' action='creationAlbum.php' enctype='multipart/form-data' action='' >
+            <form action='creationAlbum.php' method='POST' enctype='multipart/form-data' >
                 <input id='dropZone' type='file' name='pochette' size='30'>
 
                 <section class='textArea'>

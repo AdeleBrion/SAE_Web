@@ -20,7 +20,7 @@ class VerifConnexion{
         }
     }
 
-    public function donneesValides(string $pseudo, string $password){
+    private function donneesValides(string $pseudo, string $password){
         $idCompte = $this->database->getIdCompte($pseudo);
 
         if ($idCompte != 0){
@@ -39,19 +39,22 @@ class VerifConnexion{
         $mdp = new InputPassword("connect","mdp","Saississez votre mot de passe","mdpCompte",true, "Mot de passe :");
 
         $output ="<main>
-                    <h1><img src='fixtures/images/line.png'> Connexion <img src='fixtures/images/line.png'></h1>
-                    <form action='connexion.php' method='post' >
-                    <input type='hidden' name='tentative' value='true' />";
-                            
-        $output .= $identifiant->render();
-        $output .= $mdp->render();
-
+                    <h1><img src='fixtures/images/line.png'> Connexion <img src='fixtures/images/line.png'></h1>";
         if ($this->tentative){
             $output .= "<p>Identifiants incorrects !</p>";
         }
-
+        $output .= "<form action='connexion.php' method='POST' >
+                    <input type='hidden' name='tentative' value='true' />
+                    <section class = 'sectionIdentifiant'>";         
+        $output .= $identifiant->render();
+        $output .="</section>
+                    <section class = 'sectionMDP'>";         
+        $output .= $mdp->render();
+        $output .="</section>";
+       
         $output .= "<button type='submit' name='connexion'>Se connecter</button>
-                    </form>
+                    </form>";
+        $output .= "<a href='inscription.php'>Pas encore de compte ? Inscrivez-vous ici !</a>
                 </main>";
 
         return $output;
