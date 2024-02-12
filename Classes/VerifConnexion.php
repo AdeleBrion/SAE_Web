@@ -53,7 +53,8 @@ class VerifConnexion{
         $output .="</section>";
        
         $output .= "<button type='submit' name='connexion'>Se connecter</button>
-                    </form>
+                    </form>";
+        $output .= "<a href='inscription.php'>Pas encore de compte ? Inscrivez-vous ici !</a>
                 </main>";
 
         return $output;

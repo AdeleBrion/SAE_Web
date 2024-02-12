@@ -1,33 +1,3 @@
-function allowDrop(event) {
-    event.preventDefault();
-}
-
-function dragEnter(event) {
-    event.target.style.backgroundColor = "lightgray";
-}
-
-function dragLeave(event) {
-    event.target.style.backgroundColor = "";
-}
-
-function drop(event) {
-    event.preventDefault();
-    event.target.style.backgroundColor = "";
-
-    var file = event.dataTransfer.files[0];
-    var reader = new FileReader();
-
-    reader.onload = function(e) {
-        var image = new Image();
-        image.src = e.target.result;
-        event.target.innerHTML = '';
-        event.target.appendChild(image);
-    }
-
-    reader.readAsDataURL(file);
-}
-
-
 let buttonAjoutGenre = document.getElementById("ajouterGenre");
 buttonAjoutGenre.addEventListener("click", function(e) {
     $new = document.querySelector("#select").cloneNode(true);

@@ -32,19 +32,11 @@ class VerifInscription{
             'mdp' => $mdpChiffre
         );
 
-        $options = array(
-            'http' => array(
-                'method'  => 'POST',
-                'header'  => 'Content-type: application/x-www-form-urlencoded',
-                'content' => http_build_query($contenuPOST)
-            )
-        );
-        
-        $context  = stream_context_create($options);
-
-        $response = file_get_contents('connexion.php', false, $context);
-        
-        echo $response;
+        echo "<form id='redirectionConnexion' action='connexion.php' method='POST'>
+                <input type='hidden' name='tentative' value='true' />
+                <input type='hidden' name='identifiant' value=$pseudo />
+                <input type='hidden' name='mdp' value=$mdp />
+            </form>";
     }
 
     public function __toString(){
@@ -76,8 +68,9 @@ class VerifInscription{
         $output .="</section>";
 
         $output .= "<button type='submit' name='creation'>Créer mon compte</button>
-                    </form>
-                </main>";
+                    </form>";
+        $output .= "<a href='connexion.php'>Vous avez déjà un compte ? Connectez vous ici !</a>
+                    </main>";
 
         return $output;
     }

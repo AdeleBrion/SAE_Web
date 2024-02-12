@@ -147,7 +147,7 @@ class BaseDeDonnee {
             $stmt->execute();
             
             if ($estArtiste){
-                $query = "INSERT INTO ARTISTE VALUES (" . $idCompte . ", '".$nomComplet."', 'biographie insignifiante', '".$this->cheminImages."defaultPP.png' )";
+                $query = "INSERT INTO ARTISTE VALUES (" . $idCompte . ", '".$nomComplet."', '', 'defaultPP.png' )";
                 $stmt = $this->pdo->prepare($query);
                 $stmt->execute();
             }
