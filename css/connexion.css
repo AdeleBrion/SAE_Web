@@ -52,3 +52,17 @@ main > a {
     color: black;
     text-decoration: none;
 }
+
+.drop{
+    margin: 0px;
+    padding: 0px;
+}
+
+#dropZone {
+    width: 300px;
+    height: 150px;
+    border: 2px dashed black;
+    padding-top: 0px;
+    margin-bottom: 3vh;
+}
+
