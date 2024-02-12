@@ -18,10 +18,7 @@ class VerifInscription{
         $this->tentative = $_POST['tentative'] ?? '';
 
         if ($this->tentative == true && $this->database->pseudoExistant($_POST['pseudo']) == false){
-            if ($_POST['estArtiste']){
-                $estArtiste = true;
-            } else {$estArtiste = false;}
-            $this->inscriptionBD($_POST['pseudo'], $_POST['mdp'], $_POST['nomComplet'], $estArtiste);
+            $this->inscriptionBD($_POST['pseudo'], $_POST['mdp'], $_POST['nomComplet'], ($_POST['estArtiste']) ? true : false);
         }
     }
 
