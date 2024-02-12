@@ -1,4 +1,9 @@
 <?php
+namespace BD;
+use Classes\track;
+use Classes\AlbumNomImage;
+use PDOException;
+use PDO;
 
     class BaseDeDonnee {
 

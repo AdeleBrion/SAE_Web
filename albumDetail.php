@@ -1,6 +1,9 @@
 <?php
-require_once "retourNav.php";
-require_once "Classes/AlbumDetails.php";
+require_once "nav/retourNav.php";
+require_once "autoload/Autoloader.php";
+use autoload\Autoloader;
+Autoloader::register();
+use Classes\AlbumDetails;
 
 $album = new AlbumDetails();
 ?>

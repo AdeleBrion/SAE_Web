@@ -1,6 +1,11 @@
 <?php
+namespace Classes;
+require_once "autoload/Autoloader.php";
+use autoload\Autoloader;
+Autoloader::register();
+use BD\BaseDeDonnee;
+
 session_start();
-require_once 'requeteBase.php';
 
 class Details{
 

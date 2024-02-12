@@ -1,4 +1,6 @@
 <?php
+namespace Classes;
+use BD\requeteBase\BaseDeDonnee;
 require_once 'requeteBase.php';
 
 

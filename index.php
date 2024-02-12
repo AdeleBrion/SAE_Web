@@ -1,9 +1,13 @@
 <?php
+require_once "autoload/Autoloader.php";
+use autoload\Autoloader;
+Autoloader::register();
+use BD\BaseDeDonnee;
+
 session_start();
-require_once "nav.php";
+require_once "nav/nav.php";
 require_once "Classes/AlbumNomImage.php";
 
-require_once 'requeteBase.php';
 $database = new BaseDeDonnee();
 
 if (intval($_SESSION['me'])){echo "Actuellement connecté avec ".$database->getNomCompte(intval($_SESSION['me']))."<br><a href='decoProvisoire.php'>Se déconnecter</a>";}

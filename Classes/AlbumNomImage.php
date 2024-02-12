@@ -1,4 +1,5 @@
 <?php
+namespace Classes;
 
 class AlbumNomImage{
     protected int $id;

@@ -1,4 +1,5 @@
 <?php
+namespace Classes;
 require_once "Classes/AlbumNomImage.php";
 require_once "Classes/Details.php";
 

@@ -1,11 +1,12 @@
 <?php
-
+require_once "autoloader/autoloader.php";
+Autoloader::register();
+use BD\BaseDeDonnee;
 use Form\Type\InputText;
 
-require_once "nav.php";
+require_once "nav/nav.php";
 require_once "Classes/selectBox.php";
 require_once "Classes/InputText.php";
-require_once 'requeteBase.php';
 $database = new BaseDeDonnee();
 ?>
 

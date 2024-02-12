@@ -1,5 +1,10 @@
 <?php
-require_once "retourNav.php";
+require_once "autoload/Autoloader.php";
+use autoload\Autoloader;
+Autoloader::register();
+use BD\BaseDeDonnee;
+use Classes\ArtisteDetails;
+require_once "nav/retourNav.php";
 require_once "Classes/ArtisteDetails.php";
 
 $artiste = new ArtisteDetails();
