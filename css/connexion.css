@@ -21,7 +21,7 @@ form{
     border: 50px;
 }
 
-form > section{
+form section{
     border: solid 2.5px;
     border-radius: 75px;
     padding-top: 20px;
@@ -32,12 +32,16 @@ form > section{
     margin-bottom: 50px;
 }
 
+form input[type="checkbox"] {
+    transform: scale(1.3);
+}
+
 .estArtiste{
     border: none;
 }
 
-form input[type="checkbox"] {
-    transform: scale(1.3);
+#infoArtiste > *{
+    border: none;
 }
 
 p{

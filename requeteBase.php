@@ -139,23 +139,32 @@ class BaseDeDonnee {
         }
     }
 
-    public function insertionCompte($pseudo, $mdp, $nomComplet, $estArtiste){
+    public function insertionCompteNormal(string $pseudo, string $mdp, string $nomComplet){
         try{
             $idCompte = $this->getIdMax('compte') + 1;
             $query = "INSERT INTO COMPTE VALUES (" . $idCompte . ", '" .$pseudo. "', '". $mdp."')";
             $stmt = $this->pdo->prepare($query);
             $stmt->execute();
             
-            if ($estArtiste){
-                $query = "INSERT INTO ARTISTE VALUES (" . $idCompte . ", '".$nomComplet."', '', 'defaultPP.png' )";
-                $stmt = $this->pdo->prepare($query);
-                $stmt->execute();
-            }
-            else{
-                $query = "INSERT INTO UTILISATEUR VALUES (" . $idCompte . ", '".$nomComplet."' )";
-                $stmt = $this->pdo->prepare($query);
-                $stmt->execute();
-            }
+            $query = "INSERT INTO UTILISATEUR VALUES (" . $idCompte . ", '".$nomComplet."' )";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->execute();
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function insertionCompteArtiste(string $pseudo, string $mdp, string $nomComplet, string $bio, string $cheminPortrait) {
+        try{
+            $idCompte = $this->getIdMax('compte') + 1;
+            $query = "INSERT INTO COMPTE VALUES (" . $idCompte . ", '" .$pseudo. "', '". $mdp."')";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->execute();
+            
+            $query = "INSERT INTO ARTISTE VALUES (" . $idCompte . ", '".$nomComplet."', '". $bio ."', '". $cheminPortrait ."' )";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->execute();
         }
         catch (PDOException $e) {
             echo $e->getMessage();
