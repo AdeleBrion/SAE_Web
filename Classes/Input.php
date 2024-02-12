@@ -47,13 +47,13 @@ abstract class Input implements Irender {
 
     protected function isRequired(): string
     {
-        return $this->required ? "true" : "false";
+        return $this->required ? "required = true" : "";
     }
 
     public function render(): string
     {
         $label = "<label for='" . $this->getLabel() . "'>". $this->intitule ."</label>" . PHP_EOL;
-        $input = "<input type='" . $this->getType() . "' id='". $this->getId() . "' name='". $this->getName() . "' placeholder='" . $this->getValue() . "' required='" . $this->isRequired() . "' >" . PHP_EOL; 
+        $input = "<input type='" . $this->getType() . "' id='". $this->getId() . "' name='". $this->getName() . "' placeholder='" . $this->getValue() . "' " . $this->isRequired() . " >" . PHP_EOL; 
         return $label . $input;
     }
 }
