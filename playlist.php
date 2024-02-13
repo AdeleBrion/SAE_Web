@@ -1,11 +1,9 @@
 <?php
 
 require_once "retourNav.php";
-require_once "Classes/Track.php";
+require_once "Classes/Playlist.php";
 
-require_once 'requeteBase.php';
-$database = new BaseDeDonnee();
-
+$playlist = new Playlist();
 ?>
 
 <!DOCTYPE html>
@@ -19,17 +17,7 @@ $database = new BaseDeDonnee();
 </head>
 
 <body>
-    <main>
-        <h1><img src="fixtures/images/line.png">Ma Playlist<img src="fixtures/images/line.png"></h1>
-        <div class="playlist">
-            <?php
-            $titres = $database->getTitresByAlbum(6);
-            foreach ($titres as $titre) {
-                echo $titre;
-            }
-            ?>
-        </div>
-    </main>
+    <?php echo $playlist; ?>
 </body>
 
 </html>

@@ -590,5 +590,23 @@ class BaseDeDonnee {
         }
     }
 
+    public function getPlaylist(int $idUtilisateur): array
+    {
+        try {
+            $query = "SELECT nomTitre, idTitre
+            FROM PLAYLIST NATURAL JOIN TITRE
+            WHERE idUtilisateur = $idUtilisateur";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->execute();
+            $titres = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                array_push($titres, new Track($row['idTitre'], $row['nomTitre']));
+            }
+            return $titres;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
 }
 ?>
