@@ -103,8 +103,8 @@ class InsertionAlbum{
         $options = $this->database->getEveryGenres();
         $selectGenre = new SelectBox('Choisir un genre', 'genre[]', '', 'select', $options);
         $output .= $selectGenre."</div>
-                    <button id='ajouterGenre'><img src='fixtures/images/plus.png'> Ajouter un genre</button>
-                    <button id='supprimerGenre'><img src='fixtures/images/moins.png'> Supprimer un genre</button>
+                    <button id='ajouterGenre'><img src='fixtures/images/add.png'> Ajouter un genre</button>
+                    <button id='supprimerGenre'>❌ Supprimer un genre</button>
                 </section>
 
                 <section class='titres'>
@@ -112,8 +112,8 @@ class InsertionAlbum{
                     <div class='tracks'>
                         <input type='text' class='saisir' id='titre' name='titre[]' placeholder='Nom titre ici...' required=true>
                     </div>
-                    <button id='ajouter'><img src='fixtures/images/plus.png'> Ajouter un titre</button>
-                    <button id='supprimer'><img src='fixtures/images/moins.png'> Supprimer un titre</button>
+                    <button id='ajouter'><img src='fixtures/images/add.png'> Ajouter un titre</button>
+                    <button id='supprimer'>❌ Supprimer un titre</button>
                 </section>
                 
                 <button class='validation' value='submit' onclick='saveImage()' > Créer l'album </button>

@@ -24,7 +24,7 @@ class Navigation{
                     <div id='menu' class='menu'>
                         <a href='compte.php'>Mes informations</a>
                         <a href='#'>Mes favoris</a>
-                        <a href='#'>Ma playlist</a>
+                        <a href='playlist.php'>Ma playlist</a>
                         <a href='deconnexion.php'>Se deconnecter</a>
                     </div>";
         }

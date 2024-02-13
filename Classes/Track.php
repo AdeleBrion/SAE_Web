@@ -13,7 +13,7 @@ class Track{
         return "<div class='titre'>
         <p class='num'>$this->num</p>
         <p class='title'>$this->titre</p>
-        <img class='check' src='fixtures/images/add.png'/></div>";
+        <img class='check' src='fixtures/images/plus.png'/></div>";
     }
 }
 

@@ -505,6 +505,13 @@ class BaseDeDonnee {
             $stmt = $this->pdo->prepare($query);
             $stmt->execute();
 
+            //insertion des titres de l'album
+            foreach ($titres as $num => $titre) {
+                $query = "INSERT INTO TITRE VALUES ($num+1, $idAlbum, '" . $titre . "')";
+                $stmt = $this->pdo->prepare($query);
+                $stmt->execute();
+            }
+
             //insertion des genres de l'album
             foreach ($genres as $idGenre) {
                 $query = "INSERT INTO GENRER VALUES ($idAlbum, $idGenre)";
@@ -512,12 +519,13 @@ class BaseDeDonnee {
                 $stmt->execute();
             }
 
-            //insertion des titres de l'album
-            foreach ($titres as $num => $titre) {
-                $query = "INSERT INTO TITRE VALUES ($num+1, $idAlbum, '" . $titre . "')";
+            //insertion des genres à l'artiste
+            foreach ($genres as $idGenre) {
+                $query = "INSERT INTO STYLE_MUSICAL VALUES ($idArtiste, $idGenre)";
                 $stmt = $this->pdo->prepare($query);
                 $stmt->execute();
             }
+
         }
         catch (PDOException $e) {
             echo $e->getMessage();
