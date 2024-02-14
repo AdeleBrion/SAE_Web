@@ -13,9 +13,11 @@ class Navigation{
     public function __toString(){
         $output = "<nav class='navbar navbar-default navbar'>
                         <img class='logo' src='fixtures/images/logo.png'>
-                        <input type='text' placeholder='Search..'>";
+                        <form class='barre-recherche' method='GET'>
+                            <input type='text' name='keywords' placeholder='Rechercher ...'></div>
+                        </form>";
 
-        if ($this->me == 0){
+        if ($this->me == 0){        //si l'utilisateur n'est pas connecté
             $output .= "<a href='connexion.php'><img class='user' src='fixtures/images/user.png'></a></nav>";
         }
         else{

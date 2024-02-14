@@ -14,10 +14,10 @@ nav {
     margin-left: 1vw;
 }
 
-input[type="text"] {
+.barre-recherche input[type="text"] {
     margin-top: 5vh;
     justify-content: center;
-    max-height: 4vh;
+    height: 4vh;
 }
 
 
