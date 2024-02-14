@@ -569,6 +569,23 @@ class BaseDeDonnee {
         }
     }
 
+    public function getArtistePortrait(int $idArtiste): string
+    {
+        try{
+            $query = "SELECT cheminPhoto
+            FROM ARTISTE
+            WHERE idArtiste = $idArtiste";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                return $this->cheminImages . $row["cheminPhoto"];
+            }
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
     public function getStylesArtiste($idArtiste): array
     {
         try{
