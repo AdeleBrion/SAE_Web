@@ -412,6 +412,26 @@ class BaseDeDonnee {
         }
     }
 
+    public function getAlbumsFavoris(int $idUser): array
+    {
+        try{
+            $query = "SELECT idAlbum, nomAlbum, cheminPochette
+            FROM FAVORIS NATURAL JOIN ALBUM
+            WHERE idUtilisateur = $idUser";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
+            $albums = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                array_push($albums, new Miniature(intval($row["idAlbum"]), $row["nomAlbum"], $this->cheminImages.$row["cheminPochette"], 'albumDetail.php?id='.$row["idAlbum"]));
+            }
+
+            return $albums;
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
     public function albumEnFavoris(int $idUser, int $idAlbum): bool
     {
         try{
@@ -563,6 +583,26 @@ class BaseDeDonnee {
             }
 
             return $styles;
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function getArtistesSuivis(int $idUser): array
+    {
+        try{
+            $query = "SELECT idArtiste, nomArtiste, cheminPhoto
+            FROM SUIVRE NATURAL JOIN ARTISTE
+            WHERE idUtilisateur = $idUser";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
+            $artistes = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $artiste = new Miniature(intval($row["idArtiste"]), $row["nomArtiste"], $this->cheminImages . $row["cheminPhoto"], 'artisteDetail.php?id='.$row["idArtiste"]);
+                array_push($artistes, $artiste);
+            }
+            return $artistes;
         }
         catch (PDOException $e) {
             echo $e->getMessage();

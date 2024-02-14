@@ -13,7 +13,7 @@ class Navigation{
     public function __toString(){
         $output = "<nav class='navbar navbar-default navbar'>
                         <img class='logo' src='fixtures/images/logo.png'>
-                        <form class='barre-recherche' method='GET'>
+                        <form class='barre-recherche' action='index.php' method='GET'>
                             <input type='text' name='keywords' placeholder='Rechercher ...'></div>
                         </form>";
 
@@ -25,7 +25,7 @@ class Navigation{
                     </nav>
                     <div id='menu' class='menu'>
                         <a href='compte.php'>Mes informations</a>
-                        <a href='#'>Mes favoris</a>
+                        <a href='favoris.php'>Mes favoris</a>
                         <a href='playlist.php'>Ma playlist</a>
                         <a href='deconnexion.php'>Se deconnecter</a>
                     </div>";
@@ -33,6 +33,5 @@ class Navigation{
         return $output;
     }
 }
-
 
 ?>

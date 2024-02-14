@@ -1,23 +1,28 @@
 <?php
-
 require_once 'requeteBase.php';
-require_once "Classes/Miniature.php";
 
-class Accueil {
+
+class Favoris{
     protected BaseDeDonnee $database;
-    protected array $albums;
-    protected array $artistes;
+    protected int $me;
 
     public function __construct(){
         $this->database = new BaseDeDonnee();
-        $this->albums = $this->database->getEveryAlbums();
-        $this->artistes = $this->database->getEveryArtistes();
+        $this->me = (int) $_SESSION['me'];
 
-        if (isset($_GET['keywords'])){
-            $keywords = str_replace("'", '', $_GET['keywords']);
-            $this->albums = $this->database->getAlbumsByKeywords($keywords);
-            $this->artistes = $this->database->getArtistesByKeywords($keywords);
+        if (!$this->me){
+            header('Location: connexion.php');
         }
+
+        if (isset($_POST['suppression'])){
+            $this->database->fermerCompte($this->me);
+            header('Location: deconnexion.php');
+        }
+    }
+
+    public function monNom(): string
+    {
+        return $this->database->getNomCompte($this->me);
     }
 
     public function __toString(){
@@ -25,14 +30,14 @@ class Accueil {
                     <h2 class='titre'><img src='fixtures/images/line.png'> Albums <img src='fixtures/images/line.png'></h2>
                     <section class='container'>
                         <section class='albums'>";
-        foreach ($this->albums as $alb) {
+        foreach ($this->database->getAlbumsFavoris($this->me) as $alb) {
             $output .= $alb;
                 }
         $output .="</section>
                     </section>
                     <h2 class='titre'><img src='fixtures/images/line.png'> Artistes <img src='fixtures/images/line.png'></h2><section class='container'>
                         <section class='artiste'>";
-        foreach ($this->artistes as $art){
+        foreach ($this->database->getArtistesSuivis($this->me) as $art){
             $output .= $art;
         }
         $output .= "</section>
@@ -41,4 +46,7 @@ class Accueil {
 
         return $output;
     }
+
 }
+
+?>
