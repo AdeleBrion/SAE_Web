@@ -1,14 +1,16 @@
 <?php
 
-class AlbumNomImage{
+class Miniature{
     protected int $id;
     protected string $nom;
     protected string $lienImg;
+    protected string $href;
 
-    public function __construct(int $id, string $nom, string $lienImg){
+    public function __construct(int $id, string $nom, string $lienImg, string $redirection){
         $this->id = $id;
         $this->nom = $nom;
         $this->lienImg = $lienImg;
+        $this->href = $redirection;
     }
 
     public function getId(): int{
@@ -16,7 +18,7 @@ class AlbumNomImage{
     }
 
     public function __toString(){
-        return "<img src=$this->lienImg><h2>$this->nom</h2>";
+        return "<a href='$this->href' class='album'><img src=$this->lienImg><h2>$this->nom</h2></a>";
     }
 }
 

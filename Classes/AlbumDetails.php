@@ -39,19 +39,6 @@ class AlbumDetails extends Details{
         }
     }
 
-    private function gererAjoutPlaylist(int $idUtilisateur, int $idTitre, int $idAlbum){
-        if ($idUtilisateur != 0) //si l'utilisateur est connecté
-        {
-            $dansPlaylist = $this->database->titreDansPlaylist($idUtilisateur, $idAlbum, $idTitre);
-            if ($dansPlaylist){
-                $this->database->retirerTitreDePlaylist($idUtilisateur, $idAlbum, $idTitre);}
-            else{
-                $this->database->mettreTitreDansPlaylist($idUtilisateur, $idAlbum, $idTitre);}
-
-            header('Location: albumDetail.php?id='.$this->idAlbum);
-        }
-    }
-
     public function getNomAlbum(): string
     {return $this->nomAlbum;}
 
