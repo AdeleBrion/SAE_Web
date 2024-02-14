@@ -665,6 +665,39 @@ class BaseDeDonnee {
             echo $e->getMessage();
         }
     }
+
+    public function getBiographie(int $idArtiste): string
+    {
+        try{
+            $query = "SELECT biographie
+            FROM ARTISTE
+            WHERE idArtiste = $idArtiste";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                return $row["biographie"];
+            }
+            return "";
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function editerBiographie(int $idArtiste, string $nouvelleBio){
+        try{
+            $query = "UPDATE ARTISTE
+            SET biographie = :nouvelleBio
+            WHERE idArtiste = :idArtiste";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindParam(':idArtiste', $idArtiste);
+            $stmt->bindParam(':nouvelleBio', $nouvelleBio);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+    
     
     public function getEveryGenres(): array
     {
