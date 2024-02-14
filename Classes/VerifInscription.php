@@ -98,8 +98,8 @@ class VerifInscription{
                             <label>Description personnelle :</label>
                             <textarea name='biographie' rows='6' cols='70' ></textarea>
                         </section>
-                        <section>
-                            <label>Photo de profil</label>
+                        <label>Photo de profil</label>
+                        <section class='drop'>
                             <input id='dropZone' type='file' name='portrait' size='30'>
                         </section>
                     </div>
