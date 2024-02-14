@@ -15,10 +15,7 @@ class Playlist{
             header('Location: connexion.php');
         }
 
-        if (isset($_POST['suppression'])){
-            $this->database->fermerCompte($this->me);
-            header('Location: deconnexion.php');
-        }
+        if (isset($_POST['ajoutPlaylist']))Track::gererAjoutPlaylist($this->me, $_POST['titre'], $_POST['album']);
     }
 
     public function monNom(): string

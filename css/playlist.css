@@ -24,7 +24,7 @@ main > div, main > h1{
     flex-wrap: nowrap;
 }
 
-.titre img{
+.check{
     max-height: 5vh;
     max-width: 5vh;
     padding-right: 2vw;

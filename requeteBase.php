@@ -440,15 +440,58 @@ class BaseDeDonnee {
     public function getTitresByAlbum(int $idAlbum): array
     {
         try{
-            $query = "SELECT * FROM TITRE NATURAL JOIN ALBUM WHERE idAlbum = $idAlbum";
+            $query = "SELECT idAlbum, idTitre, nomTitre
+            FROM TITRE NATURAL JOIN ALBUM
+            WHERE idAlbum = $idAlbum";
             $stmt=$this->pdo->prepare($query);
             $stmt->execute();
             $titres = array();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                array_push($titres, new Track($row['idTitre'], $row['nomTitre']));
+                array_push($titres, new Track($idAlbum, intval($row['idTitre']), $row['nomTitre'], true));
             }
 
             return $titres;
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function titreDansPlaylist(int $idUser, int $idAlbum, int $idTitre): bool
+    {
+        try{
+            $query = "SELECT * 
+            FROM PLAYLIST 
+            WHERE idUtilisateur = $idUser AND idAlbum = $idAlbum AND idTitre = $idTitre";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                return true;
+            }
+
+            return false;
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function mettreTitreDansPlaylist(int $idUser, int $idAlbum, int $idTitre){
+        try{
+            $query = "INSERT INTO PLAYLIST VALUES ($idUser, $idTitre, $idAlbum)";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function retirerTitreDePlaylist(int $idUser, int $idAlbum, int $idTitre){
+        try{
+            $query = "DELETE FROM PLAYLIST WHERE idUtilisateur = $idUser AND idAlbum = $idAlbum AND idTitre = $idTitre";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
         }
         catch (PDOException $e) {
             echo $e->getMessage();
@@ -593,14 +636,14 @@ class BaseDeDonnee {
     public function getPlaylist(int $idUtilisateur): array
     {
         try {
-            $query = "SELECT nomTitre, idTitre
+            $query = "SELECT nomTitre, PLAYLIST.idTitre, idAlbum
             FROM PLAYLIST NATURAL JOIN TITRE
             WHERE idUtilisateur = $idUtilisateur";
             $stmt = $this->pdo->prepare($query);
             $stmt->execute();
             $titres = array();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
-                array_push($titres, new Track($row['idTitre'], $row['nomTitre']));
+                array_push($titres, new Track(intval($row['idAlbum']), intval($row['idTitre']), $row['nomTitre'], false));
             }
             return $titres;
         } catch (PDOException $e) {

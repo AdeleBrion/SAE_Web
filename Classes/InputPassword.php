@@ -1,5 +1,4 @@
 <?php
-
 namespace Form\Type;
 
 require_once 'Input.php';

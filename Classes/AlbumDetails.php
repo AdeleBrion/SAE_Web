@@ -14,7 +14,9 @@ class AlbumDetails extends Details{
     public function __construct(){
         parent::__construct();
         $this->idAlbum = $_GET['id'];
-        if (isset($_GET['like']))$this->gererFavoris();
+
+        if (isset($_POST['like']))$this->gererFavoris();
+        if (isset($_POST['ajoutPlaylist']))Track::gererAjoutPlaylist($this->me, $_POST['titre'], $_POST['album']);
 
         $album = $this->database->getAlbumById($this->idAlbum);
         $this->nomAlbum = $album["nomAlbum"];
@@ -32,6 +34,19 @@ class AlbumDetails extends Details{
                 $this->database->retirerAlbumFavoris($this->me, $this->idAlbum);}
             else{
                 $this->database->mettreAlbumFavoris($this->me, $this->idAlbum);}
+
+            header('Location: albumDetail.php?id='.$this->idAlbum);
+        }
+    }
+
+    private function gererAjoutPlaylist(int $idUtilisateur, int $idTitre, int $idAlbum){
+        if ($idUtilisateur != 0) //si l'utilisateur est connecté
+        {
+            $dansPlaylist = $this->database->titreDansPlaylist($idUtilisateur, $idAlbum, $idTitre);
+            if ($dansPlaylist){
+                $this->database->retirerTitreDePlaylist($idUtilisateur, $idAlbum, $idTitre);}
+            else{
+                $this->database->mettreTitreDansPlaylist($idUtilisateur, $idAlbum, $idTitre);}
 
             header('Location: albumDetail.php?id='.$this->idAlbum);
         }
@@ -60,7 +75,7 @@ class AlbumDetails extends Details{
                 $src = 'fixtures/images/coeur_plein.png';
             }
 
-            $coeur = "<form method='get'>
+            $coeur = "<form method='POST'>
                         <input type='hidden' name='id' value='".$this->idAlbum."'/>
                         <input type='hidden' name='like' value='true'/>
                         <input type='image' class='coeur' src=$src>
