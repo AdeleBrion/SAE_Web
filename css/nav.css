@@ -9,9 +9,10 @@ nav {
 }
 
 .user {
-    max-height: 7vh;
     margin-top: 3vh;
     margin-left: 1vw;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
 }
 

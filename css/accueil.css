@@ -1,4 +1,6 @@
 main a{
+    /* border: solid 1px; 
+    padding: 2em;  */
     list-style-type: none;
     text-decoration:none;
     color: black;
@@ -15,7 +17,7 @@ main > h2 {
     overflow-x: auto;
     white-space: nowrap;
 }
-
+  
 .titre{
     text-align: center;
 }

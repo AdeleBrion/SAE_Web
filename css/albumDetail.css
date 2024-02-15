@@ -48,6 +48,7 @@ main > section{
 
 .noms h1, .noms h2, .noms p{
     margin: 2vh;
+    font-size: 1.5vw;
 }
 
 .noms, .coeur{
@@ -75,6 +76,7 @@ a{
 .titre{
     display: flex;
     flex-wrap: nowrap;
+    font-size: 0.833vw;
 }
 
 .check{
