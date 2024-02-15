@@ -1,4 +1,6 @@
 <?php
+namespace Classes;
+
 class SelectBox{
     protected string $label;
     protected string $name;

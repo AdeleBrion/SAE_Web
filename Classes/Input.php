@@ -1,12 +1,7 @@
 <?php
+namespace Classes;
 
-declare(strict_types=1);
-
-namespace Form\Type;
-
-require_once "InputRenderInterface.php";
-
-abstract class Input implements Irender {
+abstract class Input{
     protected string $type;
     protected string $id;
     protected string $name;

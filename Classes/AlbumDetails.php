@@ -1,6 +1,5 @@
 <?php
-require_once "Classes/Track.php";
-require_once "Classes/Details.php";
+namespace Classes;
 
 class AlbumDetails extends Details{
 

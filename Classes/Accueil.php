@@ -1,7 +1,9 @@
 <?php
-
-require_once 'requeteBase.php';
-require_once "Classes/Miniature.php";
+namespace Classes;
+require_once "autoload/Autoloader.php";
+use autoload\Autoloader;
+Autoloader::register();
+use BD\BaseDeDonnee;
 
 class Accueil {
     protected BaseDeDonnee $database;

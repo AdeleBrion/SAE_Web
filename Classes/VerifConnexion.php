@@ -1,11 +1,9 @@
 <?php
-require_once 'requeteBase.php';
-require_once "Classes/InputText.php";
-require_once "Classes/InputPassword.php";
-
-use Form\Type\InputText;
-use Form\Type\InputPassword;
-
+namespace Classes;
+require_once "autoload/Autoloader.php";
+use autoload\Autoloader;
+Autoloader::register();
+use BD\BaseDeDonnee;
 
 class VerifConnexion{
     protected BaseDeDonnee $database;

@@ -1,7 +1,9 @@
 <?php
-
+require_once "autoload/Autoloader.php";
+use autoload\Autoloader;
+Autoloader::register();
 require_once "retourNav.php";
-require_once "Classes/Playlist.php";
+use Classes\Playlist;
 
 $playlist = new Playlist();
 ?>

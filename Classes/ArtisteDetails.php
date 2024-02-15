@@ -1,6 +1,5 @@
 <?php
-require_once "Classes/Miniature.php";
-require_once "Classes/Details.php";
+namespace Classes;
 
 class ArtisteDetails extends Details{
     protected int $idArtiste;

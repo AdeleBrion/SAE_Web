@@ -1,13 +1,9 @@
 <?php
-
-use Form\Type\InputText;
-use Form\Type\InputNumber;
-
-require_once 'requeteBase.php';
-require_once "Classes/SelectBox.php";
-require_once "Classes/InputText.php";
-require_once "Classes/InputNumber.php";
-
+namespace Classes;
+require_once "autoload/Autoloader.php";
+use autoload\Autoloader;
+Autoloader::register();
+use BD\BaseDeDonnee;
 
 class InsertionAlbum{
 

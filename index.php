@@ -1,6 +1,9 @@
 <?php
+require_once "autoload/Autoloader.php";
+use autoload\Autoloader;
+Autoloader::register();
 require_once "nav.php";
-require_once "Classes/Accueil.php";
+use Classes\Accueil;
 $accueil = new Accueil();
 
 ?>

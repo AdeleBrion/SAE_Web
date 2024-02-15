@@ -1,13 +1,9 @@
 <?php
-require_once 'requeteBase.php';
-require_once "Classes/InputText.php";
-require_once "Classes/InputPassword.php";
-require_once "Classes/InputCheckbox.php";
-
-use Form\Type\InputText;
-use Form\Type\InputPassword;
-use Form\Type\InputCheckbox;
-
+namespace Classes;
+require_once "autoload/Autoloader.php";
+use autoload\Autoloader;
+Autoloader::register();
+use BD\BaseDeDonnee;
 
 class VerifInscription{
 

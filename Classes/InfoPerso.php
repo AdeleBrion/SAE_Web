@@ -1,5 +1,9 @@
 <?php
-require_once 'requeteBase.php';
+namespace Classes;
+require_once "autoload/Autoloader.php";
+use autoload\Autoloader;
+Autoloader::register();
+use BD\BaseDeDonnee;
 
 
 class InfoPerso{

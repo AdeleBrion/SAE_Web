@@ -1,6 +1,9 @@
 <?php
+require_once "autoload/Autoloader.php";
+use autoload\Autoloader;
+Autoloader::register();
 require_once "retourNav.php";
-require_once "Classes/VerifInscription.php";
+use Classes\VerifInscription;
 
 $verifInscription = new VerifInscription();
 ?>

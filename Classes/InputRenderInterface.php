@@ -1,5 +1,6 @@
 <?php
-namespace Form\Type;
+namespace Classes;
+
 interface Irender {
     public function render();
 }

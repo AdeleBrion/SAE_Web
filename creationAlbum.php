@@ -1,6 +1,9 @@
 <?php
-require_once "Classes/InsertionAlbum.php";
-require_once "nav.php";
+require_once "autoload/Autoloader.php";
+use autoload\Autoloader;
+Autoloader::register();
+require_once "retourNav.php";
+use Classes\InsertionAlbum;
 
 $insertionAlbum = new InsertionAlbum();
 ?>
