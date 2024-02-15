@@ -38,6 +38,8 @@ main > div, main > h1{
 }
 
 .title{
+    text-decoration: none;
+    color: #FFF;
     flex-grow: 1;
     flex-basis: 60%;
 }
