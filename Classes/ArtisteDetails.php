@@ -1,5 +1,5 @@
 <?php
-require_once "Classes/AlbumNomImage.php";
+require_once "Classes/Miniature.php";
 require_once "Classes/Details.php";
 
 class ArtisteDetails extends Details{
@@ -68,7 +68,7 @@ class ArtisteDetails extends Details{
                     <div class='content'>";
 
         foreach($this->database->getAlbumsByArtist($this->idArtiste) as $album){
-            $output .= "<a href='albumDetail.php?id=".$album->getId()."'class='album'>" . $album . "</a>";
+            $output .= $album;
         }
         $output .= "</div></section></main>";
 

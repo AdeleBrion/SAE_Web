@@ -14,7 +14,11 @@ class InfoPerso{
             header('Location: connexion.php');
         }
 
-        if (isset($_POST['suppression'])){
+        if (isset($_POST['modifBio'])){
+            $this->database->editerBiographie($this->me, $_POST['biographie']);
+        }
+
+        if (isset($_POST['fermeture'])){
             $this->database->fermerCompte($this->me);
             header('Location: deconnexion.php');
         }
@@ -28,13 +32,21 @@ class InfoPerso{
     public function __toString(){
         $output = "<main>
             <h1><img src='fixtures/images/line.png'> Mes informations <img src='fixtures/images/line.png'></h1>
-            
-            <h2>".$this->monNom()."</h2>
-            <form method='post' >
-                <input type='hidden' name='suppression' value='true' />
-                <button type='submit' name='suppression'>Fermer mon compte</button>
-            </form>
-        </main>";
+            <h2>Votre nom d'artiste est : ".$this->monNom()."</h2>";
+
+        if ($this->database->isArtiste($this->me)){
+        $output .= "<form id='bio' method='POST' >
+                        <label>Modifier votre biographie :</label>
+                        <textarea name='biographie' rows='10' cols='80' >".$this->database->getBiographie($this->me)."</textarea>
+                        <button type='submit' name='modifBio'>Enregistrer</button>
+                    </form>";
+        }
+
+
+        $output .= "<form method='POST' >
+                        <button type='submit' name='fermeture'>Fermer mon compte</button>
+                    </form>
+                </main>";
         return $output;
     }
 

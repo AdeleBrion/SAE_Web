@@ -1,4 +1,5 @@
 <?php
+require_once "Classes/Miniature.php";
 
 class BaseDeDonnee {
 
@@ -13,6 +14,10 @@ class BaseDeDonnee {
             echo "Erreur de connexion à la base de données : " . $e->getMessage();
         }
     }
+
+    ##############################################################
+    ########################### COMPTE ###########################
+    ##############################################################
 
     public function getIdMax(string $nomTable): int
     {
@@ -284,6 +289,10 @@ class BaseDeDonnee {
         }
     }
 
+    ##############################################################
+    ########################### ALBUM ############################
+    ##############################################################
+
     public function getEveryAlbums(): array
     {
         try{
@@ -293,9 +302,8 @@ class BaseDeDonnee {
             $stmt->execute();
             $albums = array();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $album = new AlbumNomImage((int) $row["idAlbum"], $row["nomAlbum"], $this->cheminImages . $row["cheminPochette"]);
-                $id = $row["idAlbum"];
-                array_push($albums, "<a href='albumDetail.php?id=".$id."' class="."album".">" . $album . "</a>");
+                $album = new Miniature(intval($row["idAlbum"]), $row["nomAlbum"], $this->cheminImages.$row["cheminPochette"], 'albumDetail.php?id='.$row["idAlbum"]);
+                array_push($albums, $album);
             }
 
             return $albums;
@@ -305,12 +313,12 @@ class BaseDeDonnee {
         }
     }
 
-    public function getAlbumById(int $id): array
+    public function getAlbumById(int $idAlbum): array
     {
         try{
             $query = "SELECT nomAlbum, idArtiste, nomArtiste, annee, cheminPochette
             from ALBUM natural join ARTISTE
-            WHERE idAlbum = $id";
+            WHERE idAlbum = $idAlbum";
             $stmt=$this->pdo->prepare($query);
             $stmt->execute();
             $artiste = array();
@@ -326,14 +334,37 @@ class BaseDeDonnee {
         }
     }
 
+    public function getAlbumsByKeywords(string $keywords): array
+    {
+        try{
+            $query = "SELECT idAlbum, nomAlbum, cheminPochette
+            FROM ALBUM
+            WHERE nomAlbum LIKE '%$keywords%'";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
+            $albums = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $album = new Miniature(intval($row["idAlbum"]), $row["nomAlbum"], $this->cheminImages.$row["cheminPochette"], 'albumDetail.php?id='.$row["idAlbum"]);
+                array_push($albums, $album);
+            }
+
+            return $albums;
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
     public function getAlbumImage(int $idalbum): string
     {
         try{
-            $query = "SELECT * FROM ALBUM WHERE idAlbum = $idalbum";
+            $query = "SELECT cheminPochette
+            FROM ALBUM
+            WHERE idAlbum = $idalbum";
             $stmt=$this->pdo->prepare($query);
             $stmt->execute();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                return "<img class='couverture' src='".$this->cheminImages.$row['cheminPochette']."'>";
+                return "<img class='couverture' src='".$this->cheminImages.$row['cheminPochette']."' >";
             }
         }
         catch (PDOException $e) {
@@ -351,7 +382,7 @@ class BaseDeDonnee {
             $stmt->execute();
             $albums = array();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                array_push($albums, new AlbumNomImage((int) $row["idAlbum"], $row["nomAlbum"], $this->cheminImages.$row["cheminPochette"]));
+                array_push($albums, new Miniature(intval($row["idAlbum"]), $row["nomAlbum"], $this->cheminImages.$row["cheminPochette"], 'albumDetail.php?id='.$row["idAlbum"]));
             }
 
             return $albums;
@@ -381,74 +412,20 @@ class BaseDeDonnee {
         }
     }
 
-    public function getArtiste(){
-        try{
-            $query = "SELECT idArtiste, nomArtiste, cheminPhoto
-            FROM ARTISTE";
-            $stmt=$this->pdo->prepare($query);
-            $stmt->execute();
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $album = new AlbumNomImage((int) $row["idArtiste"], $row["nomArtiste"], $this->cheminImages . $row["cheminPhoto"]);
-                echo "<a href='artisteDetail.php?id=".$row["idArtiste"]."' class="."album".">" . $album . "</a>";
-            }
-        }
-        catch (PDOException $e) {
-            echo $e->getMessage();
-        }
-    }
-
-    public function getArtisteById(int $id): array
+    public function getAlbumsFavoris(int $idUser): array
     {
         try{
-            $query = "SELECT nomArtiste, biographie, cheminPhoto
-            FROM ARTISTE
-            WHERE idArtiste = $id";
+            $query = "SELECT idAlbum, nomAlbum, cheminPochette
+            FROM FAVORIS NATURAL JOIN ALBUM
+            WHERE idUtilisateur = $idUser";
             $stmt=$this->pdo->prepare($query);
             $stmt->execute();
-            $artiste = array();
+            $albums = array();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $artiste = array("nom"=>$row["nomArtiste"], "biographie"=>$row["biographie"], "cheminPhoto"=>$this->cheminImages.$row["cheminPhoto"]);
+                array_push($albums, new Miniature(intval($row["idAlbum"]), $row["nomAlbum"], $this->cheminImages.$row["cheminPochette"], 'albumDetail.php?id='.$row["idAlbum"]));
             }
 
-            return $artiste;
-        }
-        catch (PDOException $e) {
-            echo $e->getMessage();
-        }
-    }
-
-    public function getStylesArtiste($idArtiste): array
-    {
-        try{
-            $query = "SELECT nomGenre
-            FROM ARTISTE NATURAL JOIN STYLE_MUSICAL NATURAL JOIN GENRE
-            WHERE idArtiste= $idArtiste;";
-            $stmt=$this->pdo->prepare($query);
-            $stmt->execute();
-            $styles = array();
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                array_push($styles, $row['nomGenre']);
-            }
-
-            return $styles;
-        }
-        catch (PDOException $e) {
-            echo $e->getMessage();
-        }
-    }
-
-    public function getTitresByAlbum(int $idAlbum): array
-    {
-        try{
-            $query = "SELECT * FROM TITRE NATURAL JOIN ALBUM WHERE idAlbum = $idAlbum";
-            $stmt=$this->pdo->prepare($query);
-            $stmt->execute();
-            $titres = array();
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                array_push($titres, new Track($row['idTitre'], $row['nomTitre']));
-            }
-
-            return $titres;
+            return $albums;
         }
         catch (PDOException $e) {
             echo $e->getMessage();
@@ -505,6 +482,13 @@ class BaseDeDonnee {
             $stmt = $this->pdo->prepare($query);
             $stmt->execute();
 
+            //insertion des titres de l'album
+            foreach ($titres as $num => $titre) {
+                $query = "INSERT INTO TITRE VALUES ($num+1, $idAlbum, '" . $titre . "')";
+                $stmt = $this->pdo->prepare($query);
+                $stmt->execute();
+            }
+
             //insertion des genres de l'album
             foreach ($genres as $idGenre) {
                 $query = "INSERT INTO GENRER VALUES ($idAlbum, $idGenre)";
@@ -512,12 +496,130 @@ class BaseDeDonnee {
                 $stmt->execute();
             }
 
-            //insertion des titres de l'album
-            foreach ($titres as $num => $titre) {
-                $query = "INSERT INTO TITRE VALUES ($num+1, $idAlbum, '" . $titre . "')";
+            //insertion des genres à l'artiste
+            foreach ($genres as $idGenre) {
+                $query = "INSERT INTO STYLE_MUSICAL VALUES ($idArtiste, $idGenre)";
                 $stmt = $this->pdo->prepare($query);
                 $stmt->execute();
             }
+
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    ##############################################################
+    ########################### ARTISTE ##########################
+    ##############################################################
+
+    public function getEveryArtistes(){
+        try{
+            $query = "SELECT idArtiste, nomArtiste, cheminPhoto
+            FROM ARTISTE";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
+            $artistes = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $artiste = new Miniature(intval($row["idArtiste"]), $row["nomArtiste"], $this->cheminImages . $row["cheminPhoto"], 'artisteDetail.php?id='.$row["idArtiste"]);
+                array_push($artistes, $artiste);
+            }
+            return $artistes;
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function getArtisteById(int $id): array
+    {
+        try{
+            $query = "SELECT nomArtiste, biographie, cheminPhoto
+            FROM ARTISTE
+            WHERE idArtiste = $id";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                return array("nom"=>$row["nomArtiste"], "biographie"=>$row["biographie"], "cheminPhoto"=>$this->cheminImages.$row["cheminPhoto"]);
+            }
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function getArtistesByKeywords(string $keywords): array
+    {
+        try{
+            $query = "SELECT idArtiste, nomArtiste, cheminPhoto
+            FROM ARTISTE
+            WHERE nomArtiste LIKE '%$keywords%'";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
+            $artistes = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $artiste = new Miniature(intval($row["idArtiste"]), $row["nomArtiste"], $this->cheminImages.$row["cheminPhoto"], 'artisteDetail.php?id='.$row["idArtiste"]);
+                array_push($artistes, $artiste);
+            }
+
+            return $artistes;
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function getArtistePortrait(int $idArtiste): string
+    {
+        try{
+            $query = "SELECT cheminPhoto
+            FROM ARTISTE
+            WHERE idArtiste = $idArtiste";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                return $this->cheminImages . $row["cheminPhoto"];
+            }
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function getStylesArtiste($idArtiste): array
+    {
+        try{
+            $query = "SELECT nomGenre
+            FROM ARTISTE NATURAL JOIN STYLE_MUSICAL NATURAL JOIN GENRE
+            WHERE idArtiste= $idArtiste;";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
+            $styles = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                array_push($styles, $row['nomGenre']);
+            }
+
+            return $styles;
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function getArtistesSuivis(int $idUser): array
+    {
+        try{
+            $query = "SELECT idArtiste, nomArtiste, cheminPhoto
+            FROM SUIVRE NATURAL JOIN ARTISTE
+            WHERE idUtilisateur = $idUser";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
+            $artistes = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $artiste = new Miniature(intval($row["idArtiste"]), $row["nomArtiste"], $this->cheminImages . $row["cheminPhoto"], 'artisteDetail.php?id='.$row["idArtiste"]);
+                array_push($artistes, $artiste);
+            }
+            return $artistes;
         }
         catch (PDOException $e) {
             echo $e->getMessage();
@@ -563,6 +665,39 @@ class BaseDeDonnee {
             echo $e->getMessage();
         }
     }
+
+    public function getBiographie(int $idArtiste): string
+    {
+        try{
+            $query = "SELECT biographie
+            FROM ARTISTE
+            WHERE idArtiste = $idArtiste";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                return $row["biographie"];
+            }
+            return "";
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function editerBiographie(int $idArtiste, string $nouvelleBio){
+        try{
+            $query = "UPDATE ARTISTE
+            SET biographie = :nouvelleBio
+            WHERE idArtiste = :idArtiste";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->bindParam(':idArtiste', $idArtiste);
+            $stmt->bindParam(':nouvelleBio', $nouvelleBio);
+            $stmt->execute();
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+    
     
     public function getEveryGenres(): array
     {
@@ -578,6 +713,89 @@ class BaseDeDonnee {
             }
             return $genres;
         } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    ##############################################################
+    ########################### TITRE ############################
+    ##############################################################
+
+    public function getTitresByAlbum(int $idAlbum): array
+    {
+        try{
+            $query = "SELECT idAlbum, idTitre, nomTitre
+            FROM TITRE NATURAL JOIN ALBUM
+            WHERE idAlbum = $idAlbum";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
+            $titres = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                array_push($titres, new Track($idAlbum, intval($row['idTitre']), $row['nomTitre'], true));
+            }
+
+            return $titres;
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function getPlaylist(int $idUtilisateur): array
+    {
+        try {
+            $query = "SELECT nomTitre, PLAYLIST.idTitre, idAlbum
+            FROM PLAYLIST NATURAL JOIN TITRE
+            WHERE idUtilisateur = $idUtilisateur";
+            $stmt = $this->pdo->prepare($query);
+            $stmt->execute();
+            $titres = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                array_push($titres, new Track(intval($row['idAlbum']), intval($row['idTitre']), $row['nomTitre'], false));
+            }
+            return $titres;
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function titreDansPlaylist(int $idUser, int $idAlbum, int $idTitre): bool
+    {
+        try{
+            $query = "SELECT * 
+            FROM PLAYLIST 
+            WHERE idUtilisateur = $idUser AND idAlbum = $idAlbum AND idTitre = $idTitre";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                return true;
+            }
+
+            return false;
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function mettreTitreDansPlaylist(int $idUser, int $idAlbum, int $idTitre){
+        try{
+            $query = "INSERT INTO PLAYLIST VALUES ($idUser, $idTitre, $idAlbum)";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function retirerTitreDePlaylist(int $idUser, int $idAlbum, int $idTitre){
+        try{
+            $query = "DELETE FROM PLAYLIST WHERE idUtilisateur = $idUser AND idAlbum = $idAlbum AND idTitre = $idTitre";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
+        }
+        catch (PDOException $e) {
             echo $e->getMessage();
         }
     }

@@ -311,7 +311,8 @@
         $file_db->exec("CREATE TABLE PLAYLIST(
             idUtilisateur INTEGER REFERENCES UTILISATEUR (idUtilisateur),
             idTitre INTEGER REFERENCES TITRE (idTitre),
-            PRIMARY KEY (idUtilisateur, idTitre))");
+            idAlbum INTEGER REFERENCES TITRE (idAlbum),
+            PRIMARY KEY (idUtilisateur, idTitre, idAlbum))");
 
         #Insertion
 

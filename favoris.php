@@ -1,7 +1,7 @@
 <?php
-require_once "nav.php";
-require_once "Classes/Accueil.php";
-$accueil = new Accueil();
+require_once "retourNav.php";
+require_once "Classes/Favoris.php";
+$favoris = new Favoris();
 
 ?>
 
@@ -11,9 +11,9 @@ $accueil = new Accueil();
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/accueil.css">
-        <title>Mus'inEar</title>
+        <title>Mes favoris - Mus'inEar</title>
     </head>
     <body>
-        <?php echo $accueil; ?>
+        <?php echo $favoris; ?>
     </body>
 </html>

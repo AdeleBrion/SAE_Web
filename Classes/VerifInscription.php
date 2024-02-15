@@ -74,7 +74,7 @@ class VerifInscription{
         $identifiant = new InputText("connect","pseudo","Pseudo unique","pseudoCompte",true, "Identifiant :");
         $nomComplet = new InputText("connect","nomComplet","Nom original","nomComplet",true, "Nom complet :");
         $mdp = new InputPassword("connect","mdp","Mot de passe confidentiel","mdpCompte",true, "Mot de passe :");
-        $estArtiste = new InputCheckbox("artiste","estArtiste","value","estArtiste",false, "Je souhaite un créer un compte artiste.");
+        $estArtiste = new InputCheckbox("artiste","estArtiste","value","estArtiste",false, "Je souhaite créer un compte artiste.");
 
         $output ="<main>
                     <h1><img src='fixtures/images/line.png'> Inscription <img src='fixtures/images/line.png'></h1>";

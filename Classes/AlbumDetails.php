@@ -14,7 +14,9 @@ class AlbumDetails extends Details{
     public function __construct(){
         parent::__construct();
         $this->idAlbum = $_GET['id'];
-        if (isset($_GET['like']))$this->gererFavoris();
+
+        if (isset($_POST['like']))$this->gererFavoris();
+        if (isset($_POST['ajoutPlaylist']))Track::gererAjoutPlaylist($this->me, $_POST['titre'], $_POST['album']);
 
         $album = $this->database->getAlbumById($this->idAlbum);
         $this->nomAlbum = $album["nomAlbum"];
@@ -60,7 +62,7 @@ class AlbumDetails extends Details{
                 $src = 'fixtures/images/coeur_plein.png';
             }
 
-            $coeur = "<form method='get'>
+            $coeur = "<form method='POST'>
                         <input type='hidden' name='id' value='".$this->idAlbum."'/>
                         <input type='hidden' name='like' value='true'/>
                         <input type='image' class='coeur' src=$src>
