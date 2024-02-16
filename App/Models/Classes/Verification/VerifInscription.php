@@ -1,12 +1,12 @@
 <?php
-namespace Classes\Verification;
-require_once "autoload/Autoloader.php";
+namespace Models\Classes\Verification;
+require_once __DIR__ . '../../../../autoload/Autoloader.php';
 use autoload\Autoloader;
 Autoloader::register();
-use Classes\BD\BaseDeDonnee;
-use Classes\Input\InputText;
-use Classes\Input\InputPassword;
-use Classes\Input\InputCheckbox;
+use Models\Classes\BD\BaseDeDonnee;
+use Models\Classes\Input\InputText;
+use Models\Classes\Input\InputPassword;
+use Models\Classes\Input\InputCheckbox;
 
 class VerifInscription{
 
@@ -15,7 +15,7 @@ class VerifInscription{
     protected string $tentative;
 
     public function __construct(){
-        $this->database = new BaseDeDonnee();
+        $this->database = new BaseDeDonnee(__DIR__ . '/../');
 
         if($_POST || $_FILES){
             if ($this->database->pseudoExistant($_POST['pseudo']) == false){
@@ -76,7 +76,7 @@ class VerifInscription{
         $estArtiste = new InputCheckbox("artiste","estArtiste","value","estArtiste",false, "Je souhaite créer un compte artiste.");
 
         $output ="<main>
-                    <h1><img src='fixtures/images/line.png'> Inscription <img src='fixtures/images/line.png'></h1>";
+                    <h1><img src='../../../Static/fixtures/images/line.png'> Inscription <img src='../../../Static/fixtures/images/line.png'></h1>";
 
         
         if ($_POST){

@@ -3,7 +3,7 @@ require_once "../../autoload/Autoloader.php";
 use autoload\Autoloader;
 Autoloader::register();
 require_once "../nav/retourNav.php";
-$infoPerso = new Classes\InfoPerso();
+$infoPerso = new Models\Classes\InfoPerso();
 
 ?>
 

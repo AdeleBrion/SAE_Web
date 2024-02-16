@@ -1,5 +1,5 @@
 <?php
-namespace Classes;
+namespace Models\Classes;
 
 class Miniature{
     protected int $id;

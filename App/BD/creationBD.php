@@ -15,6 +15,7 @@
     $dataStyleMusicaux = Yaml::parseFile(__DIR__ . '/../Static/fixtures/stylesMusicaux.yml');
 
     try{
+        echo("sqlite:musinear.sqlite3");
         $file_db = new PDO("sqlite:musinear.sqlite3");
         $file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 

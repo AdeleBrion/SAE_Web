@@ -1,5 +1,5 @@
 <?php
-namespace Classes;
+namespace Models\Classes;
 use autoload\Autoloader;
 Autoloader::register();
 
@@ -21,7 +21,7 @@ class Track extends Details{
     public static function gererAjoutPlaylist(int $idUtilisateur, int $idTitre, int $idAlbum){
         if ($idUtilisateur != 0) //si l'utilisateur est connecté
         {
-            $accesBD = new BD\BaseDeDonnee();
+            $accesBD = new BD\BaseDeDonnee(__DIR__);
             $dansPlaylist = $accesBD->titreDansPlaylist($idUtilisateur, $idAlbum, $idTitre);
             if ($dansPlaylist){
                 $accesBD->retirerTitreDePlaylist($idUtilisateur, $idAlbum, $idTitre);}
@@ -37,11 +37,11 @@ class Track extends Details{
         }
 
         if ($this->me == 0){    //si l'utilisateur n'est pas connecté
-            $addPlaylist = "<a href='connexion.php'><img class='check' src='fixtures/images/plus.png'/></a>";}
+            $addPlaylist = "<a href='connexion.php'><img class='check' src='../../Static/fixtures/images/plus.png'/></a>";}
         else{
-            $src = 'fixtures/images/plus.png';
+            $src = '../../Static/fixtures/images/plus.png';
             if ($this->database->titreDansPlaylist($this->me, $this->album, $this->titre)){
-                $src = 'fixtures/images/moins.png';
+                $src = '../../Static/fixtures/images/moins.png';
             }
 
             $addPlaylist = "<form method='POST'>

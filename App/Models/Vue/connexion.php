@@ -1,10 +1,9 @@
 <?php
-require_once "../../autoload/Autoloader.php";
-use autoload\Autoloader;
-Autoloader::register();
-require_once "nav/retourNav.php";
+require_once __DIR__ . '../../../autoload/Autoloader.php';
+\autoload\Autoloader::register();
+require_once "../nav/retourNav.php";
 
-$verifConnexion= new Classes\Verification\VerifConnexion();
+$verifConnexion= new Models\Classes\Verification\VerifConnexion();
 ?>
 
 <!DOCTYPE html>

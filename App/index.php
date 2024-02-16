@@ -3,7 +3,7 @@ require_once "autoload/Autoloader.php";
 use autoload\Autoloader;
 Autoloader::register();
 require_once "./Models/nav/nav.php";
-$accueil = new Classes\Accueil();
+$accueil = new Models\Classes\Accueil();
 
 ?>
 

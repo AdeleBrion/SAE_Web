@@ -1,5 +1,5 @@
 <?php
-namespace Classes;
+namespace Models\Classes;
 use autoload\Autoloader;
 Autoloader::register();
 
@@ -9,7 +9,7 @@ class Favoris{
     protected int $me;
 
     public function __construct(){
-        $this->database = new BD\BaseDeDonnee();
+        $this->database = new BD\BaseDeDonnee(__DIR__);
         $this->me = (int) $_SESSION['me'];
 
         if (!$this->me){
@@ -29,7 +29,7 @@ class Favoris{
 
     public function __toString(){
         $output ="<main>
-                    <h2 class='titre'><img src='fixtures/images/line.png'> Albums <img src='fixtures/images/line.png'></h2>
+                    <h2 class='titre'><img src='../../Static/fixtures/images/line.png'> Albums <img src='../../Static/fixtures/images/line.png'></h2>
                     <section class='container'>
                         <section class='albums'>";
         foreach ($this->database->getAlbumsFavoris($this->me) as $alb) {
@@ -37,7 +37,7 @@ class Favoris{
                 }
         $output .="</section>
                     </section>
-                    <h2 class='titre'><img src='fixtures/images/line.png'> Artistes <img src='fixtures/images/line.png'></h2><section class='container'>
+                    <h2 class='titre'><img src='../../Static/fixtures/images/line.png'> Artistes <img src='../../Static/fixtures/images/line.png'></h2><section class='container'>
                         <section class='artiste'>";
         foreach ($this->database->getArtistesSuivis($this->me) as $art){
             $output .= $art;

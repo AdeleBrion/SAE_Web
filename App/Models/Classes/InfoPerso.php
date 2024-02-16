@@ -1,5 +1,5 @@
 <?php
-namespace Classes;
+namespace Models\Classes;
 use autoload\Autoloader;
 Autoloader::register();
 
@@ -9,7 +9,7 @@ class InfoPerso{
     protected int $me;
 
     public function __construct(){
-        $this->database = new BD\BaseDeDonnee();
+        $this->database = new BD\BaseDeDonnee(__DIR__);
         $this->me = (int) $_SESSION['me'];
 
         if (!$this->me){
@@ -33,7 +33,7 @@ class InfoPerso{
 
     public function __toString(){
         $output = "<main>
-            <h1><img src='fixtures/images/line.png'> Mes informations <img src='fixtures/images/line.png'></h1>
+            <h1><img src='../../Static/fixtures/images/line.png'> Mes informations <img src='../../Static/fixtures/images/line.png'></h1>
             <h2>Votre nom d'artiste est : ".$this->monNom()."</h2>";
 
         if ($this->database->isArtiste($this->me)){

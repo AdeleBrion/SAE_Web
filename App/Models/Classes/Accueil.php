@@ -1,5 +1,5 @@
 <?php
-namespace Classes;
+namespace Models\Classes;
 use autoload\Autoloader;
 Autoloader::register();
 
@@ -9,7 +9,7 @@ class Accueil {
     protected array $artistes;
 
     public function __construct(){
-        $this->database = new BD\BaseDeDonnee();
+        $this->database = new BD\BaseDeDonnee(__DIR__);
         $this->albums = $this->database->getEveryAlbums();
         $this->artistes = $this->database->getEveryArtistes();
 
@@ -18,6 +18,10 @@ class Accueil {
             $this->albums = $this->database->getAlbumsByKeywords($keywords);
             $this->artistes = $this->database->getArtistesByKeywords($keywords);
         }
+    }
+
+    public static function racine(){
+        return __DIR__;
     }
 
     public function __toString(){

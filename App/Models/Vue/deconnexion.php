@@ -8,7 +8,7 @@ session_unset();
 <head>
     <meta charset="UTF-8">
     <title>Déconnexion</title>
-    <meta http-equiv="refresh" content="3;index.php">
+    <meta http-equiv="refresh" content="3;../../index.php">
     <link rel="stylesheet" href="../../Static/css/deconnexion.css">
 </head>
 <body>

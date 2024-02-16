@@ -4,7 +4,7 @@ use autoload\Autoloader;
 Autoloader::register();
 require_once "../nav/retourNav.php";
 
-$insertionAlbum = new Classes\InsertionAlbum();
+$insertionAlbum = new Models\Classes\InsertionAlbum();
 ?>
 
 <!DOCTYPE html>

@@ -1,7 +1,8 @@
 <?php
-namespace Classes\BD;
-use Classes\Miniature;
-use Classes\Track;
+namespace Models\Classes\BD;
+use Models\Classes\Miniature;
+use Models\Classes\Track;
+use Models\Classes\Accueil;
 use PDO;
 use PDOException;
 
@@ -10,9 +11,9 @@ class BaseDeDonnee {
     protected string $cheminImages = "../../Static/fixtures/images/";
     protected $pdo;
 
-    public function __construct() {
+    public function __construct($path) {
         try {
-            $this->pdo = new PDO('sqlite:musinear.sqlite3');
+            $this->pdo = new PDO("sqlite:".$path."/../../musinear.sqlite3");
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             echo "Erreur de connexion à la base de données : " . $e->getMessage();

@@ -1,6 +1,7 @@
 <?php
+require_once __DIR__ . '../../../autoload/Autoloader.php';
 \autoload\Autoloader::register();
-use Classes\Navigation;
+use Models\Classes\Navigation;
 $nav = new Navigation();
 echo $nav;
 

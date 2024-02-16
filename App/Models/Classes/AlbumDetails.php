@@ -1,5 +1,5 @@
 <?php
-namespace Classes;
+namespace Models\Classes;
 
 class AlbumDetails extends Details{
 
@@ -54,11 +54,11 @@ class AlbumDetails extends Details{
         $output .= "</section><div class='detail'>";
 
         if ($this->me == 0){    //si l'utilisateur n'est pas connecté
-            $coeur = "<a href='connexion.php'><img class='coeur' src='fixtures/images/coeur.png'></a>";}
+            $coeur = "<a href='connexion.php'><img class='coeur' src='../../Static/fixtures/images/coeur.png'></a>";}
         else{
-            $src = 'fixtures/images/coeur.png';
+            $src = '../../Static/fixtures/images/coeur.png';
             if ($this->database->albumEnFavoris($this->me, $this->idAlbum)){
-                $src = 'fixtures/images/coeur_plein.png';
+                $src = '../../Static/fixtures/images/coeur_plein.png';
             }
 
             $coeur = "<form method='POST'>

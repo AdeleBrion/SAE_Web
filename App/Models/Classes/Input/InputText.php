@@ -1,6 +1,6 @@
 <?php
-namespace Classes\Input;
-use Classes\Input\Input;
+namespace Models\Classes\Input;
+use Models\Classes\Input\Input;
 
 class InputText extends Input {
     public function __construct($id,$name,$value,$label,$required, $intitule) {

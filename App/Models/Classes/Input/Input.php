@@ -1,5 +1,5 @@
 <?php
-namespace Classes\Input;
+namespace Models\Classes\Input;
 
 abstract class Input{
     protected string $type;

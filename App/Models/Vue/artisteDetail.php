@@ -4,7 +4,7 @@ use autoload\Autoloader;
 Autoloader::register();
 require_once "../nav/retourNav.php";
 
-$artiste = new Classes\ArtisteDetails();
+$artiste = new Models\Classes\ArtisteDetails();
 ?>
 
 <!DOCTYPE html>

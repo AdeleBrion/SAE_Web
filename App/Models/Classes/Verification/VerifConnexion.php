@@ -1,18 +1,18 @@
 <?php
-namespace Classes\Verification;
-require_once "autoload/Autoloader.php";
+namespace Models\Classes\Verification;
+require_once __DIR__ . '../../../../autoload/Autoloader.php';
 use autoload\Autoloader;
 Autoloader::register();
-use Classes\BD\BaseDeDonnee;
-use Classes\Input\InputText;
-use Classes\Input\InputPassword;
+use Models\Classes\BD\BaseDeDonnee;
+use Models\Classes\Input\InputText;
+use Models\Classes\Input\InputPassword;
 
 class VerifConnexion{
     protected BaseDeDonnee $database;
     protected string $tentative;
 
     public function __construct(){
-        $this->database = new BaseDeDonnee();
+        $this->database = new BaseDeDonnee(__DIR__ . '/../');
         $this->tentative = $_POST['tentative'] ?? '';
 
         if ($this->tentative == true){
@@ -29,7 +29,7 @@ class VerifConnexion{
 
             if ($mdpBD == $mdpSaisi){
                 $_SESSION['me'] = $idCompte;
-                header('Location: index.php');
+                header('Location: ../../../index.php');
             }
         }
     }

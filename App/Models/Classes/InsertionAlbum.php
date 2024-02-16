@@ -1,22 +1,22 @@
 <?php
-namespace Classes;
+namespace Models\Classes;
 use autoload\Autoloader;
 Autoloader::register();
-use Classes\Input\InputText;
-use Classes\Input\InputNumber;
+use Models\Classes\Input\InputText;
+use Models\Classes\Input\InputNumber;
 
 class InsertionAlbum{
 
-    protected string $cheminEnregistrement = "fixtures/images/";
+    protected string $cheminEnregistrement = "../../Static/fixtures/images/";
     protected int $me;
     protected BD\BaseDeDonnee $database;
 
     public function __construct(){
-        $this->database = new BD\BaseDeDonnee();
+        $this->database = new BD\BaseDeDonnee(__DIR__);
         $this->me = (int) $_SESSION['me'];
 
         if (!$this->database->isArtiste($this->me)) {
-            header('Location: index.php');
+            header('Location: ../../index.php');
         }
 
         if($_POST || $_FILES){
@@ -60,24 +60,24 @@ class InsertionAlbum{
 
         $this->database->insertionAlbum($this->me, $_POST['nomAlbum'], $annee, $pochette, $_POST['titre'], $genres);
 
-        header('Location: index.php');
+        header('Location: ../../index.php');
 
     }
 
     public function __toString(){
         $output = "<main>
-            <h1><img src='fixtures/images/line.png'> Créez votre album <img src='fixtures/images/line.png'></h1>
+            <h1><img src='../../Static/fixtures/images/line.png'> Créez votre album <img src='../../Static/fixtures/images/line.png'></h1>
 
             <p> Artiste : ".$this->database->getNomCompte(intval($_SESSION['me']))." </p>
 
-            <h2><img src='fixtures/images/line.png'> Couverture de votre album <img src='fixtures/images/line.png'></h2>
+            <h2><img src='../../Static/fixtures/images/line.png'> Couverture de votre album <img src='../../Static/fixtures/images/line.png'></h2>
             
             <form action='creationAlbum.php' method='POST' enctype='multipart/form-data' >
                 <input id='dropZone' type='file' name='pochette' size='30'>
 
                 <section class='textArea'>
                     <section class='nomAlbum'>
-                        <h2><img src='fixtures/images/line.png'> Nom de l'album <img src='fixtures/images/line.png'></h2>";
+                        <h2><img src='../../Static/fixtures/images/line.png'> Nom de l'album <img src='../../Static/fixtures/images/line.png'></h2>";
 
         $nomAlbum = new InputText('saisir', 'nomAlbum', 'Nom album ici...', 'nomAlbum', true, '');
         $output .= $nomAlbum->render();
@@ -85,7 +85,7 @@ class InsertionAlbum{
                         
         $output .= "</section>
                     <section class='anneeParution'>
-                        <h2><img src='fixtures/images/line.png'> Année de parution <img src='fixtures/images/line.png'></h2>";
+                        <h2><img src='../../Static/fixtures/images/line.png'> Année de parution <img src='../../Static/fixtures/images/line.png'></h2>";
 
         $parution = new InputNumber('saisir', 'annee', date('Y'), 'annee', true, '');
         $output .= $parution->render();
@@ -93,22 +93,22 @@ class InsertionAlbum{
         $output .= "</section>
                 </section>
                 <section class='genreAlbum'>
-                    <h2><img src='fixtures/images/line.png'> Genre de l'album <img src='fixtures/images/line.png'></h2>
+                    <h2><img src='../../Static/fixtures/images/line.png'> Genre de l'album <img src='../../Static/fixtures/images/line.png'></h2>
                     <div class='selectbox'>";
 
         $options = $this->database->getEveryGenres();
         $selectGenre = new SelectBox('Choisir un genre', 'genre[]', '', 'select', $options);
         $output .= $selectGenre."</div>
-                    <button id='ajouterGenre'><img src='fixtures/images/add.png'> Ajouter un genre</button>
+                    <button id='ajouterGenre'><img src='../../Static/fixtures/images/add.png'> Ajouter un genre</button>
                     <button id='supprimerGenre'>❌ Supprimer un genre</button>
                 </section>
 
                 <section class='titres'>
-                    <h2><img src='fixtures/images/line.png'> Titres<img src='fixtures/images/line.png'></h2>
+                    <h2><img src='../../Static/fixtures/images/line.png'> Titres<img src='../../Static/fixtures/images/line.png'></h2>
                     <div class='tracks'>
                         <input type='text' class='saisir' id='titre' name='titre[]' placeholder='Nom titre ici...' required=true>
                     </div>
-                    <button id='ajouter'><img src='fixtures/images/add.png'> Ajouter un titre</button>
+                    <button id='ajouter'><img src='../../Static/fixtures/images/add.png'> Ajouter un titre</button>
                     <button id='supprimer'>❌ Supprimer un titre</button>
                 </section>
                 

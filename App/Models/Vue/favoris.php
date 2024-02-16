@@ -4,7 +4,7 @@ use autoload\Autoloader;
 Autoloader::register();
 require_once "../nav/RetourNav.php";
 
-$favoris = new Classes\Favoris();
+$favoris = new Models\Classes\Favoris();
 
 ?>
 

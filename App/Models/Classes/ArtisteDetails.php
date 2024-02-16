@@ -1,5 +1,5 @@
 <?php
-namespace Classes;
+namespace Models\Classes;
 
 class ArtisteDetails extends Details{
     protected int $idArtiste;
@@ -46,11 +46,11 @@ class ArtisteDetails extends Details{
         }
 
         if ($this->me == 0){    //si l'utilisateur n'est pas connecté
-            $coeur = "<a href='connexion.php'><img class='coeur' src='../Static/fixtures/images/coeur.png'></a>";}
+            $coeur = "<a href='connexion.php'><img class='coeur' src='../../Static/fixtures/images/coeur.png'></a>";}
         else{
-            $src = '../Static/fixtures/images/coeur.png';
+            $src = '../../Static/fixtures/images/coeur.png';
             if ($this->database->artisteSuivi($this->me, $this->idArtiste)){
-                $src = '../Static/fixtures/images/coeur_plein.png';
+                $src = '../../Static/fixtures/images/coeur_plein.png';
             }
 
             $coeur = "<form method='get'>
@@ -63,7 +63,7 @@ class ArtisteDetails extends Details{
         $output .= "</ul>".$coeur."</section>
                 <section class='infos'>
                     <p class='description'>$this->biographie</p>
-                    <h2><img src='fixtures/images/line.png'> Albums <img src='../Static/fixtures/images/line.png'></h2>
+                    <h2><img src='../../Static/fixtures/images/line.png'> Albums <img src='../../Static/fixtures/images/line.png'></h2>
                     <div class='content'>";
 
         foreach($this->database->getAlbumsByArtist($this->idArtiste) as $album){
