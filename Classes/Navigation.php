@@ -9,7 +9,7 @@ class Navigation{
 
     public function __construct(){
         $this->database = new BaseDeDonnee();
-        $this->me = (int) $_SESSION['me'];
+        $this->me =  isset($_SESSION['me']) ? (int) $_SESSION['me'] : 0;
     }
 
     public function __toString(){
@@ -32,7 +32,19 @@ class Navigation{
                         <a href='compte.php'>Mes informations</a>
                         <a href='favoris.php'>Mes favoris</a>
                         <a href='playlist.php'>Ma playlist</a>
-                        <a href='deconnexion.php'>Se deconnecter</a>
+                        <a onclick='togglePopup($this->me);'>Se deconnecter</a>
+                    </div>
+
+                    <div id='$this->me' class='popup-overlay'>
+                        <div class='popup-content'>
+                            <div class='contenu-popup'>
+                                <h2>Vous allez être déconnecté.</h2>
+                            </div>
+                            <div class='contenu-popup'>
+                                <a onclick='togglePopup($this->me);'><input id='annuler-deconnexion' type='button' value='Annuler' alt='AnnulerDeconnexion'/></a>
+                                <a href='deconnexion.php'><input id='valider-deconnexion' type='button' value='Continuer' alt='ValiderDeconnexion'/></a>
+                            </div>
+                        </div>
                     </div>";
         }
         return $output;
