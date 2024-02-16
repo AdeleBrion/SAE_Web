@@ -1,5 +1,5 @@
 <?php
-namespace BD;
+namespace Classes\BD;
 use Classes\Miniature;
 use Classes\Track;
 use PDO;

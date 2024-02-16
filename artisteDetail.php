@@ -2,10 +2,9 @@
 require_once "autoload/Autoloader.php";
 use autoload\Autoloader;
 Autoloader::register();
-use Classes\ArtisteDetails;
-require_once "retourNav.php";
+require_once "nav/retourNav.php";
 
-$artiste = new ArtisteDetails();
+$artiste = new Classes\ArtisteDetails();
 ?>
 
 <!DOCTYPE html>

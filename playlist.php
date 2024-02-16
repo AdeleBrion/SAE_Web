@@ -2,10 +2,9 @@
 require_once "autoload/Autoloader.php";
 use autoload\Autoloader;
 Autoloader::register();
-require_once "retourNav.php";
-use Classes\Playlist;
+require_once "nav/nav.php";
 
-$playlist = new Playlist();
+$playlist = new Classes\Playlist();
 ?>
 
 <!DOCTYPE html>

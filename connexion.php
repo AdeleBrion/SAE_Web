@@ -2,10 +2,9 @@
 require_once "autoload/Autoloader.php";
 use autoload\Autoloader;
 Autoloader::register();
-require_once "retourNav.php";
-use Classes\VerifConnexion;
+require_once "nav/retourNav.php";
 
-$verifConnexion= new VerifConnexion();
+$verifConnexion= new Classes\Verification\VerifConnexion();
 ?>
 
 <!DOCTYPE html>

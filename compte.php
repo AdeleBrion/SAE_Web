@@ -2,9 +2,8 @@
 require_once "autoload/Autoloader.php";
 use autoload\Autoloader;
 Autoloader::register();
-require_once "retourNav.php";
-use Classes\InfoPerso;
-$infoPerso = new InfoPerso();
+require_once "nav/retourNav.php";
+$infoPerso = new Classes\InfoPerso();
 
 ?>
 

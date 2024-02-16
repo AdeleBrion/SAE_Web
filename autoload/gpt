@@ -2,15 +2,21 @@
 namespace autoload;
 
 class Autoloader{
+
     static function register(){
         spl_autoload_register(function ($class) {
-            $path = str_replace('\\', DIRECTORY_SEPARATOR, $class);
-            $classFile = __DIR__ . '/../' . $path . '.php';
+            $classFile = __DIR__ . '/path_vers_le_dossier/' . $class . '.php';
     
             if (file_exists($classFile)) {
                 require_once $classFile;
             }
         });
     }
+
+    static function autoload($class){
+        $path = str_replace('\\', DIRECTORY_SEPARATOR, $class);
+        require_once 'Classes/' . $path . '.php';
+    }
 }
+
 ?>

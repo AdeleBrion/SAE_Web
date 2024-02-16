@@ -2,10 +2,9 @@
 require_once "autoload/Autoloader.php";
 use autoload\Autoloader;
 Autoloader::register();
-use Classes\Favoris;
-require_once "retourNav.php";
+require_once "nav/retourNav.php";
 
-$favoris = new Favoris();
+$favoris = new Classes\Favoris();
 
 ?>
 

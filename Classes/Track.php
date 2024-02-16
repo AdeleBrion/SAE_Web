@@ -3,7 +3,6 @@ namespace Classes;
 require_once "autoload/Autoloader.php";
 use autoload\Autoloader;
 Autoloader::register();
-use BD\BaseDeDonnee;
 
 class Track extends Details{
 
@@ -23,7 +22,7 @@ class Track extends Details{
     public static function gererAjoutPlaylist(int $idUtilisateur, int $idTitre, int $idAlbum){
         if ($idUtilisateur != 0) //si l'utilisateur est connecté
         {
-            $accesBD = new BaseDeDonnee();
+            $accesBD = new BD\BaseDeDonnee();
             $dansPlaylist = $accesBD->titreDansPlaylist($idUtilisateur, $idAlbum, $idTitre);
             if ($dansPlaylist){
                 $accesBD->retirerTitreDePlaylist($idUtilisateur, $idAlbum, $idTitre);}

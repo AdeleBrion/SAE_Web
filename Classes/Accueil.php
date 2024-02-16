@@ -3,15 +3,14 @@ namespace Classes;
 require_once "autoload/Autoloader.php";
 use autoload\Autoloader;
 Autoloader::register();
-use BD\BaseDeDonnee;
 
 class Accueil {
-    protected BaseDeDonnee $database;
+    protected BD\BaseDeDonnee $database;
     protected array $albums;
     protected array $artistes;
 
     public function __construct(){
-        $this->database = new BaseDeDonnee();
+        $this->database = new BD\BaseDeDonnee();
         $this->albums = $this->database->getEveryAlbums();
         $this->artistes = $this->database->getEveryArtistes();
 

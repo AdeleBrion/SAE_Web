@@ -1,5 +1,6 @@
 <?php
-namespace Classes;
+namespace Classes\Input;
+use Classes\Input\Input;
 
 class InputCheckbox extends Input {
     public function __construct($id,$name,$value,$label,$required, $intitule) {

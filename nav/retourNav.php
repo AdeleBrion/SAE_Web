@@ -1,4 +1,5 @@
-<?php session_start(); ?>
+<?php 
+session_start(); ?>
 
 <link rel="stylesheet" href="css/retourNav.css">
 <link rel="icon" href="fixtures/images/logoBarre.png" type="image/png">

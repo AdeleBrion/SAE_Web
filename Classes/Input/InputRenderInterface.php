@@ -1,5 +1,5 @@
 <?php
-namespace Classes;
+namespace Classes\Input\Irender;
 
 interface Irender {
     public function render();

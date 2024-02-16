@@ -2,10 +2,9 @@
 require_once "autoload/Autoloader.php";
 use autoload\Autoloader;
 Autoloader::register();
-require_once "retourNav.php";
-use Classes\InsertionAlbum;
+require_once "nav/retourNav.php";
 
-$insertionAlbum = new InsertionAlbum();
+$insertionAlbum = new Classes\InsertionAlbum();
 ?>
 
 <!DOCTYPE html>

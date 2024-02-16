@@ -1,5 +1,6 @@
 <?php
-namespace Classes;
+namespace Classes\Input;
+use Classes\Input\Input;
 
 class InputNumber extends Input {
     public function __construct($id,$name,$value,$label,$required,$intitule){

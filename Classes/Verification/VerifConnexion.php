@@ -1,9 +1,11 @@
 <?php
-namespace Classes;
+namespace Classes\Verification;
 require_once "autoload/Autoloader.php";
 use autoload\Autoloader;
 Autoloader::register();
-use BD\BaseDeDonnee;
+use Classes\BD\BaseDeDonnee;
+use Classes\Input\InputText;
+use Classes\Input\InputPassword;
 
 class VerifConnexion{
     protected BaseDeDonnee $database;

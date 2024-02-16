@@ -1,5 +1,5 @@
 <?php
-namespace Classes;
+namespace Classes\Input;
 
 abstract class Input{
     protected string $type;

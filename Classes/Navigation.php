@@ -3,23 +3,21 @@ namespace Classes;
 require_once "autoload/Autoloader.php";
 use autoload\Autoloader;
 Autoloader::register();
-use BD\BaseDeDonnee;
-require_once './BD/BaseDeDonnee.php';
 
 session_start();
 
 class Navigation{
-    protected BaseDeDonnee $database;
+    protected BD\BaseDeDonnee $database;
     protected int $me;
 
     public function __construct(){
-        $this->database = new BaseDeDonnee();
+        $this->database = new BD\BaseDeDonnee();
         $this->me = (int) $_SESSION['me'];
     }
 
     public function __toString(){
         $output = "<nav class='navbar navbar-default navbar'>
-                        <img class='logo' src='fixtures/images/logo.png'>
+                        <a href='index.php'><img class='logo' src='fixtures/images/logo.png'><a>
                         <form class='barre-recherche' action='index.php' method='GET'>
                             <input type='text' name='keywords' placeholder='Rechercher ...'></div>
                         </form>";

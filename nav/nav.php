@@ -1,7 +1,6 @@
 <?php
 require_once "autoload/Autoloader.php";
-use autoload\Autoloader;
-Autoloader::register();
+\autoload\Autoloader::register();
 use Classes\Navigation;
 $nav = new Navigation();
 echo $nav;

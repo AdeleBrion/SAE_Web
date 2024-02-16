@@ -3,16 +3,17 @@ namespace Classes;
 require_once "autoload/Autoloader.php";
 use autoload\Autoloader;
 Autoloader::register();
-use BD\BaseDeDonnee;
+use Classes\Input\InputText;
+use Classes\Input\InputNumber;
 
 class InsertionAlbum{
 
     protected string $cheminEnregistrement = "fixtures/images/";
     protected int $me;
-    protected BaseDeDonnee $database;
+    protected BD\BaseDeDonnee $database;
 
     public function __construct(){
-        $this->database = new BaseDeDonnee();
+        $this->database = new BD\BaseDeDonnee();
         $this->me = (int) $_SESSION['me'];
 
         if (!$this->database->isArtiste($this->me)) {

@@ -2,10 +2,9 @@
 require_once "autoload/Autoloader.php";
 use autoload\Autoloader;
 Autoloader::register();
-require_once "retourNav.php";
-use Classes\AlbumDetails;
+require_once "nav/retourNav.php";
 
-$album = new AlbumDetails();
+$album = new Classes\AlbumDetails();
 ?>
 
 <!DOCTYPE html>

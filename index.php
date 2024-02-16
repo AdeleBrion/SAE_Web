@@ -2,9 +2,8 @@
 require_once "autoload/Autoloader.php";
 use autoload\Autoloader;
 Autoloader::register();
-require_once "nav.php";
-use Classes\Accueil;
-$accueil = new Accueil();
+require_once "nav/nav.php";
+$accueil = new Classes\Accueil();
 
 ?>
 
