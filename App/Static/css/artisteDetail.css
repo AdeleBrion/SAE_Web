@@ -6,8 +6,6 @@ main{
     border: #3F3F3F solid;
 }
 
-/* Côté information sur l'artiste/le grouped */
-
 .classification{
     flex-basis: 20%;
     text-align: center;
@@ -17,7 +15,8 @@ main{
 }
 
 .artiste{
-    max-height: 35vh;
+    max-width: 45vh;
+    max-height: 45vh;
     margin-right: 2vh;
 }
 
@@ -36,8 +35,6 @@ main{
     margin-right: 10vh;
 }
 
-/* Côté description et albums */
-
 .infos{
     margin: 3vh 0vh 3vh 0vh;
     flex-basis: 75%;
@@ -45,9 +42,11 @@ main{
 }
 
 .description{
-    margin-left: 4vh;
+    margin-left: 3vw;
     justify-content: space-evenly;
-    font-size: 27px;
+    font-size: 26px;
+    text-align : justify;
+    margin-right: 3vw;
 }
 
 .infos > h2{

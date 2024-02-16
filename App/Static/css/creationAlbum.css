@@ -86,8 +86,8 @@ button, select, input[type="text"], input[type="number"]{
 }
 
 .validation{
-    background-color: red;
-    border-radius: 0%;
+    background-color: rgb(16, 181, 21);
+    border-radius: 10px;
     border: none;
     font-size: larger;
     padding: 2vh 2vw 2vh 2vw;

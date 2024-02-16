@@ -14,8 +14,14 @@ class Miniature{
         $this->href = $redirection;
     }
 
-    public function getId(): int{
+    public function getId(): int
+    {
         return $this->id;
+    }
+
+    public function getNom(): string
+    {
+        return $this->nom;
     }
 
     public function __toString(){

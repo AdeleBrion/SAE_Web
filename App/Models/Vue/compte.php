@@ -13,6 +13,8 @@ $infoPerso = new Models\Classes\InfoPerso();
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="../../Static/css/connexion.css">
+        <link rel="stylesheet" href="../../Static/css/popup.css">
+        <script src="../../Static/js/popup.js"></script>
         <title>Mes informations - Mus'inEar</title>
     </head>
     <body>

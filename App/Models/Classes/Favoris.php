@@ -10,7 +10,7 @@ class Favoris{
 
     public function __construct(){
         $this->database = new BD\BaseDeDonnee(__DIR__);
-        $this->me = (int) $_SESSION['me'];
+        $this->me = isset($_SESSION['me']) ? (int) $_SESSION['me'] : 0;
 
         if (!$this->me){
             header('Location: connexion.php');

@@ -10,7 +10,7 @@ use Models\Classes\Input\InputCheckbox;
 
 class VerifInscription{
 
-    protected string $cheminEnregistrement = "fixtures/images/";
+    protected string $cheminEnregistrement = "../../Static/fixtures/images/";
     protected BaseDeDonnee $database;
     protected string $tentative;
 

@@ -52,7 +52,14 @@ class Track extends Details{
                     </form>";
         }
 
-        $output .= "<p class='title'>$this->nom</p>".$addPlaylist."</div>";
+        if (!$this->ordonne){
+            $intitule = "<a class='title' href='albumDetail.php?id=$this->album' ><p >$this->nom</p></a>";
+        }
+
+        else {
+            $intitule = "<p class='title'>$this->nom</p>";}
+        
+        $output .= $intitule.$addPlaylist."</div>";
 
         return $output;
     }

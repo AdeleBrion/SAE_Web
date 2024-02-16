@@ -20,10 +20,6 @@ class Accueil {
         }
     }
 
-    public static function racine(){
-        return __DIR__;
-    }
-
     public function __toString(){
         $output ="<main>
                     <h2 class='titre'><img src='../Static/fixtures/images/line.png'> Albums <img src='../Static/fixtures/images/line.png'></h2>

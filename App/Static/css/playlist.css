@@ -14,7 +14,6 @@ main > div, main > h1{
     color: #FFF;
     border-right: #FFF solid;
     border-bottom: #FFF solid thin;
-
     text-align: justify;
     padding: 1vh 2vw 1vh 2vw;
 }
@@ -38,6 +37,8 @@ main > div, main > h1{
 }
 
 .title{
+    text-decoration: none;
+    color: #FFF;
     flex-grow: 1;
     flex-basis: 60%;
 }

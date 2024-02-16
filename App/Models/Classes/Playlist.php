@@ -9,7 +9,7 @@ class Playlist{
 
     public function __construct(){
         $this->database = new BD\BaseDeDonnee(__DIR__);
-        $this->me = (int) $_SESSION['me'];
+        $this->me = isset($_SESSION['me']) ? (int) $_SESSION['me'] : 0;
 
         if (!$this->me){
             header('Location: connexion.php');
@@ -18,14 +18,9 @@ class Playlist{
         if (isset($_POST['ajoutPlaylist']))Track::gererAjoutPlaylist($this->me, $_POST['titre'], $_POST['album']);
     }
 
-    public function monNom(): string
-    {
-        return $this->database->getNomCompte($this->me);
-    }
-
     public function __toString(){
         $output = "<main>
-                        <h1><img src='../../Static/fixtures/images/line.png'>Ma Playlist<img src='../../Static/fixtures/images/line.png'></h1>
+                        <h1><img src='../../Static/fixtures/images/line.png'> Ma Playlist <img src='../../Static/fixtures/images/line.png'></h1>
                         <div class='playlist'>";
         $titres = $this->database->getPlaylist($this->me);
         foreach ($titres as $titre) {

@@ -11,7 +11,7 @@ class Navigation{
 
     public function __construct(){
         $this->database = new BD\BaseDeDonnee(__DIR__);
-        $this->me = (int) $_SESSION['me'];
+        $this->me = isset($_SESSION['me']) ? (int) $_SESSION['me'] : 0;
     }
 
     public function __toString(){
@@ -34,7 +34,19 @@ class Navigation{
                         <a href='../Models/Vue/compte.php'>Mes informations</a>
                         <a href='../Models/Vue/favoris.php'>Mes favoris</a>
                         <a href='../Models/Vue/playlist.php'>Ma playlist</a>
-                        <a href='../Models/Vue/deconnexion.php'>Se deconnecter</a>
+                        <a onclick='togglePopup($this->me);'>Se deconnecter</a>
+                    </div>
+
+                    <div id='$this->me' class='popup-overlay'>
+                        <div class='popup-content'>
+                            <div class='contenu-popup'>
+                                <h2>Vous allez être déconnecté.</h2>
+                            </div>
+                            <div class='contenu-popup'>
+                                <a onclick='togglePopup($this->me);'><input id='bouton-non' type='button' value='Annuler' alt='AnnulerDeconnexion'/></a>
+                                <a href='Models/Vue/deconnexion.php'><input id='bouton-oui' type='button' value='Continuer' alt='ValiderDeconnexion'/></a>
+                            </div>
+                        </div>
                     </div>";
         }
         return $output;

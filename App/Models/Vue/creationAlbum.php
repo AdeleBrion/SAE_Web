@@ -17,7 +17,6 @@ $insertionAlbum = new Models\Classes\InsertionAlbum();
         <script src="../../Static/js/creationAlbum.js" defer></script>
         <title>Création d'album - Mus'inEar</title>
     </head>
-
     <body>
         <?php echo $insertionAlbum; ?>
     </body>

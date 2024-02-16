@@ -181,52 +181,6 @@ class BaseDeDonnee {
         }
     }
 
-    private function supprimerTitre(int $id){
-        try{
-            $query = "DELETE FROM PLAYLIST WHERE idTtire = $id";
-            $stmt=$this->pdo->prepare($query);
-            $stmt->execute();
-            $query = "DELETE FROM TITRE WHERE idTtire = $id";
-            $stmt=$this->pdo->prepare($query);
-            $stmt->execute();
-        }
-        catch (PDOException $e) {
-            echo $e->getMessage();
-        }
-    }
-
-    private function supprimerAlbum(int $id){
-        try{
-            $query = "SELECT idTitre
-            FROM TITRE
-            WHERE idAlbum = $id";
-            $stmt=$this->pdo->prepare($query);
-            $stmt->execute();
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $this->supprimerTitre(intval($row["idTitre"]));
-            }
-
-            $query = "DELETE FROM FAVORIS WHERE idAlbum = $id";
-            $stmt=$this->pdo->prepare($query);
-            $stmt->execute();
-
-            $query = "DELETE FROM NOTER WHERE idAlbum = $id";
-            $stmt=$this->pdo->prepare($query);
-            $stmt->execute();
-
-            $query = "DELETE FROM GENRER WHERE idAlbum = $id";
-            $stmt=$this->pdo->prepare($query);
-            $stmt->execute();
-
-            $query = "DELETE FROM ALBUM WHERE idAlbum = $id";
-            $stmt=$this->pdo->prepare($query);
-            $stmt->execute();
-        }
-        catch (PDOException $e) {
-            echo $e->getMessage();
-        }
-    }
-
     public function fermerCompte(int $id){
         try{
             if ($this->isArtiste($id)){             //si l'artiste est un artiste
@@ -514,6 +468,38 @@ class BaseDeDonnee {
         }
     }
 
+    public function supprimerAlbum(int $id){
+        try{
+            $query = "SELECT idTitre
+            FROM TITRE
+            WHERE idAlbum = $id";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $this->supprimerTitre($id, intval($row["idTitre"]));
+            }
+
+            $query = "DELETE FROM FAVORIS WHERE idAlbum = $id";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
+
+            $query = "DELETE FROM NOTER WHERE idAlbum = $id";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
+
+            $query = "DELETE FROM GENRER WHERE idAlbum = $id";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
+
+            $query = "DELETE FROM ALBUM WHERE idAlbum = $id";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
+        }
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
     ##############################################################
     ########################### ARTISTE ##########################
     ##############################################################
@@ -703,7 +689,6 @@ class BaseDeDonnee {
         }
     }
     
-    
     public function getEveryGenres(): array
     {
         try {
@@ -725,6 +710,23 @@ class BaseDeDonnee {
     ##############################################################
     ########################### TITRE ############################
     ##############################################################
+
+    private function supprimerTitre(int $idAlbum, int $idTitre){
+        try{
+            $query = "DELETE FROM PLAYLIST
+            WHERE idAlbum=$idAlbum AND idTitre = $idTitre";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
+            $query = "DELETE FROM TITRE
+            WHERE idAlbum=$idAlbum AND idTitre = $idTitre";
+            $stmt=$this->pdo->prepare($query);
+            $stmt->execute();
+        }
+
+        catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
 
     public function getTitresByAlbum(int $idAlbum): array
     {
@@ -804,6 +806,6 @@ class BaseDeDonnee {
             echo $e->getMessage();
         }
     }
-
 }
+
 ?>
