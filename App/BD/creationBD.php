@@ -5,17 +5,16 @@
     use Symfony\Component\Yaml\Yaml;
     
     // Lecture du fichier YAML
-    $dataCompte = Yaml::parseFile(__DIR__ . '/../Static/fixtures/comptes.yml');
-    $dataArtiste = Yaml::parseFile(__DIR__ . '/../Static/fixtures/artiste.yml');
-    $dataUtilisateur = Yaml::parseFile(__DIR__ . '/../Static/fixtures/utilisateurs.yml');
-    $dataGenre = Yaml::parseFile(__DIR__ . '/../Static/fixtures/genres.yml');
-    $dataAlbum = Yaml::parseFile(__DIR__ . '/../Static/fixtures/albums.yml');
-    $dataTitre = Yaml::parseFile(__DIR__ . '/../Static/fixtures/titres.yml');
-    $dataGenresAlbums = Yaml::parseFile(__DIR__ . '/../Static/fixtures/genresAlbums.yml');
-    $dataStyleMusicaux = Yaml::parseFile(__DIR__ . '/../Static/fixtures/stylesMusicaux.yml');
+    $dataCompte = Yaml::parseFile(__DIR__ . '/../Static/fixtures/yml/comptes.yml');
+    $dataArtiste = Yaml::parseFile(__DIR__ . '/../Static/fixtures/yml/artiste.yml');
+    $dataUtilisateur = Yaml::parseFile(__DIR__ . '/../Static/fixtures/yml/utilisateurs.yml');
+    $dataGenre = Yaml::parseFile(__DIR__ . '/../Static/fixtures/yml/genres.yml');
+    $dataAlbum = Yaml::parseFile(__DIR__ . '/../Static/fixtures/yml/albums.yml');
+    $dataTitre = Yaml::parseFile(__DIR__ . '/../Static/fixtures/yml/titres.yml');
+    $dataGenresAlbums = Yaml::parseFile(__DIR__ . '/../Static/fixtures/yml/genresAlbums.yml');
+    $dataStyleMusicaux = Yaml::parseFile(__DIR__ . '/../Static/fixtures/yml/stylesMusicaux.yml');
 
     try{
-        echo("sqlite:musinear.sqlite3");
         $file_db = new PDO("sqlite:musinear.sqlite3");
         $file_db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
 

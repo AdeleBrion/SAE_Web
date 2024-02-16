@@ -13,10 +13,10 @@ class InsertionAlbum{
 
     public function __construct(){
         $this->database = new BD\BaseDeDonnee(__DIR__);
-        $this->me = (int) $_SESSION['me'];
+        $this->me = isset($_SESSION['me']) ? (int) $_SESSION['me'] : 0;
 
         if (!$this->database->isArtiste($this->me)) {
-            header('Location: ../../index.php');
+            header('Location: ../Vue/connexion.php');
         }
 
         if($_POST || $_FILES){
