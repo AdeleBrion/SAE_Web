@@ -7,7 +7,7 @@ use PDOException;
 
 class BaseDeDonnee {
 
-    protected string $cheminImages = "fixtures/images/";
+    protected string $cheminImages = "../../Static/fixtures/images/";
     protected $pdo;
 
     public function __construct() {
@@ -306,7 +306,7 @@ class BaseDeDonnee {
             $stmt->execute();
             $albums = array();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $album = new Miniature(intval($row["idAlbum"]), $row["nomAlbum"], $this->cheminImages.$row["cheminPochette"], 'albumDetail.php?id='.$row["idAlbum"]);
+                $album = new Miniature(intval($row["idAlbum"]), $row["nomAlbum"], $this->cheminImages.$row["cheminPochette"], '../../Models/Vue/albumDetail.php?id='.$row["idAlbum"]);
                 array_push($albums, $album);
             }
 
@@ -348,7 +348,7 @@ class BaseDeDonnee {
             $stmt->execute();
             $albums = array();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $album = new Miniature(intval($row["idAlbum"]), $row["nomAlbum"], $this->cheminImages.$row["cheminPochette"], 'albumDetail.php?id='.$row["idAlbum"]);
+                $album = new Miniature(intval($row["idAlbum"]), $row["nomAlbum"], $this->cheminImages.$row["cheminPochette"], '../../Models/Vue/albumDetail.php?id='.$row["idAlbum"]);
                 array_push($albums, $album);
             }
 
@@ -386,7 +386,7 @@ class BaseDeDonnee {
             $stmt->execute();
             $albums = array();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                array_push($albums, new Miniature(intval($row["idAlbum"]), $row["nomAlbum"], $this->cheminImages.$row["cheminPochette"], 'albumDetail.php?id='.$row["idAlbum"]));
+                array_push($albums, new Miniature(intval($row["idAlbum"]), $row["nomAlbum"], $this->cheminImages.$row["cheminPochette"], '../../Models/Vue/albumDetail.php?id='.$row["idAlbum"]));
             }
 
             return $albums;
@@ -426,7 +426,7 @@ class BaseDeDonnee {
             $stmt->execute();
             $albums = array();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                array_push($albums, new Miniature(intval($row["idAlbum"]), $row["nomAlbum"], $this->cheminImages.$row["cheminPochette"], 'albumDetail.php?id='.$row["idAlbum"]));
+                array_push($albums, new Miniature(intval($row["idAlbum"]), $row["nomAlbum"], $this->cheminImages.$row["cheminPochette"], '../../Models/Vue/albumDetail.php?id='.$row["idAlbum"]));
             }
 
             return $albums;
@@ -525,7 +525,7 @@ class BaseDeDonnee {
             $stmt->execute();
             $artistes = array();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $artiste = new Miniature(intval($row["idArtiste"]), $row["nomArtiste"], $this->cheminImages . $row["cheminPhoto"], 'artisteDetail.php?id='.$row["idArtiste"]);
+                $artiste = new Miniature(intval($row["idArtiste"]), $row["nomArtiste"], $this->cheminImages . $row["cheminPhoto"], '../../Models/Vue/artisteDetail.php?id='.$row["idArtiste"]);
                 array_push($artistes, $artiste);
             }
             return $artistes;
@@ -562,7 +562,7 @@ class BaseDeDonnee {
             $stmt->execute();
             $artistes = array();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $artiste = new Miniature(intval($row["idArtiste"]), $row["nomArtiste"], $this->cheminImages.$row["cheminPhoto"], 'artisteDetail.php?id='.$row["idArtiste"]);
+                $artiste = new Miniature(intval($row["idArtiste"]), $row["nomArtiste"], $this->cheminImages.$row["cheminPhoto"], '../../Models/Vue/artisteDetail.php?id='.$row["idArtiste"]);
                 array_push($artistes, $artiste);
             }
 
@@ -620,7 +620,7 @@ class BaseDeDonnee {
             $stmt->execute();
             $artistes = array();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $artiste = new Miniature(intval($row["idArtiste"]), $row["nomArtiste"], $this->cheminImages . $row["cheminPhoto"], 'artisteDetail.php?id='.$row["idArtiste"]);
+                $artiste = new Miniature(intval($row["idArtiste"]), $row["nomArtiste"], $this->cheminImages . $row["cheminPhoto"], '../../Models/Vue/artisteDetail.php?id='.$row["idArtiste"]);
                 array_push($artistes, $artiste);
             }
             return $artistes;

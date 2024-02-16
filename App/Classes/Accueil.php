@@ -1,6 +1,5 @@
 <?php
 namespace Classes;
-require_once "autoload/Autoloader.php";
 use autoload\Autoloader;
 Autoloader::register();
 
@@ -23,7 +22,7 @@ class Accueil {
 
     public function __toString(){
         $output ="<main>
-                    <h2 class='titre'><img src='fixtures/images/line.png'> Albums <img src='fixtures/images/line.png'></h2>
+                    <h2 class='titre'><img src='../Static/fixtures/images/line.png'> Albums <img src='../Static/fixtures/images/line.png'></h2>
                     <section class='container'>
                         <section class='albums'>";
         foreach ($this->albums as $alb) {
@@ -31,7 +30,7 @@ class Accueil {
                 }
         $output .="</section>
                     </section>
-                    <h2 class='titre'><img src='fixtures/images/line.png'> Artistes <img src='fixtures/images/line.png'></h2><section class='container'>
+                    <h2 class='titre'><img src='../Static/fixtures/images/line.png'> Artistes <img src='../Static/fixtures/images/line.png'></h2><section class='container'>
                         <section class='artiste'>";
         foreach ($this->artistes as $art){
             $output .= $art;

@@ -1,8 +1,8 @@
 <?php
-require_once "autoload/Autoloader.php";
+require_once "../../autoload/Autoloader.php";
 use autoload\Autoloader;
 Autoloader::register();
-require_once "nav/retourNav.php";
+require_once "../nav/retourNav.php";
 $infoPerso = new Classes\InfoPerso();
 
 ?>
@@ -12,7 +12,7 @@ $infoPerso = new Classes\InfoPerso();
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/connexion.css">
+        <link rel="stylesheet" href="../../Static/css/connexion.css">
         <title>Mes informations - Mus'inEar</title>
     </head>
     <body>

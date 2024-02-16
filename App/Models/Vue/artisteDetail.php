@@ -1,8 +1,8 @@
 <?php
-require_once "autoload/Autoloader.php";
+require_once "../../autoload/Autoloader.php";
 use autoload\Autoloader;
 Autoloader::register();
-require_once "nav/retourNav.php";
+require_once "../nav/retourNav.php";
 
 $artiste = new Classes\ArtisteDetails();
 ?>
@@ -12,7 +12,7 @@ $artiste = new Classes\ArtisteDetails();
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="css/artisteDetail.css">
+        <link rel="stylesheet" href="../../Static/css/artisteDetail.css">
         <?php echo "<title>". $artiste->getNomArtiste() ." - Mus'inEar</title>"; ?>
     </head>
     <body>
