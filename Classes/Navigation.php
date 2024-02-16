@@ -41,8 +41,8 @@ class Navigation{
                                 <h2>Vous allez être déconnecté.</h2>
                             </div>
                             <div class='contenu-popup'>
-                                <a onclick='togglePopup($this->me);'><input id='annuler-deconnexion' type='button' value='Annuler' alt='AnnulerDeconnexion'/></a>
-                                <a href='deconnexion.php'><input id='valider-deconnexion' type='button' value='Continuer' alt='ValiderDeconnexion'/></a>
+                                <a onclick='togglePopup($this->me);'><input id='bouton-non' type='button' value='Annuler' alt='AnnulerDeconnexion'/></a>
+                                <a href='deconnexion.php'><input id='bouton-oui' type='button' value='Continuer' alt='ValiderDeconnexion'/></a>
                             </div>
                         </div>
                     </div>";

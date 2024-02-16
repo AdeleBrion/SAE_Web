@@ -8,7 +8,7 @@ class InfoPerso{
 
     public function __construct(){
         $this->database = new BaseDeDonnee();
-        $this->me = (int) $_SESSION['me'];
+        $this->me = isset($_SESSION['me']) ? (int) $_SESSION['me'] : 0;
 
         if (!$this->me){
             header('Location: connexion.php');
@@ -23,7 +23,7 @@ class InfoPerso{
             header('Location: compte.php');
         }
 
-        if (isset($_POST['fermeture'])){
+        if (isset($_GET['fermeture'])){
             $this->database->fermerCompte($this->me);
             header('Location: deconnexion.php');
         }
@@ -64,9 +64,19 @@ class InfoPerso{
                     </form>";    
         }
 
-        $output .= "<form method='POST' >
-                        <button class='buttonclosecompte' type='submit' name='fermeture'>Fermer mon compte</button>
-                    </form>
+        $output .= "<button onclick='togglePopup($this->me);' >Fermer mon compte</input>
+                    
+                    <div id='$this->me' class='popup-overlay'>
+                        <div class='popup-content'>
+                            <div class='contenu-popup'>
+                                <h2>Confirmer la fermeture de votre compte</h2>
+                            </div>
+                            <div class='contenu-popup'>
+                                <a href=''><input id='bouton-non' type='button' value='Annuler' /></a>
+                                <a href='compte.php?fermeture=true'><input id='bouton-oui' type='button' value='Continuer' /></a>
+                            </div>
+                        </div>
+                    </div>
                 </main>";
         return $output;
     }

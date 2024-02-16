@@ -11,6 +11,8 @@ $infoPerso = new InfoPerso();
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/connexion.css">
+        <link rel="stylesheet" href="css/popup.css">
+        <script src="js/popup.js"></script>
         <title>Mes informations - Mus'inEar</title>
     </head>
     <body>
