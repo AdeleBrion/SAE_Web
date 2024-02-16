@@ -1,0 +1,8 @@
+./vendor/
+vendor/
+.vendor
+vendor
+musinear.sqlite3
+/musinear.sqlite3
+.musinear.sqlite3
+php_errors.log
