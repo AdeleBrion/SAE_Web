@@ -39,7 +39,7 @@ class VerifConnexion{
         $mdp = new InputPassword("connect","mdp","Saississez votre mot de passe","mdpCompte",true, "Mot de passe :");
 
         $output ="<main>
-                    <h1><img src='fixtures/images/line.png'> Connexion <img src='fixtures/images/line.png'></h1>";
+                    <h1><img src='../../../Static/fixtures/images/line.png'> Connexion <img src='../../../Static/fixtures/images/line.png'></h1>";
         if ($this->tentative){
             $output .= "<p>Identifiants incorrects !</p>";
         }
