@@ -74,7 +74,6 @@ class AlbumDetails extends Details{
                         <p>$this->annee</p>
                     </section>
                 </div>
-                <p>Note: ../5</p>
                 </section>
                 <section class='track'>
                     <h2>TITRES</h2>";

@@ -183,7 +183,7 @@ class BaseDeDonnee {
 
     public function fermerCompte(int $id){
         try{
-            if ($this->isArtiste($id)){             //si l'artiste est un artiste
+            if ($this->isArtiste($id)){
                 $query = "SELECT idAlbum
                 FROM ALBUM
                 WHERE idArtiste = $id";
@@ -256,7 +256,8 @@ class BaseDeDonnee {
     {
         try{
             $query = "SELECT *
-            FROM ALBUM NATURAL JOIN ARTISTE";
+            FROM ALBUM NATURAL JOIN ARTISTE
+            ORDER BY idArtiste ASC, annee DESC";
             $stmt=$this->pdo->prepare($query);
             $stmt->execute();
             $albums = array();
@@ -336,7 +337,8 @@ class BaseDeDonnee {
         try{
             $query = "SELECT idAlbum, nomAlbum, cheminPochette
             FROM ALBUM NATURAL JOIN ARTISTE
-            WHERE idArtiste = $idArtiste";
+            WHERE idArtiste = $idArtiste
+            ORDER BY annee DESC";
             $stmt=$this->pdo->prepare($query);
             $stmt->execute();
             $albums = array();

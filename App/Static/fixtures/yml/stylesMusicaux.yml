@@ -1,17 +1,31 @@
 - artiste: 1
   genre: 1
 - artiste: 1
+  genre: 2
+- artiste: 1
   genre: 20
 - artiste: 1
   genre: 21
 - artiste: 1
   genre: 22
 - artiste: 1
-  genre: 2
+  genre: 23
 - artiste: 2
   genre: 2
+- artiste: 2
+  genre: 10
+- artiste: 2
+  genre: 11
+- artiste: 2
+  genre: 18
 - artiste: 3
-  genre: 6
+  genre: 2
+- artiste: 3
+  genre: 20
+- artiste: 3
+  genre: 23
+- artiste: 3
+  genre: 18
 - artiste: 4
   genre: 19
 - artiste: 5

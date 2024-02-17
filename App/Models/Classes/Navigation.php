@@ -15,10 +15,11 @@ class Navigation{
     }
 
     public function __toString(){
+        $enteredKeywords = isset($_GET['keywords']) ? "value='".$_GET['keywords']."'" : '';
         $output = "<nav class='navbar navbar-default navbar'>
                         <a href='../../index.php'><img class='logo' src='../Static/fixtures/images/logo.png'><a>
                         <form class='barre-recherche' action='index.php' method='GET'>
-                            <input type='text' name='keywords' placeholder='Rechercher ...'></div>
+                            <input type='text' name='keywords' placeholder='Rechercher ...' ".$enteredKeywords."></div>
                         </form>";
 
         if ($this->me == 0){        //si l'utilisateur n'est pas connecté
@@ -34,7 +35,7 @@ class Navigation{
                         <a href='../Models/Vue/compte.php'>Mes informations</a>
                         <a href='../Models/Vue/favoris.php'>Mes favoris</a>
                         <a href='../Models/Vue/playlist.php'>Ma playlist</a>
-                        <a onclick='togglePopup($this->me);'>Se deconnecter</a>
+                        <a onclick='togglePopup($this->me);'>Se déconnecter</a>
                     </div>
 
                     <div id='$this->me' class='popup-overlay'>
