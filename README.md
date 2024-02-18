@@ -1,4 +1,6 @@
-# SAE_Web
+# SAE 4.01 Web
+
+Application Web de musique, codée essentiellement en PHP. Dépôt Github accessible [ici](https://github.com/AdeleBrion/SAE_Web/).
 
 ## Membres du groupe:
 - BRION Adèle
@@ -28,7 +30,7 @@ Pour créer la base de données nécessaire au bon fonctionnement de l'applicati
 > sh creation_BDD.sh 
 
 
-### Acces au site :
+### Accès au site :
 
 De même, le fichier `lancement.sh` vous sera utile aussi puisqu'il vous permettra de lancer l'application, à l'aide de la commande suivante :
 
